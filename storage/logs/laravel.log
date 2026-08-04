@@ -1,0 +1,819 @@
+[2026-08-03 04:38:32] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:210)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(135): Illuminate\\Log\\LogManager->resolve(NULL, NULL)
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(122): Illuminate\\Log\\LogManager->get(NULL)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(645): Illuminate\\Log\\LogManager->driver()
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(274): Illuminate\\Log\\LogManager->error('Unable to load ...', Array)
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(454): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(Exception))
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(157): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(Exception))
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
+[2026-08-03 04:38:32] laravel.ERROR: Unable to load the "app" configuration file. {"exception":"[object] (Exception(code: 0): Unable to load the \"app\" configuration file. at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php:66)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(265): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2026-08-03 10:39:00] local.ERROR: The C:\Users\CSO KUTA 2\Documents\web\IMT\bootstrap\cache directory must be present and writable. {"exception":"[object] (Exception(code: 0): The C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\bootstrap\\cache directory must be present and writable. at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php:178)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(137): Illuminate\\Foundation\\PackageManifest->write(Array)
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(107): Illuminate\\Foundation\\PackageManifest->build()
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(90): Illuminate\\Foundation\\PackageManifest->getManifest()
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(79): Illuminate\\Foundation\\PackageManifest->config('aliases')
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(265): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap(Object(Illuminate\\Foundation\\Application))
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 {main}
+"} 
+[2026-08-03 10:39:06] local.ERROR: Class "App\Providers\AuthServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"App\\Providers\\AuthServiceProvider\" not found at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php:206)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(142): Illuminate\\Foundation\\ProviderRepository->createProvider('App\\\\Providers\\\\A...')
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(689): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(265): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2026-08-03 10:39:18] local.ERROR: Class "App\Http\Controllers\Controller" not found {"exception":"[object] (Error(code: 0): Class \"App\\Http\\Controllers\\Controller\" not found at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\app\\Http\\Controllers\\AssessmentController.php:11)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\composer\\ClassLoader.php(576): include()
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\Users\\\\CSO KU...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(1091): is_a('App\\\\Http\\\\Contro...', 'Illuminate\\\\Rout...', true)
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(1030): Illuminate\\Routing\\Route->controllerMiddleware()
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(810): Illuminate\\Routing\\Route->gatherMiddleware()
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(210): Illuminate\\Routing\\Router->gatherRouteMiddleware(Object(Illuminate\\Routing\\Route))
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(155): Illuminate\\Foundation\\Console\\RouteListCommand->getMiddleware(Object(Illuminate\\Routing\\Route))
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(125): Illuminate\\Foundation\\Console\\RouteListCommand->getRouteInformation(Object(Illuminate\\Routing\\Route))
+#9 [internal function]: Illuminate\\Foundation\\Console\\RouteListCommand->Illuminate\\Foundation\\Console\\{closure}(Object(Illuminate\\Routing\\Route), 6)
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Collections\\Arr.php(560): array_map(Object(Closure), Array, Array)
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Collections\\Collection.php(768): Illuminate\\Support\\Arr::map(Array, Object(Closure))
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(126): Illuminate\\Support\\Collection->map(Object(Closure))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(110): Illuminate\\Foundation\\Console\\RouteListCommand->getRoutes()
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Console\\RouteListCommand->handle()
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\RouteListCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 {main}
+"} 
+[2026-08-03 10:50:51] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:760)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(422): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(125): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(74): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(82): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(59): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\WipeCommand->handle()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(68): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(40): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(45): Illuminate\\Console\\Command->callSilent('db:wipe', Array)
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Console\\Migrations\\FreshCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Factory.php(58): Illuminate\\Console\\View\\Components\\Task->render('Dropping all ta...', Object(Closure))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(49): Illuminate\\Console\\View\\Components\\Factory->__call('task', Array)
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1181): call_user_func(Object(Closure))
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1217): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(486): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('SHOW FULL TABLE...', Array)
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(422): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(125): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(74): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(82): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(59): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\WipeCommand->handle()
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(68): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(40): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(45): Illuminate\\Console\\Command->callSilent('db:wipe', Array)
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Console\\Migrations\\FreshCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Factory.php(58): Illuminate\\Console\\View\\Components\\Task->render('Dropping all ta...', Object(Closure))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(49): Illuminate\\Console\\View\\Components\\Factory->__call('task', Array)
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#34 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#35 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#36 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#38 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 {main}
+"} 
+[2026-08-03 10:52:44] local.ERROR: SQLSTATE[HY000]: General error: 1 table "user_assessments" already exists (SQL: create table "user_assessments" ("id" integer not null primary key autoincrement, "user_id" integer, "user_name" varchar not null, "test_date" datetime default CURRENT_TIMESTAMP not null, "score_security" numeric not null default '0', "score_significance" numeric not null default '0', "score_connection" numeric not null default '0', "score_growth" numeric not null default '0', "score_contribution" numeric not null default '0', "archetype_name" varchar, "created_at" datetime, "updated_at" datetime, foreign key("user_id") references "users"("id") on delete set null)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1 table \"user_assessments\" already exists (SQL: create table \"user_assessments\" (\"id\" integer not null primary key autoincrement, \"user_id\" integer, \"user_name\" varchar not null, \"test_date\" datetime default CURRENT_TIMESTAMP not null, \"score_security\" numeric not null default '0', \"score_significance\" numeric not null default '0', \"score_connection\" numeric not null default '0', \"score_growth\" numeric not null default '0', \"score_contribution\" numeric not null default '0', \"archetype_name\" varchar, \"created_at\" datetime, \"updated_at\" datetime, foreign key(\"user_id\") references \"users\"(\"id\") on delete set null)) at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:760)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('create table \"u...', Array, Object(Closure))
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('create table \"u...', Array, Object(Closure))
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"u...')
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(285): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->create('user_assessment...', Object(Closure))
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\database\\migrations\\2026_01_01_000002_create_user_assessments_table.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(496): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(414): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(423): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(778): Illuminate\\Console\\View\\Components\\Task->render('2026_01_01_0000...', Object(Closure))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2026_01_01_0000...', Object(Closure))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\Users\\\\CSO KU...', 1, false)
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(636): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(68): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('migrate', Array, Object(Illuminate\\Console\\OutputStyle))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(59): Illuminate\\Console\\Command->call('migrate', Array)
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#34 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#35 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#36 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#38 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 {main}
+
+[previous exception] [object] (PDOException(code: HY000): SQLSTATE[HY000]: General error: 1 table \"user_assessments\" already exists at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:539)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(539): PDO->prepare('create table \"u...')
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table \"u...', Array)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('create table \"u...', Array, Object(Closure))
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('create table \"u...', Array, Object(Closure))
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"u...')
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Schema\\Grammars\\SQLiteGrammar))
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(285): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->create('user_assessment...', Object(Closure))
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\database\\migrations\\2026_01_01_000002_create_user_assessments_table.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(496): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(414): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(423): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(778): Illuminate\\Console\\View\\Components\\Task->render('2026_01_01_0000...', Object(Closure))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(224): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2026_01_01_0000...', Object(Closure))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(189): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\Users\\\\CSO KU...', 1, false)
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(132): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(636): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(68): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('migrate', Array, Object(Illuminate\\Console\\OutputStyle))
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(59): Illuminate\\Console\\Command->call('migrate', Array)
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#36 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#37 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#38 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#39 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#40 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#45 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 {main}
+"} 
+[2026-08-03 10:54:33] local.ERROR: PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 2 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 2 at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Exception\\ParseErrorException.php:44)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\CodeCleaner.php(657): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\CodeCleaner.php(273): Psy\\CodeCleaner->parse('<?php \\n\\\\ = Illu...', false)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(1399): Psy\\CodeCleaner->clean(Array, false)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(1506): Psy\\Shell->appendCode('\\n\\\\ = Illuminate...', true, false)
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(2215): Psy\\Shell->setCode('\\n\\\\ = Illuminate...', true)
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\tinker\\src\\Console\\TinkerCommand.php(77): Psy\\Shell->execute('\\n\\\\ = Illuminate...')
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 {main}
+"} 
+[2026-08-03 10:54:49] testing.ERROR: Auth guard [] is not defined. {"exception":"[object] (InvalidArgumentException(code: 0): Auth guard [] is not defined. at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php:86)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php(70): Illuminate\\Auth\\AuthManager->resolve(NULL)
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php(57): Illuminate\\Auth\\AuthManager->guard(NULL)
+#2 [internal function]: Illuminate\\Auth\\AuthManager->Illuminate\\Auth\\{closure}(NULL)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthServiceProvider.php(89): call_user_func(Object(Closure), NULL)
+#4 [internal function]: Illuminate\\Auth\\AuthServiceProvider->Illuminate\\Auth\\{closure}(NULL)
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Request.php(606): call_user_func(Object(Closure), NULL)
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\app\\Http\\Middleware\\HandleInertiaRequests.php(40): Illuminate\\Http\\Request->user()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\inertiajs\\inertia-laravel\\src\\Middleware.php(84): App\\Http\\Middleware\\HandleInertiaRequests->share(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Inertia\\Middleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(799): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(740): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(190): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#42 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests.php(557): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#43 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests.php(324): Illuminate\\Foundation\\Testing\\TestCase->call('GET', '/', Array, Array, Array, Array)
+#44 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\tests\\Feature\\RoutesTest.php(14): Illuminate\\Foundation\\Testing\\TestCase->get('/')
+#45 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(1617): Tests\\Feature\\RoutesTest->test_landing_page_is_accessible()
+#46 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(1223): PHPUnit\\Framework\\TestCase->runTest()
+#47 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php(729): PHPUnit\\Framework\\TestCase->runBare()
+#48 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(973): PHPUnit\\Framework\\TestResult->run(Object(Tests\\Feature\\RoutesTest))
+#49 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestCase->run(Object(PHPUnit\\Framework\\TestResult))
+#50 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#51 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#52 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php(651): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#53 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php(146): PHPUnit\\TextUI\\TestRunner->run(Object(PHPUnit\\Framework\\TestSuite), Array, Array, true)
+#54 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php(99): PHPUnit\\TextUI\\Command->run(Array, true)
+#55 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\phpunit(107): PHPUnit\\TextUI\\Command::main()
+#56 {main}
+"} 
+[2026-08-03 10:54:52] testing.ERROR: Auth guard [] is not defined. {"exception":"[object] (InvalidArgumentException(code: 0): Auth guard [] is not defined. at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php:86)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php(70): Illuminate\\Auth\\AuthManager->resolve(NULL)
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthManager.php(57): Illuminate\\Auth\\AuthManager->guard(NULL)
+#2 [internal function]: Illuminate\\Auth\\AuthManager->Illuminate\\Auth\\{closure}(NULL)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\AuthServiceProvider.php(89): call_user_func(Object(Closure), NULL)
+#4 [internal function]: Illuminate\\Auth\\AuthServiceProvider->Illuminate\\Auth\\{closure}(NULL)
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Request.php(606): call_user_func(Object(Closure), NULL)
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\app\\Http\\Middleware\\HandleInertiaRequests.php(40): Illuminate\\Http\\Request->user()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\inertiajs\\inertia-laravel\\src\\Middleware.php(84): App\\Http\\Middleware\\HandleInertiaRequests->share(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Inertia\\Middleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#20 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(799): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#25 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(740): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#26 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#27 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(190): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#28 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#42 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests.php(557): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#43 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests.php(324): Illuminate\\Foundation\\Testing\\TestCase->call('GET', '/laporan/1', Array, Array, Array, Array)
+#44 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\tests\\Feature\\RoutesTest.php(23): Illuminate\\Foundation\\Testing\\TestCase->get('/laporan/1')
+#45 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(1617): Tests\\Feature\\RoutesTest->test_laporan_page_is_accessible()
+#46 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(1223): PHPUnit\\Framework\\TestCase->runTest()
+#47 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php(729): PHPUnit\\Framework\\TestCase->runBare()
+#48 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php(973): PHPUnit\\Framework\\TestResult->run(Object(Tests\\Feature\\RoutesTest))
+#49 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestCase->run(Object(PHPUnit\\Framework\\TestResult))
+#50 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#51 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php(685): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#52 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php(651): PHPUnit\\Framework\\TestSuite->run(Object(PHPUnit\\Framework\\TestResult))
+#53 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php(146): PHPUnit\\TextUI\\TestRunner->run(Object(PHPUnit\\Framework\\TestSuite), Array, Array, true)
+#54 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php(99): PHPUnit\\TextUI\\Command->run(Array, true)
+#55 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\phpunit\\phpunit\\phpunit(107): PHPUnit\\TextUI\\Command::main()
+#56 {main}
+"} 
+[2026-08-03 10:55:11] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 10:59:17] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:00:28] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:02:45] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:07:24] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:08:07] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:09:45] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:09:54] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:10:03] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:13:51] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:18:38] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:24:31] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:27:42] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:31:01] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:31:43] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:41:14] testing.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:42:48] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
+[2026-08-03 11:43:08] local.WARNING: Gemini API returned status 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API key not valid. Please pass a valid API key."
+      }
+    ]
+  }
+}
+  
