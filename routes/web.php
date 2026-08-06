@@ -24,3 +24,13 @@ Route::get('/laporan/{id}', [AssessmentController::class, 'generateReport'])->na
 
 // 4. Halaman Hasil Seluruh Peserta
 Route::get('/hasil', [AssessmentController::class, 'results'])->name('assessment.results');
+
+// 5. Temporary route for running migrations on Hostinger
+Route::get('/run-migrations', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        return 'Migrasi database berhasil dijalankan!';
+    } catch (\Exception $e) {
+        return 'Error migrasi: ' . $e->getMessage();
+    }
+});
