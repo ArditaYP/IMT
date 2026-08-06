@@ -817,3 +817,27 @@
   }
 }
   
+[2026-08-05 11:37:05] local.ERROR: PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 1 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 1 at C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Exception\\ParseErrorException.php:44)
+[stacktrace]
+#0 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\CodeCleaner.php(657): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\CodeCleaner.php(273): Psy\\CodeCleaner->parse('<?php \\\\ = App\\\\M...', false)
+#2 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(1399): Psy\\CodeCleaner->clean(Array, false)
+#3 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(1506): Psy\\Shell->appendCode('\\\\ = App\\\\Models\\\\...', true, false)
+#4 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\psy\\psysh\\src\\Shell.php(2215): Psy\\Shell->setCode('\\\\ = App\\\\Models\\\\...', true)
+#5 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\tinker\\src\\Console\\TinkerCommand.php(77): Psy\\Shell->execute('\\\\ = App\\\\Models\\\\...')
+#6 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Command\\Command.php(291): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(1014): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\Users\\CSO KUTA 2\\Documents\\web\\IMT\\artisan(52): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 {main}
+"} 

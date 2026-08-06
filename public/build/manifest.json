@@ -1,11 +1,11 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-kkVbu0TC.css",
+    "file": "assets/app-B-Lrkwpl.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/Pages/Assessment/Test.jsx": {
-    "file": "assets/Test-C7mab0UN.js",
+    "file": "assets/Test-CDOdoVk9.js",
     "name": "Test",
     "src": "resources/js/Pages/Assessment/Test.jsx",
     "isDynamicEntry": true,
@@ -13,8 +13,17 @@
       "resources/js/app.jsx"
     ]
   },
+  "resources/js/Pages/Results.jsx": {
+    "file": "assets/Results-q2lWGy4z.js",
+    "name": "Results",
+    "src": "resources/js/Pages/Results.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
   "resources/js/Pages/Welcome.jsx": {
-    "file": "assets/Welcome-C7J9w08_.js",
+    "file": "assets/Welcome-CMGVQAjA.js",
     "name": "Welcome",
     "src": "resources/js/Pages/Welcome.jsx",
     "isDynamicEntry": true,
@@ -23,16 +32,17 @@
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-DgcLnjPl.js",
+    "file": "assets/app-CCdACkjz.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
     "dynamicImports": [
       "resources/js/Pages/Assessment/Test.jsx",
+      "resources/js/Pages/Results.jsx",
       "resources/js/Pages/Welcome.jsx"
     ],
     "css": [
-      "assets/app-kkVbu0TC.css"
+      "assets/app-B-Lrkwpl.css"
     ]
   }
 }

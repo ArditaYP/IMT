@@ -18,4 +18,8 @@ return [
     'gemini' => [
         'api_key' => env('GEMINI_API_KEY'),
     ],
+    'ollama' => [
+        'host'  => env('OLLAMA_HOST', 'http://127.0.0.1:11434'),
+        'model' => env('OLLAMA_MODEL', 'llama3:latest'),
+    ],
 ];

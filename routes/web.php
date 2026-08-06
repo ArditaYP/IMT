@@ -21,3 +21,6 @@ Route::post('/tes/submit', [AssessmentController::class, 'submitAnswers'])->name
 
 // 3. Laporan Hasil Profiling Psikologi IMT Discovery (Gemini AI Powered)
 Route::get('/laporan/{id}', [AssessmentController::class, 'generateReport'])->name('assessment.laporan');
+
+// 4. Halaman Hasil Seluruh Peserta
+Route::get('/hasil', [AssessmentController::class, 'results'])->name('assessment.results');

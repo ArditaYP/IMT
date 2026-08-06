@@ -72,8 +72,11 @@ export default function Welcome() {
                         </span>
                     </div>
 
-                    <div>
-                        <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 tracking-wide uppercase">
+                    <div className="flex items-center gap-4">
+                        <Link href="/hasil" className="text-sm font-semibold px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition-colors hidden sm:block">
+                            Data Peserta
+                        </Link>
+                        <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 tracking-wide uppercase hidden sm:block">
                             AI Psychology Profiling
                         </span>
                     </div>
@@ -102,7 +105,7 @@ export default function Welcome() {
                     </p>
 
                     {/* CTA Button */}
-                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-16 w-full max-w-md">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-16 w-full max-w-xl">
                         <Link
                             href="/tes"
                             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-bold text-lg shadow-xl shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3 group"
@@ -111,6 +114,13 @@ export default function Welcome() {
                             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
+                        </Link>
+                        
+                        <Link
+                            href="/hasil"
+                            className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 text-white font-bold text-lg border border-white/10 hover:bg-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3 group backdrop-blur-md"
+                        >
+                            <span>Lihat Hasil Peserta</span>
                         </Link>
                     </div>
 

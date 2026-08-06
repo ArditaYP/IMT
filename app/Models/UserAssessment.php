@@ -29,6 +29,7 @@ class UserAssessment extends Model
         'growth_score',
         'contribution_score',
         'archetype_name',
+        'ai_narasi',
     ];
 
     /**
@@ -42,6 +43,7 @@ class UserAssessment extends Model
         'connection_score'   => 'float',
         'growth_score'       => 'float',
         'contribution_score' => 'float',
+        'ai_narasi'          => 'array',
     ];
 
     /**
