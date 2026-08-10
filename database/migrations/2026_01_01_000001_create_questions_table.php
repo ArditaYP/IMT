@@ -15,8 +15,9 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('question_text');
-            $table->string('driver', 30)->index()->comment('Driver: security, significance, connection, growth, contribution');
-            $table->boolean('reverse_scoring')->default(false)->comment('Apakah skor dibalik (1->5, 5->1)');
+            $table->foreignId('driver_id')->constrained('drivers')->onDelete('cascade');
+            $table->foreignId('sub_driver_id')->nullable()->constrained('sub_drivers')->onDelete('cascade');
+            $table->enum('type', ['normal', 'reverse'])->default('normal')->comment('Jenis pertanyaan: normal (1->1) atau reverse (1->5)');
             $table->unsignedInteger('order')->default(0)->comment('Urutan tampilan pertanyaan');
             $table->boolean('is_active')->default(true)->comment('Status aktif pertanyaan');
             $table->timestamps();

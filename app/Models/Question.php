@@ -26,8 +26,9 @@ class Question extends Model
      */
     protected $fillable = [
         'question_text',
-        'driver',
-        'reverse_scoring',
+        'driver_id',
+        'sub_driver_id',
+        'type',
         'order',
         'is_active',
     ];
@@ -40,8 +41,6 @@ class Question extends Model
     protected function casts(): array
     {
         return [
-            'driver' => DriverType::class,
-            'reverse_scoring' => 'boolean',
             'order' => 'integer',
             'is_active' => 'boolean',
         ];
@@ -52,6 +51,16 @@ class Question extends Model
     | RELATIONSHIPS
     |--------------------------------------------------------------------------
     */
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function subDriver()
+    {
+        return $this->belongsTo(SubDriver::class);
+    }
 
     /**
      * Relasi ke semua jawaban yang merujuk pada pertanyaan ini
@@ -78,10 +87,9 @@ class Question extends Model
     /**
      * Scope filter berdasarkan driver tertentu
      */
-    public function scopeByDriver(Builder $query, DriverType|string $driver): Builder
+    public function scopeByDriver(Builder $query, $driverId): Builder
     {
-        $driverValue = $driver instanceof DriverType ? $driver->value : $driver;
-        return $query->where('driver', $driverValue);
+        return $query->where('driver_id', $driverId);
     }
 
     /*
@@ -91,12 +99,12 @@ class Question extends Model
     */
 
     /**
-     * Menghitung nilai skor efektif berdasarkan konfigurasi reverse_scoring.
+     * Menghitung nilai skor efektif berdasarkan konfigurasi tipe pertanyaan.
      * Contoh skala 1-5: Jika reverse, 1 menjadi 5, 2 menjadi 4, dst.
      */
     public function calculateEffectiveScore(int $rawScore, int $maxScale = 5): int
     {
-        if ($this->reverse_scoring) {
+        if ($this->type === 'reverse') {
             return ($maxScale + 1) - $rawScore;
         }
 

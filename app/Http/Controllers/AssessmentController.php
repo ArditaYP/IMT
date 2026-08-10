@@ -73,7 +73,7 @@ class AssessmentController extends Controller
         // LANGKAH 2: Ambil Data Pertanyaan dari Database untuk Pencocokan Driver
         // -------------------------------------------------------------------------
         $submittedQuestionIds = array_keys($validated['answers']);
-        $questions = Question::whereIn('id', $submittedQuestionIds)->get()->keyBy('id');
+        $questions = Question::with('driver')->whereIn('id', $submittedQuestionIds)->get()->keyBy('id');
 
         // Inisialisasi akumulator skor per driver
         $drivers = ['security', 'significance', 'connection', 'growth', 'contribution'];
@@ -90,20 +90,20 @@ class AssessmentController extends Controller
         // -------------------------------------------------------------------------
         foreach ($validated['answers'] as $questionId => $rawScore) {
             $question = $questions->get($questionId);
-            if (!$question) {
+            if (!$question || !$question->driver) {
                 continue;
             }
 
-            $driverKey = strtolower(trim($question->driver));
+            $driverKey = strtolower(trim($question->driver->name));
             if (!array_key_exists($driverKey, $driverStats)) {
                 continue;
             }
 
             /*
              * RUMUS REVERSE SCORING:
-             * Jika reverse_scoring = true: Nilai Efektif = (5 + 1) - Skor_User = 6 - Skor_User
+             * Jika type = reverse: Nilai Efektif = (5 + 1) - Skor_User = 6 - Skor_User
              */
-            $isReverse = (bool) $question->reverse_scoring;
+            $isReverse = $question->type === 'reverse';
             $effectiveScore = $isReverse ? (6 - (int) $rawScore) : (int) $rawScore;
 
             $driverStats[$driverKey]['actual_score_sum'] += $effectiveScore;
@@ -220,6 +220,8 @@ class AssessmentController extends Controller
             'Contribution' => (float) $data->contribution_score,
         ];
 
+        $dqScore = array_sum($scores) / count($scores);
+
         arsort($scores);
         $topDrivers = array_slice(array_keys($scores), 0, 2);
         $primaryDriver   = $topDrivers[0];
@@ -306,7 +308,8 @@ class AssessmentController extends Controller
             'archetypeName',
             'archetypeData',
             'knowledgeDrivers',
-            'driverLevels'
+            'driverLevels',
+            'dqScore'
         ));
     }
 }
