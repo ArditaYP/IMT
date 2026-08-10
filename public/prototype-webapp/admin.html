@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — IMT Discovery™</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="dash-shell">
+  <aside class="sidebar">
+    <div class="brand"><img class="brand-icon" src="assets/img/logo-icon.png" alt="IMT Discovery"> IMT ADMIN</div>
+    <a class="side-link active" href="admin.html">📊 Ringkasan</a>
+    <a class="side-link" href="#">👥 Pengguna</a>
+    <a class="side-link" href="#">🧾 Transaksi</a>
+    <a class="side-link" href="#">🏢 Akun Korporasi</a>
+    <a class="side-link" href="#">📄 Konten Interpretasi</a>
+    <a class="side-link" href="index.html">↩ Kembali ke Beranda</a>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-header">
+      <h1>Ringkasan Admin</h1>
+      <div style="font-size:13px; color:var(--muted);">Data mock untuk prototype — akan tersambung ke database live</div>
+    </div>
+
+    <div class="grid grid-3" style="grid-template-columns:repeat(4,1fr); margin-bottom:26px;">
+      <div class="stat-card"><div class="num">4,812</div><div class="lbl">Total Pengguna</div></div>
+      <div class="stat-card"><div class="num">Rp 612jt</div><div class="lbl">Pendapatan Bulan Ini</div></div>
+      <div class="stat-card"><div class="num">3,094</div><div class="lbl">Tes Diselesaikan</div></div>
+      <div class="stat-card"><div class="num">96.4%</div><div class="lbl">Tingkat Konversi Bayar</div></div>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:26px;">
+      <div class="card">
+        <h3>Distribusi Arketipe (30 hari terakhir)</h3>
+        <div id="archDist" style="margin-top:16px;"></div>
+      </div>
+      <div class="card">
+        <h3>Sumber Pendapatan</h3>
+        <div style="margin-top:16px; font-size:13.5px;">
+          <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border);"><span>Personal Basic</span><b>Rp184.500.000</b></div>
+          <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border);"><span>Personal Discovery+</span><b>Rp298.700.000</b></div>
+          <div style="display:flex; justify-content:space-between; padding:8px 0;"><span>Tim / Korporasi</span><b>Rp129.400.000</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div style="padding:18px 22px; border-bottom:1px solid var(--border); font-weight:700; color:var(--navy); font-size:14px; display:flex; justify-content:space-between; align-items:center;">
+        <span>Transaksi Terbaru</span>
+        <input placeholder="Cari nama/email..." style="padding:8px 12px; border-radius:8px; border:1px solid var(--border); font-size:12.5px;">
+      </div>
+      <table>
+        <thead><tr><th>Nama</th><th>Paket</th><th>Tanggal</th><th>Jumlah</th><th>Status</th><th>Laporan</th></tr></thead>
+        <tbody id="txBody"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script>
+  const names = ["Ketut Sukarya","Ni Made Hariniti","Ardita Yasa","Rika Wulandari","I Kadek Genta","Dewi Anjani","Bagus Pratama","Sari Kusuma","Made Wirawan","Putu Ayu"];
+  const drivers = Object.keys(IMT_DRIVERS);
+  const dist = document.getElementById('archDist');
+  drivers.forEach(d=>{
+    const pct = Math.floor(Math.random()*30)+10;
+    dist.innerHTML += `<div style="margin-bottom:10px;">
+      <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:4px;"><span>${IMT_ARCHETYPES[d].name}</span><b>${pct}%</b></div>
+      <div style="height:8px; background:var(--border); border-radius:999px; overflow:hidden;"><div style="height:100%; width:${pct}%; background:${IMT_DRIVERS[d].color};"></div></div>
+    </div>`;
+  });
+
+  const tbody = document.getElementById('txBody');
+  const packages = ["Personal Basic (Rp99.000)","Personal Discovery+ (Rp199.000)","Tim/Korporasi (Rp79.000/org)"];
+  const statuses = ['paid','paid','paid','pending'];
+  names.forEach((n,i)=>{
+    const paket = packages[i % packages.length];
+    const status = statuses[i % statuses.length];
+    tbody.innerHTML += `<tr>
+      <td>${n}</td>
+      <td>${paket}</td>
+      <td>2026-0${(i%9)+1}-1${i%2===0?'2':'8'}</td>
+      <td>Rp${(90+i*15)}.000</td>
+      <td>${status==='paid' ? '<span class="pill paid">Lunas</span>' : '<span class="pill pending">Pending</span>'}</td>
+      <td>${status==='paid' ? '<a href="report.html" class="btn btn-ghost btn-sm">Lihat</a>' : '-'}</td>
+    </tr>`;
+  });
+</script>
+</body>
+</html>

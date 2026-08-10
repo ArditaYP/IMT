@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laporan Rika: IMT Discovery™</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body style="font-family:system-ui,-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f8f9fd;">
+  <div style="text-align:center;">
+    <p style="color:#5a6178;">Menyiapkan laporan Rika…</p>
+  </div>
+
+<script src="assets/data.js"></script>
+<script>
+  /*
+   * Halaman ini HANYA untuk preview internal, bukan bagian dari alur produk.
+   * Memakai JAWABAN ASLI responden bernama "Rika" dari
+   * 260731081418_imt-discovery_formidable_entries.csv, atas permintaan
+   * eksplisit untuk memakai nama tersebut.
+   *
+   * Telepon dan email Rika di CSV TIDAK dipakai di sini, karena report.html
+   * memang tidak menampilkan kontak, hanya nama, tanggal lahir, jabatan,
+   * dan tanggal tes.
+   *
+   * Jabatan/pendidikan/gender Rika kosong di data asli, jadi field jabatan
+   * dibiarkan kosong ("-") daripada direka-reka.
+   *
+   * Catatan keterbatasan data: CSV asli hanya berisi 50 pernyataan (soal inti +
+   * consistency + authenticity per driver). 6 soal modul validitas tambahan
+   * (id 51-56) ditambahkan ke tes SETELAH data ini dikumpulkan, jadi sengaja
+   * TIDAK diisi di sini (bukan direka), dan otomatis diabaikan oleh
+   * imtValidity() tanpa memengaruhi skor 5 Driver atau Sub Composite, yang
+   * semuanya dihitung hanya dari soal id 1-50.
+   *
+   * Beberapa soal id 5,6,7,8,15,17,28,37,38,48 sempat ditulis ulang di sesi
+   * pengembangan ini agar sasarannya lebih jelas ke Sub Composite tertentu.
+   * Jawaban di bawah tetap dipetakan ke posisi/id yang sama seperti saat
+   * Rika mengisi (redaksi pernyataan berbeda tipis, makna intinya sama).
+   */
+  const demoProfile = {
+    name: "Rika",
+    dob: "2001-09-06",
+    job: "-",
+    date: "2026-06-11",
+  };
+
+  const demoAnswers = {"1":4,"2":7,"3":5,"4":7,"5":4,"6":7,"7":7,"8":6,"9":4,"10":5,"11":7,"12":6,"13":6,"14":7,"15":5,"16":7,"17":5,"18":6,"19":6,"20":6,"21":5,"22":6,"23":6,"24":6,"25":5,"26":7,"27":7,"28":5,"29":6,"30":5,"31":6,"32":6,"33":6,"34":7,"35":6,"36":7,"37":6,"38":6,"39":7,"40":7,"41":6,"42":6,"43":5,"44":5,"45":5,"46":6,"47":5,"48":5,"49":6,"50":4};
+
+  const demoScores = imtScore(demoAnswers);
+  const demoValidity = imtValidity(demoAnswers);
+
+  localStorage.setItem('imt_paid', 'true');
+  localStorage.setItem('imt_profile', JSON.stringify(demoProfile));
+  localStorage.setItem('imt_answers', JSON.stringify(demoAnswers));
+  localStorage.setItem('imt_scores', JSON.stringify(demoScores));
+  localStorage.setItem('imt_validity', JSON.stringify(demoValidity));
+
+  window.location.href = 'report.html';
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contoh Laporan (Data Responden Asli): IMT Discovery™</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body style="font-family:system-ui,-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f8f9fd;">
+  <div style="text-align:center;">
+    <p style="color:#5a6178;">Menyiapkan contoh laporan dari data responden asli…</p>
+  </div>
+
+<script src="assets/data.js"></script>
+<script>
+  /*
+   * Halaman ini HANYA untuk preview internal, bukan bagian dari alur produk.
+   * Berbeda dari demo-report.html (yang pakai persona fiktif "Ayu Lestari"),
+   * halaman ini memakai JAWABAN ASLI salah satu responden dari
+   * 260731081418_imt-discovery_formidable_entries.csv (71 responden nyata),
+   * supaya tampilan laporan bisa dicek dengan distribusi jawaban yang benar-benar
+   * terjadi, bukan angka yang disusun manual.
+   *
+   * Privasi: nama dan kontak (telepon/email) responden TIDAK dipakai, diganti
+   * label anonim "Responden R5". Data demografis non-identitas (tanggal lahir,
+   * jabatan, pendidikan) tetap dipakai apa adanya karena dibutuhkan untuk
+   * menampilkan bagian profil laporan.
+   *
+   * Catatan keterbatasan data: CSV asli hanya berisi 50 pernyataan (soal inti +
+   * consistency + authenticity per driver). 6 soal modul validitas tambahan
+   * (id 51-56) ditambahkan ke tes SETELAH data responden ini dikumpulkan,
+   * jadi sengaja TIDAK diisi di sini (bukan direka), dan otomatis diabaikan
+   * oleh imtValidity() tanpa memengaruhi skor 5 Driver atau Sub Composite,
+   * yang semuanya dihitung hanya dari soal id 1-50.
+   *
+   * Beberapa soal id 5,6,7,8,15,17,28,37,38,48 sempat ditulis ulang di sesi
+   * pengembangan ini agar sasarannya lebih jelas ke Sub Composite tertentu.
+   * Jawaban di bawah tetap dipetakan ke posisi/id yang sama seperti saat
+   * responden mengisi (redaksi pernyataan berbeda tipis, makna intinya sama),
+   * jadi skornya representatif untuk keperluan cek tampilan, bukan laporan
+   * final yang dikirim ke responden tersebut.
+   */
+  const demoProfile = {
+    name: "Responden R5",
+    dob: "1972-02-13",
+    job: "Entrepreneur",
+    date: "2026-06-12",
+  };
+
+  const demoAnswers = {"1":7,"2":5,"3":2,"4":5,"5":5,"6":6,"7":7,"8":2,"9":5,"10":5,"11":7,"12":7,"13":4,"14":7,"15":4,"16":7,"17":2,"18":5,"19":6,"20":7,"21":7,"22":7,"23":7,"24":7,"25":7,"26":7,"27":5,"28":5,"29":7,"30":7,"31":5,"32":4,"33":7,"34":7,"35":5,"36":6,"37":5,"38":5,"39":5,"40":6,"41":7,"42":6,"43":2,"44":6,"45":5,"46":5,"47":4,"48":5,"49":5,"50":5};
+
+  const demoScores = imtScore(demoAnswers);
+  const demoValidity = imtValidity(demoAnswers);
+
+  localStorage.setItem('imt_paid', 'true');
+  localStorage.setItem('imt_profile', JSON.stringify(demoProfile));
+  localStorage.setItem('imt_answers', JSON.stringify(demoAnswers));
+  localStorage.setItem('imt_scores', JSON.stringify(demoScores));
+  localStorage.setItem('imt_validity', JSON.stringify(demoValidity));
+
+  window.location.href = 'report.html';
+</script>
+</body>
+</html>

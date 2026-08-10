@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — IMT Discovery™</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><img class="brand-icon" src="assets/img/logo-icon.png" alt="IMT Discovery"> IMT DISCOVERY</a>
+  <div style="font-size:13px; color:var(--muted);">🔒 Pembayaran aman via Midtrans</div>
+</div></nav>
+
+<div class="checkout-wrap">
+  <div>
+    <h2 style="color:var(--navy);">Selesaikan Pembayaran</h2>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:26px;">Pilih metode pembayaran — laporan Anda otomatis terbuka setelah pembayaran berhasil.</p>
+
+    <div class="pay-method active" onclick="selectMethod(this,'qris')"><input type="radio" name="pm" checked> <div><b>QRIS</b><div style="font-size:12px; color:var(--muted);">Bayar via aplikasi bank/e-wallet apa saja</div></div></div>
+    <div class="pay-method" onclick="selectMethod(this,'va')"><input type="radio" name="pm"> <div><b>Virtual Account</b><div style="font-size:12px; color:var(--muted);">BCA, BNI, BRI, Mandiri</div></div></div>
+    <div class="pay-method" onclick="selectMethod(this,'ewallet')"><input type="radio" name="pm"> <div><b>E-Wallet</b><div style="font-size:12px; color:var(--muted);">GoPay, OVO, ShopeePay, DANA</div></div></div>
+    <div class="pay-method" onclick="selectMethod(this,'card')"><input type="radio" name="pm"> <div><b>Kartu Kredit/Debit</b><div style="font-size:12px; color:var(--muted);">Visa, Mastercard</div></div></div>
+
+    <div style="margin-top:24px; padding:16px; background:#fff8ec; border:1px solid #f2dfb8; border-radius:12px; font-size:13px; color:#8a5a12;">
+      ⏳ Ini adalah simulasi checkout untuk prototype. Di versi produksi, langkah ini akan memanggil Midtrans Snap API sungguhan.
+    </div>
+
+    <button class="btn btn-primary btn-block" style="margin-top:22px;" onclick="pay()">Bayar Sekarang</button>
+  </div>
+
+  <div class="card" style="height:fit-content;">
+    <h3>Ringkasan Pesanan</h3>
+    <div style="display:flex; justify-content:space-between; font-size:13.5px; margin:14px 0; color:var(--muted);">
+      <span>IMT Discovery — Personal Discovery+</span><span style="color:var(--text); font-weight:600;">Rp199.000</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:13.5px; margin:8px 0; color:var(--muted);">
+      <span>Biaya layanan</span><span style="color:var(--text); font-weight:600;">Rp4.500</span>
+    </div>
+    <hr style="border:none; border-top:1px solid var(--border); margin:14px 0;">
+    <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:800; color:var(--navy);">
+      <span>Total</span><span id="total">Rp203.500</span>
+    </div>
+    <div style="margin-top:18px; font-size:12px; color:var(--muted); line-height:1.6;">
+      ✓ Laporan PDF dikirim otomatis ke email &amp; dashboard Anda segera setelah pembayaran dikonfirmasi.
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectMethod(el){
+    document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('active'));
+    el.classList.add('active');
+    el.querySelector('input').checked = true;
+  }
+  function pay(){
+    const btn = event.target;
+    btn.textContent = 'Memproses pembayaran...';
+    btn.disabled = true;
+    setTimeout(()=>{
+      localStorage.setItem('imt_paid','true');
+      localStorage.setItem('imt_paid_at', new Date().toISOString());
+      window.location.href = 'report.html';
+    }, 1400);
+  }
+</script>
+</body>
+</html>

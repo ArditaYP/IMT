@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contoh Laporan: IMT Discovery™</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body style="font-family:system-ui,-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f8f9fd;">
+  <div style="text-align:center;">
+    <p style="color:#5a6178;">Menyiapkan contoh laporan…</p>
+  </div>
+
+<script src="assets/data.js"></script>
+<script>
+  /*
+   * Halaman ini HANYA untuk demo/preview, bukan bagian dari alur produk.
+   * Mengisi localStorage dengan satu persona contoh (data fiktif, bukan
+   * data peserta asli), lalu redirect ke report.html supaya kamu bisa
+   * lihat contoh laporan lengkap (halaman Overview + laporan interpretasi)
+   * apa adanya seperti yang akan dilihat user sungguhan.
+   *
+   * Jawaban contoh ini disusun supaya profilnya jelas berbeda-beda per
+   * driver (Contribution & Significance tinggi, Security lebih rendah)
+   * dan lolos validity check dengan bersih, bukan hasil acak.
+   */
+  const demoProfile = {
+    name: "Ayu Lestari",
+    dob: "1994-03-12",
+    job: "Manajer Pemasaran",
+    date: "2026-08-10",
+  };
+
+  const demoAnswers = {"1":4,"2":3,"3":3,"4":2,"5":4,"6":3,"7":3,"8":3,"9":4,"10":3,"11":6,"12":5,"13":6,"14":5,"15":6,"16":5,"17":6,"18":5,"19":6,"20":3,"21":5,"22":4,"23":4,"24":3,"25":5,"26":4,"27":4,"28":4,"29":5,"30":3,"31":5,"32":4,"33":5,"34":4,"35":5,"36":4,"37":5,"38":4,"39":5,"40":3,"41":7,"42":6,"43":6,"44":5,"45":6,"46":6,"47":6,"48":6,"49":7,"50":3,"51":6,"52":6,"53":3,"54":3,"55":6,"56":6};
+
+  const demoScores = imtScore(demoAnswers);
+  const demoValidity = imtValidity(demoAnswers);
+
+  localStorage.setItem('imt_paid', 'true');
+  localStorage.setItem('imt_profile', JSON.stringify(demoProfile));
+  localStorage.setItem('imt_answers', JSON.stringify(demoAnswers));
+  localStorage.setItem('imt_scores', JSON.stringify(demoScores));
+  localStorage.setItem('imt_validity', JSON.stringify(demoValidity));
+
+  window.location.href = 'report.html';
+</script>
+</body>
+</html>

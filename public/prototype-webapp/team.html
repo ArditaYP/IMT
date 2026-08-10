@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMT Discovery untuk Tim & Korporasi</title>
+<meta name="description" content="Petakan motivasi seluruh tim Anda dengan IMT Discovery for Teams — dashboard agregat, insight kepemimpinan, dan laporan per individu.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><img class="brand-icon" src="assets/img/logo-icon.png" alt="IMT Discovery"> IMT DISCOVERY</a>
+  <div class="nav-links"><a href="index.html#drivers">5 Drivers</a><a href="index.html#pricing">Harga</a></div>
+  <a href="#form" class="btn btn-primary btn-sm">Ajukan Demo</a>
+</div></nav>
+
+<header class="hero" style="padding:80px 0 50px;">
+  <div class="container">
+    <div class="eyebrow">✦ UNTUK HR & LEADERSHIP TEAM</div>
+    <h1>Pahami motivasi <span>seluruh tim</span><br>Anda dalam satu dashboard</h1>
+    <p class="lead">IMT Discovery for Teams memetakan 5 Human Drivers setiap anggota tim, lalu menyatukannya menjadi insight kepemimpinan dan kolaborasi yang actionable.</p>
+    <div class="hero-ctas">
+      <a href="#form" class="btn btn-primary">Ajukan Demo Gratis</a>
+      <a href="#dashboard-preview" class="btn btn-ghost">Lihat Contoh Dashboard</a>
+    </div>
+  </div>
+</header>
+
+<section id="dashboard-preview" style="background:#f4f6fb;">
+  <div class="container">
+    <div class="section-head"><div class="kicker">Pratinjau</div><h2>Dashboard Agregat Tim</h2></div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div style="background:var(--navy); color:#fff; padding:18px 24px; display:flex; justify-content:space-between; align-items:center;">
+        <b>PT Contoh Nusantara — Divisi Sales (24 anggota)</b>
+        <span class="badge-soft">22 dari 24 selesai</span>
+      </div>
+      <div class="grid grid-3" style="padding:24px;">
+        <div><h3 style="margin:0 0 10px;">Distribusi Driver Dominan Tim</h3><div id="teamDist"></div></div>
+        <div><h3 style="margin:0 0 10px;">Rata-rata Skor per Driver</h3><div id="teamAvg"></div></div>
+        <div><h3 style="margin:0 0 10px;">Insight Tim</h3><p style="font-size:13px; color:var(--muted); line-height:1.7;">Tim ini didominasi oleh <b>Significance</b> dan <b>Contribution</b> — kombinasi yang kuat untuk target penjualan berorientasi dampak, namun perlu perhatian pada <b>Security</b> agar transisi & perubahan proses tidak menimbulkan resistensi.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head"><div class="kicker">Manfaat</div><h2>Kenapa tim memilih IMT Discovery</h2></div>
+    <div class="grid grid-3">
+      <div class="card"><div class="driver-chip" style="background:var(--blue);">👥</div><h3>Onboarding Cepat</h3><p>Undang seluruh anggota tim via link/email, pantau progres pengisian secara real-time.</p></div>
+      <div class="card"><div class="driver-chip" style="background:var(--orange);">📊</div><h3>Dashboard Agregat</h3><p>Lihat distribusi driver & arketipe di level tim, divisi, atau seluruh organisasi.</p></div>
+      <div class="card"><div class="driver-chip" style="background:var(--green);">🗂️</div><h3>Laporan Individu Tetap Privat</h3><p>Setiap anggota tetap mendapat laporan personal PDF-nya sendiri, sesuai kebijakan privasi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="form" style="background:var(--navy); color:#fff;">
+  <div class="container" style="max-width:640px; text-align:center;">
+    <h2 style="font-size:30px; font-weight:800; margin-bottom:10px;">Ajukan Demo untuk Tim Anda</h2>
+    <p style="color:#c7cde0; margin-bottom:30px;">Tim kami akan menghubungi Anda dalam 1x24 jam kerja.</p>
+    <div class="card" style="background:#fff; text-align:left;">
+      <div class="grid grid-2" style="gap:14px;">
+        <input placeholder="Nama Perusahaan" style="padding:12px 14px; border-radius:10px; border:1.5px solid var(--border);">
+        <input placeholder="Jumlah Karyawan" style="padding:12px 14px; border-radius:10px; border:1.5px solid var(--border);">
+        <input placeholder="Nama PIC" style="padding:12px 14px; border-radius:10px; border:1.5px solid var(--border);">
+        <input placeholder="Email Kerja" style="padding:12px 14px; border-radius:10px; border:1.5px solid var(--border);">
+      </div>
+      <button class="btn btn-primary btn-block" style="margin-top:18px;" onclick="alert('Terima kasih! Tim kami akan segera menghubungi Anda. (simulasi prototype)')">Kirim Permintaan Demo</button>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container foot-bottom"><span>© 2026 IMT Discovery™</span><span>Untuk individu & korporasi</span></div></footer>
+
+<script src="assets/data.js"></script>
+<script>
+  const teamDist = document.getElementById('teamDist');
+  const teamAvg = document.getElementById('teamAvg');
+  const mock = {security:58, significance:71, connection:52, growth:60, contribution:74};
+  Object.entries(mock).forEach(([d,v])=>{
+    teamAvg.innerHTML += `<div style="margin-bottom:8px;"><div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;"><span>${IMT_DRIVERS[d].label}</span><b>${v}</b></div><div style="height:7px; background:var(--border); border-radius:999px; overflow:hidden;"><div style="height:100%; width:${v}%; background:${IMT_DRIVERS[d].color};"></div></div></div>`;
+  });
+  const distPct = {contribution:33, significance:29, growth:17, security:13, connection:8};
+  Object.entries(distPct).forEach(([d,v])=>{
+    teamDist.innerHTML += `<div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:12.5px;"><span style="width:14px; height:14px; border-radius:4px; background:${IMT_DRIVERS[d].color}; display:inline-block;"></span> ${IMT_ARCHETYPES[d].name} <b style="margin-left:auto;">${v}%</b></div>`;
+  });
+</script>
+</body>
+</html>
