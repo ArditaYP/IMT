@@ -102,9 +102,9 @@ class Question extends Model
      * Menghitung nilai skor efektif berdasarkan konfigurasi tipe pertanyaan.
      * Contoh skala 1-5: Jika reverse, 1 menjadi 5, 2 menjadi 4, dst.
      */
-    public function calculateEffectiveScore(int $rawScore, int $maxScale = 5): int
+    public function calculateEffectiveScore(int $rawScore, int $maxScale = 7): int
     {
-        if ($this->type === 'reverse') {
+        if ($this->type === 'reverse core' || $this->type === 'reverse') {
             return ($maxScale + 1) - $rawScore;
         }
 

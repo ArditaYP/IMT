@@ -140,16 +140,12 @@ class AssessmentController extends Controller
 
             $calcScore = ($question->type === 'reverse core') ? (8 - $rawScore) : $rawScore;
 
-            if (in_array($driverName, $drivers) && in_array($question->type, ['core', 'reverse core'])) {
-                $driverStats[$driverName]['actual_score_sum'] += (int) $calcScore;
-                $driverStats[$driverName]['question_count']   += 1;
-            }
-
             if ($subDriverId = $question->sub_driver_id) {
                 if (!isset($subDriverStats[$subDriverId])) {
                     $subDriverStats[$subDriverId] = [
                         'actual_score_sum' => 0,
                         'question_count'   => 0,
+                        'driver_name'      => $driverName,
                     ];
                 }
                 $subDriverStats[$subDriverId]['actual_score_sum'] += (int) $calcScore;
@@ -157,23 +153,10 @@ class AssessmentController extends Controller
             }
         }
 
-        $finalScores = [];
-        foreach ($driverStats as $driver => $stat) {
-            $count = $stat['question_count'];
-            $actualSum = $stat['actual_score_sum'];
-
-            if ($count > 0) {
-                // Min raw is $count * 1, Max raw is $count * 7
-                $minPossible = $count * 1;
-                $range = $count * 6; // (count * 7) - (count * 1)
-                $percentage = (($actualSum - $minPossible) / $range) * 100;
-                $finalScores[$driver] = round(max(0, min(100, $percentage)), 2);
-            } else {
-                $finalScores[$driver] = 50.00;
-            }
-        }
-
         $finalSubScores = [];
+        $driverSubScoreSums = [];
+        $driverSubScoreCounts = [];
+
         foreach ($subDriverStats as $subDriverId => $stat) {
             $count = $stat['question_count'];
             $actualSum = $stat['actual_score_sum'];
@@ -181,7 +164,27 @@ class AssessmentController extends Controller
                 $minPossible = $count * 1;
                 $range = $count * 6;
                 $percentage = (($actualSum - $minPossible) / $range) * 100;
-                $finalSubScores[$subDriverId] = round(max(0, min(100, $percentage)));
+                $subScore = round(max(0, min(100, $percentage)));
+                $finalSubScores[$subDriverId] = $subScore;
+
+                $dName = $stat['driver_name'];
+                if (in_array($dName, $drivers)) {
+                    if (!isset($driverSubScoreSums[$dName])) {
+                        $driverSubScoreSums[$dName] = 0;
+                        $driverSubScoreCounts[$dName] = 0;
+                    }
+                    $driverSubScoreSums[$dName] += $subScore;
+                    $driverSubScoreCounts[$dName] += 1;
+                }
+            }
+        }
+
+        $finalScores = [];
+        foreach ($drivers as $driver) {
+            if (isset($driverSubScoreSums[$driver]) && $driverSubScoreCounts[$driver] > 0) {
+                $finalScores[$driver] = round($driverSubScoreSums[$driver] / $driverSubScoreCounts[$driver], 2);
+            } else {
+                $finalScores[$driver] = 50.00;
             }
         }
 

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\AssessmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,15 +13,15 @@ use App\Http\Controllers\AssessmentController;
 |--------------------------------------------------------------------------
 */
 
-// 1. Landing Page
+// 1. Landing Page (Menggunakan landing bawaan sebelumnya)
 Route::get('/', function () {
     return view('landing');
 })->name('home');
 
-// 2. Dashboard
+// 2. Dashboard User (Diarahkan langsung ke admin dashboard)
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return redirect()->route('admin.dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 // 3. Halaman Ujian
 Route::get('/tes', [AssessmentController::class, 'showTest'])->name('assessment.test');
@@ -31,9 +34,7 @@ Route::get('/laporan/{id}', [AssessmentController::class, 'generateReport'])->na
 Route::get('/hasil', [AssessmentController::class, 'results'])->name('assessment.results');
 
 // 6. Admin Dashboard
-use App\Http\Controllers\AdminController;
-
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/questions', [AdminController::class, 'questions'])->name('admin.questions');
     Route::get('/questions/{id}/edit', [AdminController::class, 'questionsEdit'])->name('admin.questions.edit');
@@ -52,3 +53,12 @@ Route::prefix('admin')->group(function () {
 
 // API Routes (Frontend Validation)
 Route::post('/api/validate-group', [AssessmentController::class, 'validateGroup'])->name('api.validate.group');
+
+// Breeze Auth & Profile Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

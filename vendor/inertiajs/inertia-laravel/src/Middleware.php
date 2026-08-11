@@ -3,10 +3,8 @@
 namespace Inertia;
 
 use Closure;
-use Inertia\Support\Header;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Support\LaravelVapor;
 use Symfony\Component\HttpFoundation\Response;
 
 class Middleware
@@ -29,7 +27,7 @@ class Middleware
      */
     public function version(Request $request)
     {
-        if (LaravelVapor::detect()) {
+        if (config('app.asset_url')) {
             return md5(config('app.asset_url'));
         }
 
@@ -54,7 +52,9 @@ class Middleware
     public function share(Request $request)
     {
         return [
-            'errors' => Inertia::always($this->resolveValidationErrors($request)),
+            'errors' => function () use ($request) {
+                return $this->resolveValidationErrors($request);
+            },
         ];
     }
 
@@ -85,13 +85,13 @@ class Middleware
         Inertia::setRootView($this->rootView($request));
 
         $response = $next($request);
-        $response->headers->set('Vary', Header::INERTIA);
+        $response->headers->set('Vary', 'X-Inertia');
 
-        if (! $request->header(Header::INERTIA)) {
+        if (! $request->header('X-Inertia')) {
             return $response;
         }
 
-        if ($request->method() === 'GET' && $request->header(Header::VERSION, '') !== Inertia::getVersion()) {
+        if ($request->method() === 'GET' && $request->header('X-Inertia-Version', '') !== Inertia::getVersion()) {
             $response = $this->onVersionChange($request, $response);
         }
 
@@ -145,8 +145,8 @@ class Middleware
                 return $errors[0];
             })->toArray();
         })->pipe(function ($bags) use ($request) {
-            if ($bags->has('default') && $request->header(Header::ERROR_BAG)) {
-                return [$request->header(Header::ERROR_BAG) => $bags->get('default')];
+            if ($bags->has('default') && $request->header('x-inertia-error-bag')) {
+                return [$request->header('x-inertia-error-bag') => $bags->get('default')];
             }
 
             if ($bags->has('default')) {

@@ -3,39 +3,32 @@
 namespace Inertia;
 
 use Closure;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\App;
 use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceResponse;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response as ResponseFactory;
-use Illuminate\Support\Str;
-use Illuminate\Support\Traits\Macroable;
-use Inertia\Support\Header;
 
 class Response implements Responsable
 {
     use Macroable;
-    use ResolvesCallables;
 
     protected $component;
-
     protected $props;
-
     protected $rootView;
-
     protected $version;
-
     protected $viewData = [];
 
     /**
-     * @param  array|Arrayable  $props
+     * @param array|Arrayable $props
      */
-    public function __construct(string $component, array $props, string $rootView = 'app', string $version = '')
+    public function __construct(string $component, $props, string $rootView = 'app', string $version = '')
     {
         $this->component = $component;
         $this->props = $props instanceof Arrayable ? $props->toArray() : $props;
@@ -44,7 +37,9 @@ class Response implements Responsable
     }
 
     /**
-     * @param  string|array  $key
+     * @param string|array $key
+     * @param mixed        $value
+     *
      * @return $this
      */
     public function with($key, $value = null): self
@@ -59,7 +54,9 @@ class Response implements Responsable
     }
 
     /**
-     * @param  string|array  $key
+     * @param string|array $key
+     * @param mixed        $value
+     *
      * @return $this
      */
     public function withViewData($key, $value = null): self
@@ -83,73 +80,40 @@ class Response implements Responsable
     /**
      * Create an HTTP response that represents the object.
      *
-     * @param  Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function toResponse($request)
     {
-        $props = $this->resolvePartialProps($request, $this->props);
-        $props = $this->resolveAlwaysProps($props);
-        $props = $this->evaluateProps($props, $request);
+        $only = array_filter(explode(',', $request->header('X-Inertia-Partial-Data', '')));
+
+        $props = ($only && $request->header('X-Inertia-Partial-Component') === $this->component)
+            ? Arr::only($this->props, $only)
+            : array_filter($this->props, static function ($prop) {
+                return ! ($prop instanceof LazyProp);
+            });
+
+        $props = $this->resolvePropertyInstances($props, $request);
 
         $page = [
             'component' => $this->component,
             'props' => $props,
-            'url' => Str::start(Str::after($request->fullUrl(), $request->getSchemeAndHttpHost()), '/'),
+            'url' => $request->getBaseUrl().$request->getRequestUri(),
             'version' => $this->version,
-            'encryptHistory' => false,
-            'clearHistory' => false,
         ];
 
-        if ($request->header(Header::INERTIA)) {
-            return new JsonResponse($page, 200, [Header::INERTIA => 'true']);
+        if ($request->header('X-Inertia')) {
+            return new JsonResponse($page, 200, ['X-Inertia' => 'true']);
         }
 
         return ResponseFactory::view($this->rootView, $this->viewData + ['page' => $page]);
     }
 
     /**
-     * Resolve the `only` and `except` partial request props.
-     */
-    public function resolvePartialProps(Request $request, array $props): array
-    {
-        $isPartial = $request->header(Header::PARTIAL_COMPONENT) === $this->component;
-
-        if (! $isPartial) {
-            return array_filter($props, static function ($prop) {
-                return ! ($prop instanceof LazyProp);
-            });
-        }
-
-        $only = array_filter(explode(',', $request->header(Header::PARTIAL_ONLY, '')));
-        $except = array_filter(explode(',', $request->header(Header::PARTIAL_EXCEPT, '')));
-
-        $props = $only ? Arr::only($props, $only) : $props;
-
-        if ($except) {
-            Arr::forget($props, $except);
-        }
-
-        return $props;
-    }
-
-    /**
-     * Resolve `always` properties that should always be included on all visits,
-     * regardless of "only" or "except" requests.
-     */
-    public function resolveAlwaysProps(array $props): array
-    {
-        $always = array_filter($this->props, static function ($prop) {
-            return $prop instanceof AlwaysProp;
-        });
-
-        return array_merge($always, $props);
-    }
-
-    /**
      * Resolve all necessary class instances in the given props.
      */
-    public function evaluateProps(array $props, Request $request, bool $unpackDotProps = true): array
+    public function resolvePropertyInstances(array $props, Request $request, bool $unpackDotProps = true): array
     {
         foreach ($props as $key => $value) {
             if ($value instanceof Closure) {
@@ -157,11 +121,7 @@ class Response implements Responsable
             }
 
             if ($value instanceof LazyProp) {
-                $value = $this->resolveCallable($value);
-            }
-
-            if ($value instanceof AlwaysProp) {
-                $value = $this->resolveCallable($value);
+                $value = App::call($value);
             }
 
             if ($value instanceof PromiseInterface) {
@@ -177,7 +137,7 @@ class Response implements Responsable
             }
 
             if (is_array($value)) {
-                $value = $this->evaluateProps($value, $request, false);
+                $value = $this->resolvePropertyInstances($value, $request, false);
             }
 
             if ($unpackDotProps && str_contains($key, '.')) {

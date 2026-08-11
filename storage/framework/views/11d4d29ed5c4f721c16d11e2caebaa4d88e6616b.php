@@ -24,9 +24,17 @@
             <a href="<?php echo e(route('admin.dashboard')); ?>" class="<?php echo e(request()->routeIs('admin.dashboard') ? 'active' : ''); ?>">Dashboard</a>
             <a href="<?php echo e(route('admin.questions')); ?>" class="<?php echo e(request()->routeIs('admin.questions*') ? 'active' : ''); ?>">Bank Soal</a>
             <a href="<?php echo e(route('admin.assessments')); ?>" class="<?php echo e(request()->routeIs('admin.assessments*') ? 'active' : ''); ?>">Jawaban User</a>
-            <a href="<?php echo e(route('admin.payments')); ?>" class="<?php echo e(request()->routeIs('admin.payments*') ? 'active' : ''); ?>">Data Pembayaran</a>
+            <!-- <a href="<?php echo e(route('admin.payments')); ?>" class="<?php echo e(request()->routeIs('admin.payments*') ? 'active' : ''); ?>">Data Pembayaran</a> -->
             <a href="<?php echo e(route('admin.groups')); ?>" class="<?php echo e(request()->routeIs('admin.groups*') ? 'active' : ''); ?>">Manajemen Grup</a>
             <a href="<?php echo e(route('home')); ?>" class="mt-8 opacity-75 hover:opacity-100">← Ke Halaman Depan</a>
+            
+            <!-- Tombol Keluar (Logout) -->
+            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                <?php echo csrf_field(); ?>
+                <button type="submit" style="color: #ef4444; padding: 12px 24px; width: 100%; text-align: left; transition: all 0.3s;" class="hover:bg-red-900 hover:text-white mt-4 border-l-4 border-transparent hover:border-red-500">
+                    ⎋ Keluar (Logout)
+                </button>
+            </form>
         </nav>
     </aside>
 

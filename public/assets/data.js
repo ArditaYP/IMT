@@ -602,24 +602,12 @@ function imtValidityModuleQuestions() {
  * Raw per driver: min 8 (semua 1), max 56 (semua 7) -> dinormalisasi ke 0-100.
  */
 function imtScore(answers) {
-  const raw = { security: 0, significance: 0, connection: 0, growth: 0, contribution: 0 };
-  const counts = { security: 0, significance: 0, connection: 0, growth: 0, contribution: 0 };
-  
-  IMT_QUESTIONS.filter(q => q.type === "core" || q.type === "reverse core").forEach(q => {
-    let val = Number(answers[q.id] || 0);
-    if (val > 0) {
-      if (q.type === "reverse core") val = 8 - val;
-      raw[q.driver] += val;
-      counts[q.driver] += 1;
-    }
-  });
-  
   const scores = {};
-  Object.keys(raw).forEach(d => {
-    const count = counts[d] || 8;
-    const minPossible = count * 1;
-    const range = count * 6;
-    scores[d] = Math.round(((raw[d] - minPossible) / range) * 100);
+  const subScores = imtSubCompositeScores(answers);
+  Object.keys(subScores).forEach(d => {
+    let sum = 0;
+    subScores[d].forEach(sc => sum += sc.score);
+    scores[d] = Math.round(sum / 5);
   });
   return scores;
 }

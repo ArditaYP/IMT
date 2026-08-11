@@ -24,9 +24,17 @@
             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
             <a href="{{ route('admin.questions') }}" class="{{ request()->routeIs('admin.questions*') ? 'active' : '' }}">Bank Soal</a>
             <a href="{{ route('admin.assessments') }}" class="{{ request()->routeIs('admin.assessments*') ? 'active' : '' }}">Jawaban User</a>
-            <a href="{{ route('admin.payments') }}" class="{{ request()->routeIs('admin.payments*') ? 'active' : '' }}">Data Pembayaran</a>
+            <!-- <a href="{{ route('admin.payments') }}" class="{{ request()->routeIs('admin.payments*') ? 'active' : '' }}">Data Pembayaran</a> -->
             <a href="{{ route('admin.groups') }}" class="{{ request()->routeIs('admin.groups*') ? 'active' : '' }}">Manajemen Grup</a>
             <a href="{{ route('home') }}" class="mt-8 opacity-75 hover:opacity-100">← Ke Halaman Depan</a>
+            
+            <!-- Tombol Keluar (Logout) -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" style="color: #ef4444; padding: 12px 24px; width: 100%; text-align: left; transition: all 0.3s;" class="hover:bg-red-900 hover:text-white mt-4 border-l-4 border-transparent hover:border-red-500">
+                    ⎋ Keluar (Logout)
+                </button>
+            </form>
         </nav>
     </aside>
 

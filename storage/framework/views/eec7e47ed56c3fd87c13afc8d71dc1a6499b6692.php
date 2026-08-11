@@ -14,9 +14,22 @@
             <div class="text-xs text-gray-400 mt-1">Kode akses tidak bisa diubah karena digunakan untuk URL undangan.</div>
         </div>
         
-        <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-600 mb-1">Nama Grup / Perusahaan</label>
-            <input type="text" name="name" value="<?php echo e(old('name', $group->name)); ?>" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <div class="grid grid-cols-4 gap-4 mb-4">
+            <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Nama Grup / Perusahaan</label>
+                <input type="text" name="name" value="<?php echo e(old('name', $group->name)); ?>" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Kuota Peserta</label>
+                <input type="number" name="quota" value="<?php echo e(old('quota', $group->quota)); ?>" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" min="1" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Visibilitas</label>
+                <select name="report_visibility" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="admin_only" <?php echo e(old('report_visibility', $group->report_visibility) == 'admin_only' ? 'selected' : ''); ?>>Hanya Admin</option>
+                    <option value="individual" <?php echo e(old('report_visibility', $group->report_visibility) == 'individual' ? 'selected' : ''); ?>>Individu (Bisa Lihat)</option>
+                </select>
+            </div>
         </div>
         
         <div class="grid grid-cols-2 gap-4 mb-4">
