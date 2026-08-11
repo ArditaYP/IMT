@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\UserAssessment;
 use App\Models\AssessmentAnswer;
+use App\Models\Group;
 use App\Services\PsychologicalAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,54 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Exception;
+use Carbon\Carbon;
 
 class AssessmentController extends Controller
 {
+    /**
+     * Validasi kode grup dari frontend sebelum tes dimulai.
+     */
+    public function validateGroup(Request $request)
+    {
+        $code = $request->input('code');
+        if (!$code) {
+            return response()->json(['valid' => false, 'message' => 'Kode grup tidak boleh kosong.']);
+        }
+
+        $group = Group::where('code', $code)->first();
+
+        if (!$group) {
+            return response()->json(['valid' => false, 'message' => 'Kode grup tidak ditemukan.']);
+        }
+
+        if (!$group->is_active) {
+            return response()->json(['valid' => false, 'message' => 'Grup ini sedang tidak aktif.']);
+        }
+
+        $now = Carbon::now();
+
+        if ($group->start_time && $now->lt($group->start_time)) {
+            return response()->json(['valid' => false, 'message' => 'Mohon maaf, waktu pengisian untuk Grup ini belum dimulai.']);
+        }
+
+        if ($group->end_time && $now->gt($group->end_time)) {
+            return response()->json(['valid' => false, 'message' => 'Mohon maaf, batas waktu pengisian untuk Grup ini telah berakhir.']);
+        }
+
+        $currentCount = $group->assessments()->count();
+        if ($currentCount >= $group->quota) {
+            return response()->json(['valid' => false, 'message' => 'Mohon maaf, kuota peserta untuk Grup ini sudah penuh.']);
+        }
+
+        return response()->json([
+            'valid' => true,
+            'group' => [
+                'id' => $group->id,
+                'name' => $group->name,
+                'code' => $group->code,
+            ]
+        ]);
+    }
     /**
      * Menampilkan daftar user yang telah menyelesaikan asesmen.
      *
@@ -45,7 +91,7 @@ class AssessmentController extends Controller
                     'id'           => $q->id,
                     'driver'       => $q->driver ? strtolower($q->driver->name) : 'general',
                     'type'         => $q->type,
-                    'subComposite' => $q->subDriver ? $q->subDriver->key : null,
+                    'subComposite' => $q->subDriver ? $q->subDriver->name : null,
                     'pairWith'     => null, // In standard IMT this should map to pair logic if stored, or left as null if not strictly needed in frontend beyond order
                     'text'         => $q->question_text,
                 ];
@@ -67,6 +113,7 @@ class AssessmentController extends Controller
     {
         $validated = $request->validate([
             'participant_name' => 'required|string|max:100',
+            'group_id'         => 'nullable|exists:groups,id',
             'answers'          => 'required|array|min:1',
             'answers.*'        => 'required|integer|min:1|max:7',
         ]);
@@ -87,27 +134,25 @@ class AssessmentController extends Controller
 
         foreach ($validated['answers'] as $questionId => $rawScore) {
             $question = $questions->get($questionId);
-            if (!$question || !$question->driver || $question->type !== 'core') {
-                continue;
+            if (!$question) continue;
+
+            $driverName = strtolower($question->driver->name ?? 'general');
+
+            $calcScore = ($question->type === 'reverse core') ? (8 - $rawScore) : $rawScore;
+
+            if (in_array($driverName, $drivers) && in_array($question->type, ['core', 'reverse core'])) {
+                $driverStats[$driverName]['actual_score_sum'] += (int) $calcScore;
+                $driverStats[$driverName]['question_count']   += 1;
             }
 
-            // For driver calculation
-            $driverKey = strtolower(trim($question->driver->name));
-            if (array_key_exists($driverKey, $driverStats)) {
-                $driverStats[$driverKey]['actual_score_sum'] += (int) $rawScore;
-                $driverStats[$driverKey]['question_count']   += 1;
-            }
-
-            // For sub-driver calculation
-            if ($question->sub_driver_id) {
-                $subDriverId = $question->sub_driver_id;
+            if ($subDriverId = $question->sub_driver_id) {
                 if (!isset($subDriverStats[$subDriverId])) {
                     $subDriverStats[$subDriverId] = [
                         'actual_score_sum' => 0,
                         'question_count'   => 0,
                     ];
                 }
-                $subDriverStats[$subDriverId]['actual_score_sum'] += (int) $rawScore;
+                $subDriverStats[$subDriverId]['actual_score_sum'] += (int) $calcScore;
                 $subDriverStats[$subDriverId]['question_count']   += 1;
             }
         }
@@ -140,9 +185,10 @@ class AssessmentController extends Controller
             }
         }
 
-        $userAssessment = DB::transaction(function () use ($validated, $finalScores, $finalSubScores) {
+        $userAssessment = DB::transaction(function () use ($validated, $finalScores, $finalSubScores, $questions) {
             $assessment = UserAssessment::create([
                 'name'               => $validated['participant_name'],
+                'group_id'           => $validated['group_id'] ?? null,
                 'security_score'     => $finalScores['security'],
                 'significance_score' => $finalScores['significance'],
                 'connection_score'   => $finalScores['connection'],
@@ -152,11 +198,15 @@ class AssessmentController extends Controller
 
             $answersData = [];
             $now = now();
-            foreach ($validated['answers'] as $questionId => $score) {
+            foreach ($validated['answers'] as $questionId => $rawScore) {
+                $q = $questions->get($questionId);
+                $calcScore = ($q && $q->type === 'reverse core') ? (8 - $rawScore) : $rawScore;
+                
                 $answersData[] = [
                     'user_assessment_id' => $assessment->id,
                     'question_id'        => $questionId,
-                    'score'              => (int) $score,
+                    'score'              => (int) $rawScore,
+                    'calculated_score'   => (int) $calcScore,
                     'created_at'         => $now,
                     'updated_at'         => $now,
                 ];
@@ -196,8 +246,16 @@ class AssessmentController extends Controller
 
     public function generateReport($id, PsychologicalAIService $aiService)
     {
-        $data = UserAssessment::findOrFail($id);
+        $data = UserAssessment::with('group')->findOrFail($id);
         $assessment = $data;
+
+        // Cek visibilitas laporan grup
+        if ($assessment->group && $assessment->group->report_visibility === 'admin_only' && !auth()->check()) {
+            return view('assessment.thankyou', [
+                'assessment' => $assessment,
+                'group' => $assessment->group
+            ]);
+        }
 
         $scores = [
             'security'     => (float) $data->security_score,
@@ -229,10 +287,25 @@ class AssessmentController extends Controller
             }
         }
 
+        $dbQuestions = Question::with(['driver', 'subDriver'])
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get()
+            ->map(function ($q) {
+                return [
+                    'id' => $q->id,
+                    'driver' => $q->driver ? strtolower($q->driver->name) : 'general',
+                    'type' => $q->type,
+                    'subComposite' => $q->subDriver ? $q->subDriver->name : null,
+                    'text' => $q->question_text
+                ];
+            });
+
         return view('report', compact(
             'assessment', 
             'scores',
-            'ai_summary'
+            'ai_summary',
+            'dbQuestions'
         ));
     }
 }

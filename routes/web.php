@@ -41,4 +41,14 @@ Route::prefix('admin')->group(function () {
     
     Route::get('/assessments', [AdminController::class, 'assessments'])->name('admin.assessments');
     Route::get('/payments', [AdminController::class, 'payments'])->name('admin.payments');
+
+    Route::get('/groups', [AdminController::class, 'groups'])->name('admin.groups');
+    Route::post('/groups', [AdminController::class, 'groupsStore'])->name('admin.groups.store');
+    Route::get('/groups/{id}/edit', [AdminController::class, 'groupsEdit'])->name('admin.groups.edit');
+    Route::put('/groups/{id}', [AdminController::class, 'groupsUpdate'])->name('admin.groups.update');
+    Route::delete('/groups/{id}', [AdminController::class, 'groupsDestroy'])->name('admin.groups.destroy');
+    Route::get('/groups/{id}/report', [AdminController::class, 'groupsReport'])->name('admin.groups.report');
 });
+
+// API Routes (Frontend Validation)
+Route::post('/api/validate-group', [AssessmentController::class, 'validateGroup'])->name('api.validate.group');

@@ -25,6 +25,7 @@
             <a href="{{ route('admin.questions') }}" class="{{ request()->routeIs('admin.questions*') ? 'active' : '' }}">Bank Soal</a>
             <a href="{{ route('admin.assessments') }}" class="{{ request()->routeIs('admin.assessments*') ? 'active' : '' }}">Jawaban User</a>
             <a href="{{ route('admin.payments') }}" class="{{ request()->routeIs('admin.payments*') ? 'active' : '' }}">Data Pembayaran</a>
+            <a href="{{ route('admin.groups') }}" class="{{ request()->routeIs('admin.groups*') ? 'active' : '' }}">Manajemen Grup</a>
             <a href="{{ route('home') }}" class="mt-8 opacity-75 hover:opacity-100">← Ke Halaman Depan</a>
         </nav>
     </aside>

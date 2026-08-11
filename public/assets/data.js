@@ -517,17 +517,22 @@ function imtSubCompositeSpotlight(topDriver, secondDriver) {
  * dengan urutan mengikuti IMT_SUB_COMPOSITE.
  */
 function imtSubCompositeScores(answers) {
-  const result = {};
+  const res = {};
   Object.keys(IMT_SUB_COMPOSITE).forEach(driver => {
-    result[driver] = IMT_SUB_COMPOSITE[driver].map(sc => {
-      const items = IMT_QUESTIONS.filter(q => q.type === "core" && q.driver === driver && q.subComposite === sc.key);
-      const n = items.length || 1;
-      const raw = items.reduce((sum, q) => sum + Number(answers[q.id] || 0), 0);
+    res[driver] = IMT_SUB_COMPOSITE[driver].map(sc => {
+      const items = IMT_QUESTIONS.filter(q => (q.type === "core" || q.type === "reverse core") && q.driver === driver && q.subComposite === sc.key);
+      const validItems = items.filter(q => Number(answers[q.id]) > 0);
+      const n = validItems.length || 1;
+      const raw = validItems.reduce((sum, q) => {
+        let val = Number(answers[q.id]);
+        if (q.type === "reverse core") val = 8 - val;
+        return sum + val;
+      }, 0);
       const score = Math.round(((raw - n) / (6 * n)) * 100);
-      return { key: sc.key, name: sc.name, tagline: sc.tagline, score: Math.max(0, Math.min(100, score)), itemCount: items.length, reliability: sc.reliability || "standard" };
+      return { ...sc, score: Math.max(0, Math.min(100, score)), itemCount: items.length, reliability: sc.reliability || "standard" };
     });
   });
-  return result;
+  return res;
 }
 
 const IMT_BANDS = [
@@ -598,10 +603,23 @@ function imtValidityModuleQuestions() {
  */
 function imtScore(answers) {
   const raw = { security: 0, significance: 0, connection: 0, growth: 0, contribution: 0 };
-  IMT_QUESTIONS.filter(q => q.type === "core").forEach(q => { raw[q.driver] += Number(answers[q.id] || 0); });
+  const counts = { security: 0, significance: 0, connection: 0, growth: 0, contribution: 0 };
+  
+  IMT_QUESTIONS.filter(q => q.type === "core" || q.type === "reverse core").forEach(q => {
+    let val = Number(answers[q.id] || 0);
+    if (val > 0) {
+      if (q.type === "reverse core") val = 8 - val;
+      raw[q.driver] += val;
+      counts[q.driver] += 1;
+    }
+  });
+  
   const scores = {};
   Object.keys(raw).forEach(d => {
-    scores[d] = Math.round(((raw[d] - 8) / 48) * 100);
+    const count = counts[d] || 8;
+    const minPossible = count * 1;
+    const range = count * 6;
+    scores[d] = Math.round(((raw[d] - minPossible) / range) * 100);
   });
   return scores;
 }
@@ -925,8 +943,11 @@ function imtStageFor(score) {
    sebagai lapisan keamanan psikometri dasar untuk prototype.
    ============================================================ */
 function imtValidity(answers, meta = {}) {
-  const coreVals = IMT_QUESTIONS.filter(q => q.type === "core")
-    .map(q => Number(answers[q.id])).filter(v => !isNaN(v));
+  const coreVals = IMT_QUESTIONS.filter(q => q.type === "core" || q.type === "reverse core")
+    .map(q => {
+      let val = Number(answers[q.id]);
+      return (q.type === "reverse core" && !isNaN(val)) ? 8 - val : val;
+    }).filter(v => !isNaN(v));
   const n = coreVals.length;
   if (n === 0) return { flag: false, label: "Tidak Diketahui", reasons: [], sd: 0, extremePct: 0, consistencyResults: [], authenticityFlags: 0 };
 

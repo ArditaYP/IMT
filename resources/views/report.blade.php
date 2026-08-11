@@ -459,10 +459,38 @@
   const profile = JSON.parse(localStorage.getItem('imt_profile') || 'null');
   const answers = JSON.parse(localStorage.getItem('imt_answers') || '{}');
 
+  const dbQuestions = @json($dbQuestions);
+  const oldPairWith = {};
+  IMT_QUESTIONS.forEach(q => { oldPairWith[q.id] = q.pairWith; });
+  
+  IMT_QUESTIONS = dbQuestions.map(dbq => ({
+      id: dbq.id,
+      driver: dbq.driver,
+      type: dbq.type,
+      subComposite: dbq.subComposite,
+      pairWith: oldPairWith[dbq.id] || null,
+      text: dbq.text
+  }));
+
+  const isGroupReport = @json($isGroupReport ?? false);
+  const totalParticipants = @json($totalParticipants ?? 0);
+  const backendAnswers = @json($answers ?? null);
+  
+  // Jika group report, override answers dan bypass cek profile/bayar
+  let isPaid = paid;
+  let activeProfile = profile;
+  if (isGroupReport) {
+      if (backendAnswers) Object.assign(answers, backendAnswers);
+      // Buat profile palsu agar tidak error
+      const mockName = @json($assessment->name ?? 'Grup');
+      activeProfile = { name: mockName, job: '-', dob: '-', date: new Date().toISOString() };
+      isPaid = true; // Bypass lock
+  }
+
   // segera di bawah, sebelum baris kode lain di bawahnya sempat berjalan.
   const OV_BAND_COLOR = { low: '#d1493a', mid: '#e8862e', high: '#5aab52', vhigh: '#2f6fed' };
 
-  if(!paid || !scores || !profile){
+  if(!isPaid || !scores || !activeProfile){
     document.getElementById('lockedView').style.display = 'block';
   } else {
     document.getElementById('overviewPage').style.display = 'block';
@@ -543,12 +571,24 @@
     const secondDriver = sortedDrivers[1];
     const arch = imtSynergyFor(topDriver, secondDriver);
 
-    document.getElementById('pname').textContent = profile.name.toUpperCase();
-    document.getElementById('avatar').textContent = profile.name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-    document.getElementById('pdob').textContent = ': ' + (profile.dob !== '-' ? new Date(profile.dob).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) : '-');
-    document.getElementById('pjob').textContent = ': ' + profile.job;
-    document.getElementById('pdate').textContent = ': ' + new Date(profile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
-    document.getElementById('pid').textContent = ': IMT-D-' + profile.date.replace(/-/g,'').slice(2) + '-' + String(Math.floor(Math.random()*900)+100);
+    if (isGroupReport) {
+        document.getElementById('pname').textContent = "GRUP: " + activeProfile.name.toUpperCase();
+        document.getElementById('avatar').textContent = "GR";
+        
+        // Ganti label kolom untuk grup
+        document.getElementById('pdob').parentElement.innerHTML = 'Total Peserta <b id="pdob" style="color:var(--navy); font-weight:800;">: ' + totalParticipants + ' Orang</b>';
+        document.getElementById('pjob').parentElement.style.display = 'none'; // Sembunyikan Pekerjaan
+        
+        document.getElementById('pdate').textContent = ': ' + new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+        document.getElementById('pid').textContent = ': GRP-' + String(Math.floor(Math.random()*9000)+1000);
+    } else {
+        document.getElementById('pname').textContent = activeProfile.name.toUpperCase();
+        document.getElementById('avatar').textContent = activeProfile.name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+        document.getElementById('pdob').textContent = ': ' + (activeProfile.dob !== '-' ? new Date(activeProfile.dob).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) : '-');
+        document.getElementById('pjob').textContent = ': ' + activeProfile.job;
+        document.getElementById('pdate').textContent = ': ' + new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+        document.getElementById('pid').textContent = ': IMT-D-' + activeProfile.date.replace(/-/g,'').slice(2) + '-' + String(Math.floor(Math.random()*900)+100);
+    }
 
     document.getElementById('archName').innerHTML = arch.name.replace('™','').trim().toUpperCase();
     document.getElementById('archIcon').textContent = IMT_DRIVERS[topDriver].icon;

@@ -17,11 +17,20 @@ class UserAssessment extends Model
     protected $table = 'user_assessments';
 
     /**
+     * Relasi ke grup
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+    /**
      * Kolom yang dapat diisi secara mass-assignment
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'group_id',
         'name',
         'security_score',
         'significance_score',

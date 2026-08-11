@@ -23,6 +23,19 @@
             @error('question_text')<span class="text-red-500 text-xs">{{ $message }}</span>@enderror
         </div>
 
+        <div class="mb-6">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Tipe Soal</label>
+            <select name="type" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="core" {{ old('type', $question->type) === 'core' ? 'selected' : '' }}>Core</option>
+                <option value="reverse core" {{ old('type', $question->type) === 'reverse core' ? 'selected' : '' }}>Reverse Core</option>
+                <option value="consistency" {{ old('type', $question->type) === 'consistency' ? 'selected' : '' }}>Consistency</option>
+                <option value="authenticity" {{ old('type', $question->type) === 'authenticity' ? 'selected' : '' }}>Authenticity</option>
+                <option value="module_consistency" {{ old('type', $question->type) === 'module_consistency' ? 'selected' : '' }}>Module Consistency</option>
+                <option value="module_authenticity" {{ old('type', $question->type) === 'module_authenticity' ? 'selected' : '' }}>Module Authenticity</option>
+            </select>
+            @error('type')<span class="text-red-500 text-xs">{{ $message }}</span>@enderror
+        </div>
+
         <div class="grid grid-cols-2 gap-6 mb-8">
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-2">Order (Nomor Urut)</label>

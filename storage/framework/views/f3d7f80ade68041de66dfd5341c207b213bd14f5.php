@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IMT Discovery™ — Laporan Personal <?php echo e($assessment->participant_name ?? $assessment->name ?? 'Peserta'); ?></title>
   <style>
     :root {
@@ -23,9 +22,6 @@
 
     * {
       box-sizing: border-box;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-      color-adjust: exact !important;
     }
 
     body {
@@ -44,36 +40,11 @@
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .top-actions {
-      display: flex;
-      justify-content: flex-end;
-      padding: 16px 30px 0;
-    }
-
-    .btn-print {
-      background: var(--navy);
-      color: #ffffff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.2s;
-    }
-
-    .btn-print:hover {
-      background: var(--navy2);
-    }
-
     .grid-top {
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 20px;
-      padding: 16px 30px 0;
+      padding: 24px 30px 0;
     }
 
     .logo-block {
@@ -221,7 +192,6 @@
       margin: 6px 0 12px;
       font-size: 18px;
       color: #fff;
-      line-height: 1.2;
     }
 
     .archetype-icon {
@@ -383,12 +353,11 @@
       letter-spacing: 1px;
       color: var(--muted);
       text-transform: uppercase;
-      font-weight: 700;
     }
 
     .driver-desc {
       font-size: 12px;
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--text);
       margin: 4px 0 8px;
     }
@@ -730,7 +699,7 @@
       color: #5b4222;
     }
 
-    @media screen and (max-width:820px) {
+    @media (max-width:820px) {
       .grid-top {
         grid-template-columns: 1fr;
       }
@@ -751,92 +720,260 @@
         grid-template-columns: 1fr;
       }
     }
-
-    @page {
-      size: auto;
-      margin: 10mm;
+  
+    /* ---- DQ Section ---- */
+    .dq-box {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 20px 30px;
+    }
+    .dq-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .dq-title {
+      color: var(--orange);
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dq-desc {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #c7cde0;
+      max-width: 70%;
+      margin-top: 8px;
+    }
+    .dq-score-block {
+      text-align: right;
+    }
+    .dq-score-block h2 {
+      font-size: 36px;
+      margin: 0;
+      line-height: 1;
+    }
+    .dq-score-block span {
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .dq-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .dq-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .dq-card h3 {
+      font-size: 24px;
+      margin: 0 0 4px;
+    }
+    .dq-card span {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #aab2cc;
+      text-transform: uppercase;
+    }
+    .dq-text {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #dde3f2;
+      margin-top: 12px;
+      text-align: left;
     }
 
-    @media print {
-      html, body {
-        background: #f4f6fb !important;
-        color: #1c2333 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
+    /* ---- Sub Composite ---- */
+    .sub-composite-box {
+      border: 1px solid #e7e9f2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 0 30px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: var(--card);
+    }
+    .sub-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fdf5eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .sub-content h4 {
+      color: var(--orange);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      margin: 0 0 4px;
+    }
+    .sub-content h2 {
+      font-size: 18px;
+      color: var(--navy);
+      margin: 0 0 6px;
+    }
+    .sub-content p {
+      font-size: 13px;
+      margin: 0;
+      color: var(--text);
+    }
 
-      .page {
-        width: 1060px !important;
-        max-width: 1060px !important;
-        min-width: 1060px !important;
-        margin: 0 auto !important;
-        padding: 0 !important;
-        background: #ffffff !important;
-        box-shadow: none !important;
-        border-radius: 8px !important;
-      }
-
-      .top-actions {
-        display: none !important;
-      }
-
-      /* Pertahankan Grid Desktop 100% Utuh */
-      .grid-top {
-        display: grid !important;
-        grid-template-columns: 280px 1fr !important;
-        gap: 20px !important;
-        padding: 24px 30px 0 !important;
-      }
-
-      .row-2 {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 16px !important;
-      }
-
-      .bottom-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px !important;
-        padding: 24px 30px !important;
-      }
-
-      .driver-row {
-        display: grid !important;
-        grid-template-columns: 46px 1fr !important;
-        gap: 12px !important;
-        padding: 12px 0 !important;
-      }
-
-      .section-wrap {
-        padding: 0 30px 24px !important;
-      }
-
-      .dynamix-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 16px !important;
-      }
-
-      .synergy-quote-row {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 14px !important;
-      }
-
-      .synergy-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 14px !important;
-      }
-
-      .footer {
-        display: grid !important;
-        grid-template-columns: 120px 1fr 1fr 1fr 1fr !important;
-        gap: 16px !important;
-      }
+    /* ---- Development Path ---- */
+    .dev-path-box {
+      border: 1px solid #e7e9f2;
+      border-radius: 8px;
+      margin: 0 30px 24px;
+      overflow: hidden;
+      background: var(--card);
+    }
+    .dev-path-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dev-path-body {
+      padding: 24px;
+    }
+    .dev-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 24px;
+    }
+    .dev-steps::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 5%;
+      right: 5%;
+      height: 8px;
+      background: linear-gradient(to right, #d1493a, #e8862e, #f2c94c, #5aab52, #2f6fed);
+      border-radius: 4px;
+      z-index: 1;
+    }
+    .dev-step {
+      z-index: 2;
+      text-align: center;
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dev-step-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #5aab52;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5aab52;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .dev-step.active .dev-step-icon {
+      background: #e8862e;
+      border-color: #fce8d5;
+      color: #fff;
+      box-shadow: 0 0 0 4px #fdf5eb;
+    }
+    .dev-step span {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .dev-focus {
+      background: #f8f9fd;
+      border: 1px solid #eef0f7;
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .dev-focus b {
+      color: var(--navy);
+    }
+    .dev-formula-box {
+      background: #f8f9fd;
+      border: 1px solid #eef0f7;
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .dev-formula {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      flex-wrap: wrap;
+    }
+    .dev-chip {
+      background: #fff;
+      border: 1px solid #dfe3ef;
+      padding: 8px 16px;
+      border-radius: 4px;
+      color: var(--navy);
+    }
+    .dev-chip.final {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+    .dev-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .dev-card {
+      background: #f8f9fd;
+      border: 1px solid #eef0f7;
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .dev-card.warning {
+      background: #fff8ec;
+      border-color: #f2dfb8;
+    }
+    .dev-card h4 {
+      margin: 0 0 8px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dev-card p {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -902,14 +1039,7 @@
       ? $ai_narasi['growth_opportunities']
       : ($arch['blindspots'] ?? []);
   ?>
-
   <div class="page">
-
-    <div class="top-actions">
-      <button class="btn-print" onclick="window.print()">
-        🖨️ Cetak / Simpan PDF
-      </button>
-    </div>
 
     <div class="grid-top">
       <!-- LEFT COLUMN -->
@@ -931,9 +1061,12 @@
         </div>
 
         <div class="info-list">
+          <div><span class="label">📅 Tanggal Lahir</span><span class="val">: 16 Mei 2004</span></div>
+          <div><span class="label">👤 Jenis Kelamin</span><span class="val">: Laki-laki</span></div>
+          <div><span class="label">💼 Pekerjaan</span><span class="val">: Student</span></div>
+          <div><span class="label">🎓 Institusi</span><span class="val">: ITB STIKOM Bali</span></div>
           <div><span class="label">📅 Tanggal Tes</span><span class="val">: <?php echo e($assessment->created_at ? $assessment->created_at->format('d M Y') : date('d M Y')); ?></span></div>
           <div><span class="label">🆔 ID Laporan</span><span class="val">: IMT-D-<?php echo e($assessment->created_at ? $assessment->created_at->format('ymd') : date('ymd')); ?>-<?php echo e(str_pad($assessment->id, 3, '0', STR_PAD_LEFT)); ?></span></div>
-          <div><span class="label">🎯 Instrumen</span><span class="val">: 5 Human Drivers Profiling</span></div>
         </div>
 
         <div class="about-box">
@@ -955,77 +1088,100 @@
         </p>
 
         <div class="row-2">
-          <!-- ARCHETYPE HERO BOX -->
-          <div class="archetype-box">
-            <div class="tag">ARKETIPE ANDA</div>
-            <h2><?php echo e(strtoupper($arch['name'] ?? $assessment->archetype_name)); ?></h2>
-            <div class="archetype-icon">🧭</div>
-            <p>
-              <?php echo nl2br(e($ai_narasi['archetype_box_desc'] ?? ($arch['description'] ?? 'Perpaduan sinergis antara dorongan ' . $primaryName . ' dan ' . $secondaryName . '.'))); ?>
+                      <div class="archetype-box">
+              <div class="tag">ARKETIPE ANDA</div>
+              <h2><?php echo nl2br(e(strtoupper($arch['name'] ?? $assessment->archetype_name))); ?></h2>
+              <div class="archetype-icon">dY -</div>
+              <p><?php echo nl2br(e($ai_narasi['archetype_box_desc'] ?? ($arch['description'] ?? ''))); ?></p>
+              
+              <div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                <div style="margin-bottom: 12px;">
+                  <span style="color: var(--orange); font-size: 10px; font-weight: 700; display: block; margin-bottom: 4px;">YANG PALING ANDA CARI (CORE DESIRE)</span>
+                  <span style="font-size: 12px; color: #fff;"><?php echo e($arch['core_desire'] ?? ''); ?></span>
+                </div>
+                <div style="margin-bottom: 24px;">
+                  <span style="color: var(--orange); font-size: 10px; font-weight: 700; display: block; margin-bottom: 4px;">YANG PALING ANDA HINDARI (CORE FEAR)</span>
+                  <span style="font-size: 12px; color: #fff;"><?php echo e($arch['core_fear'] ?? ''); ?></span>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div>
+                      <span style="color: #3aa65a; font-size: 11px; font-weight: 700; display: block; margin-bottom: 8px;">KEKUATAN ANDA</span>
+                      <ul style="padding-left: 16px; margin: 0; font-size: 11.5px; color: #c7cde0; line-height: 1.5;">
+                        <?php $__currentLoopData = $ai_narasi['strengths_in_action'] ?? ($arch['strengths'] ?? []); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $str): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <li style="margin-bottom: 8px;"><b style="color:#fff;"><?php echo e($str['title'] ?? ''); ?></b>: <?php echo e($str['desc'] ?? ''); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      </ul>
+                    </div>
+                    <div>
+                      <span style="color: #e8862e; font-size: 11px; font-weight: 700; display: block; margin-bottom: 8px;">TITIK BUTA</span>
+                      <ul style="padding-left: 16px; margin: 0; font-size: 11.5px; color: #c7cde0; line-height: 1.5;">
+                        <?php $__currentLoopData = $ai_narasi['growth_opportunities'] ?? ($arch['blindspots'] ?? []); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <li style="margin-bottom: 8px;"><b style="color:#fff;"><?php echo e($bs['title'] ?? ''); ?></b>: <?php echo e($bs['desc'] ?? ''); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right-stack" style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="radar-box">
+                  <h3>PROFIL IMT ANDA</h3>
+                  <svg viewBox="0 0 600 480" width="100%" style="max-height: 280px; display: block; margin: 0 auto;">
+                    <polygon points="300.0,70.0 480.7,201.3 411.7,413.7 188.3,413.7 119.3,201.3" fill="none" stroke="#dfe3ef"
+                      stroke-width="1" />
+                    <polygon points="300.0,117.5 435.5,216.0 383.8,375.3 216.2,375.3 164.5,216.0" fill="none" stroke="#dfe3ef"
+                      stroke-width="1" />
+                    <polygon points="300.0,165.0 390.4,230.6 355.8,336.9 244.2,336.9 209.6,230.6" fill="none" stroke="#dfe3ef"
+                      stroke-width="1" />
+                    <polygon points="300.0,212.5 345.2,245.3 327.9,298.4 272.1,298.4 254.8,245.3" fill="none" stroke="#dfe3ef"
+                      stroke-width="1" />
+                    <line x1="300" y1="260" x2="300" y2="70" stroke="#dfe3ef" />
+                    <line x1="300" y1="260" x2="480.7" y2="201.3" stroke="#dfe3ef" />
+                    <line x1="300" y1="260" x2="411.7" y2="413.7" stroke="#dfe3ef" />
+                    <line x1="300" y1="260" x2="188.3" y2="413.7" stroke="#dfe3ef" />
+                    <line x1="300" y1="260" x2="119.3" y2="201.3" stroke="#dfe3ef" />
+      
+                    <polygon points="<?php echo e($polygonPoints); ?>" fill="rgba(47,111,237,0.18)"
+                      stroke="#2f6fed" stroke-width="2.5" />
+                    <circle cx="<?php echo e($pSecX); ?>" cy="<?php echo e($pSecY); ?>" r="5" fill="#2f6fed" />
+                    <circle cx="<?php echo e($pSigX); ?>" cy="<?php echo e($pSigY); ?>" r="5" fill="#e8862e" />
+                    <circle cx="<?php echo e($pConX); ?>" cy="<?php echo e($pConY); ?>" r="5" fill="#3aa65a" />
+                    <circle cx="<?php echo e($pGroX); ?>" cy="<?php echo e($pGroY); ?>" r="5" fill="#7a5cc7" />
+                    <circle cx="<?php echo e($pCtrX); ?>" cy="<?php echo e($pCtrY); ?>" r="5" fill="#1f8a6e" />
+      
+                    <text x="300" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="#2f6fed">SECURITY</text>
+                    <text x="300" y="52" text-anchor="middle" font-size="18" font-weight="800" fill="#2f6fed"><?php echo e(round($scoreSec)); ?></text>
+      
+                    <text x="530" y="185" text-anchor="middle" font-size="13" font-weight="700"
+                      fill="#e8862e">SIGNIFICANCE</text>
+                    <text x="530" y="203" text-anchor="middle" font-size="18" font-weight="800" fill="#e8862e"><?php echo e(round($scoreSig)); ?></text>
+      
+                    <text x="445" y="450" text-anchor="middle" font-size="13" font-weight="700"
+                      fill="#3aa65a">CONNECTION</text>
+                    <text x="445" y="468" text-anchor="middle" font-size="18" font-weight="800" fill="#3aa65a"><?php echo e(round($scoreCon)); ?></text>
+      
+                    <text x="160" y="450" text-anchor="middle" font-size="13" font-weight="700" fill="#7a5cc7">GROWTH</text>
+                    <text x="160" y="468" text-anchor="middle" font-size="18" font-weight="800" fill="#7a5cc7"><?php echo e(round($scoreGro)); ?></text>
+      
+                    <text x="70" y="185" text-anchor="middle" font-size="13" font-weight="700"
+                      fill="#1f8a6e">CONTRIBUTION</text>
+                    <text x="70" y="203" text-anchor="middle" font-size="18" font-weight="800" fill="#1f8a6e"><?php echo e(round($scoreCtr)); ?></text>
+      
+                    <text x="300" y="264" text-anchor="middle" font-size="14" font-weight="800" fill="var(--navy)">IMT</text>
+                    <text x="300" y="280" text-anchor="middle" font-size="10" font-weight="700"
+                      fill="var(--navy)">DISCOVERY™</text>
+                  </svg>
+                </div>
 
-            </p>
-          </div>
-
-          <!-- RADAR SVG BOX -->
-          <div class="radar-box">
-            <h3>PROFIL IMT ANDA</h3>
-            <svg viewBox="0 0 600 480" width="100%">
-              <!-- Grid Levels -->
-              <polygon points="300.0,70.0 480.7,201.3 411.7,413.7 188.3,413.7 119.3,201.3" fill="none" stroke="#dfe3ef"
-                stroke-width="1" />
-              <polygon points="300.0,117.5 435.5,216.0 383.8,375.3 216.2,375.3 164.5,216.0" fill="none" stroke="#dfe3ef"
-                stroke-width="1" />
-              <polygon points="300.0,165.0 390.4,230.6 355.8,336.9 244.2,336.9 209.6,230.6" fill="none" stroke="#dfe3ef"
-                stroke-width="1" />
-              <polygon points="300.0,212.5 345.2,245.3 327.9,298.4 272.1,298.4 254.8,245.3" fill="none" stroke="#dfe3ef"
-                stroke-width="1" />
-              <line x1="300" y1="260" x2="300" y2="70" stroke="#dfe3ef" />
-              <line x1="300" y1="260" x2="480.7" y2="201.3" stroke="#dfe3ef" />
-              <line x1="300" y1="260" x2="411.7" y2="413.7" stroke="#dfe3ef" />
-              <line x1="300" y1="260" x2="188.3" y2="413.7" stroke="#dfe3ef" />
-              <line x1="300" y1="260" x2="119.3" y2="201.3" stroke="#dfe3ef" />
-
-              <!-- Dynamic Filled Radar Polygon -->
-              <polygon points="<?php echo e($polygonPoints); ?>" fill="rgba(47,111,237,0.18)"
-                stroke="#2f6fed" stroke-width="2.5" />
-              <circle cx="<?php echo e($pSecX); ?>" cy="<?php echo e($pSecY); ?>" r="5" fill="#2f6fed" />
-              <circle cx="<?php echo e($pSigX); ?>" cy="<?php echo e($pSigY); ?>" r="5" fill="#e8862e" />
-              <circle cx="<?php echo e($pConX); ?>" cy="<?php echo e($pConY); ?>" r="5" fill="#3aa65a" />
-              <circle cx="<?php echo e($pGroX); ?>" cy="<?php echo e($pGroY); ?>" r="5" fill="#7a5cc7" />
-              <circle cx="<?php echo e($pCtrX); ?>" cy="<?php echo e($pCtrY); ?>" r="5" fill="#1f8a6e" />
-
-              <!-- Axis Labels & Dynamic Scores -->
-              <text x="300" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="#2f6fed">SECURITY</text>
-              <text x="300" y="52" text-anchor="middle" font-size="18" font-weight="800" fill="#2f6fed"><?php echo e(round($scoreSec)); ?></text>
-
-              <text x="530" y="185" text-anchor="middle" font-size="13" font-weight="700"
-                fill="#e8862e">SIGNIFICANCE</text>
-              <text x="530" y="203" text-anchor="middle" font-size="18" font-weight="800" fill="#e8862e"><?php echo e(round($scoreSig)); ?></text>
-
-              <text x="445" y="450" text-anchor="middle" font-size="13" font-weight="700"
-                fill="#3aa65a">CONNECTION</text>
-              <text x="445" y="468" text-anchor="middle" font-size="18" font-weight="800" fill="#3aa65a"><?php echo e(round($scoreCon)); ?></text>
-
-              <text x="160" y="450" text-anchor="middle" font-size="13" font-weight="700" fill="#7a5cc7">GROWTH</text>
-              <text x="160" y="468" text-anchor="middle" font-size="18" font-weight="800" fill="#7a5cc7"><?php echo e(round($scoreGro)); ?></text>
-
-              <text x="70" y="185" text-anchor="middle" font-size="13" font-weight="700"
-                fill="#1f8a6e">CONTRIBUTION</text>
-              <text x="70" y="203" text-anchor="middle" font-size="18" font-weight="800" fill="#1f8a6e"><?php echo e(round($scoreCtr)); ?></text>
-
-              <text x="300" y="264" text-anchor="middle" font-size="14" font-weight="800" fill="var(--navy)">IMT</text>
-              <text x="300" y="280" text-anchor="middle" font-size="10" font-weight="700"
-                fill="var(--navy)">DISCOVERY™</text>
-            </svg>
-          </div>
-        </div>
-
-        <!-- APA ARTINYA (BERBASIS KNOWLEDGE BASE + AI) -->
         <div class="apa-artinya">
           <h3>APA ARTINYA</h3>
           <p>
-            <?php echo e($ai_narasi['apa_artinya'] ?? 'Memuat narasi analisis psikologi...'); ?>
-
+            Kelima driver Anda berada dalam rentang berdekatan (53–63), menandakan profil motivasi
+            yang cukup seimbang. Growth (63) dan Security (59) sedikit lebih menonjol — Anda
+            termotivasi untuk terus belajar dan berkembang, namun tetap ingin melakukannya di atas
+            fondasi yang stabil dan risiko yang terukur. Anda bukan tipe yang melompat tanpa
+            persiapan, tetapi juga tidak nyaman diam di tempat terlalu lama.
           </p>
           <div class="legend-bands">
             <div class="b1">0 – 25</div>
@@ -1039,128 +1195,137 @@
             <div>Sedang</div>
             <div>Tinggi</div>
           </div>
+        </div> <!-- end apa-artinya -->
+      </div> <!-- end right-stack -->
+    </div> <!-- end row-2 -->
+    </div> <!-- end right-col -->
+    </div> <!-- end grid-top -->
+    
+    <!-- DQ SECTION -->
+    <div class="dq-box">
+      <div class="dq-header">
+        <div>
+          <div class="dq-title">⚡ DQ — DRIVER QUOTIENT</div>
+          <div class="dq-desc">DQ mengukur seberapa jauh Anda mampu mengenali, memahami, mengelola, mengembangkan, dan mengarahkan driver Anda sendiri — lima kemampuan di bawah ini yang bisa terus tumbuh seiring waktu, bukan angka tetap sejak lahir.</div>
         </div>
+        <div class="dq-score-block">
+          <h2><?php echo e(round($dqScore)); ?>%</h2>
+          <span>DQ SCORE</span>
+        </div>
+      </div>
+      
+      <div class="dq-grid">
+        <div class="dq-card">
+          <h3><?php echo e(round($dqScore)); ?>%</h3>
+          <span>AWARENESS</span>
+          <div class="dq-text"><?php echo e($ai_narasi['dq_interpretations']['awareness'] ?? 'Anda memiliki kesadaran yang sangat kuat terhadap apa yang menggerakkan Anda.'); ?></div>
+        </div>
+        <div class="dq-card">
+          <h3><?php echo e(round($dqScore)); ?>%</h3>
+          <span>INSIGHT</span>
+          <div class="dq-text"><?php echo e($ai_narasi['dq_interpretations']['insight'] ?? 'Anda memiliki pemahaman tajam tentang mengapa Anda bereaksi seperti itu dalam berbagai situasi.'); ?></div>
+        </div>
+        <div class="dq-card">
+          <h3><?php echo e(round($dqScore)); ?>%</h3>
+          <span>REGULATION</span>
+          <div class="dq-text"><?php echo e($ai_narasi['dq_interpretations']['regulation'] ?? 'Anda cukup terampil menjaga driver Anda tetap bekerja secara sehat, bahkan ketika berada di bawah tekanan.'); ?></div>
+        </div>
+        <div class="dq-card">
+          <h3><?php echo e(round($dqScore)); ?>%</h3>
+          <span>DEVELOPMENT</span>
+          <div class="dq-text"><?php echo e($ai_narasi['dq_interpretations']['development'] ?? 'Anda secara aktif membangun kebiasaan yang memperkuat sisi positif driver Anda.'); ?></div>
+        </div>
+        <div class="dq-card">
+          <h3><?php echo e(round($dqScore)); ?>%</h3>
+          <span>TRANSFORMATION</span>
+          <div class="dq-text"><?php echo e($ai_narasi['dq_interpretations']['transformation'] ?? 'Anda menggunakan driver Anda secara sadar untuk menciptakan perubahan bermakna bagi diri Anda dan orang lain.'); ?></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB COMPOSITE -->
+    <div class="sub-composite-box">
+      <div class="sub-icon">🤝</div>
+      <div class="sub-content">
+        <h4>KUALITAS TERSEMBUNYI ANDA - SUB COMPOSITE</h4>
+        <h2>Value Creation</h2>
+        <p>Anda lebih tertarik menciptakan sesuatu yang benar-benar terpakai, bukan cuma terlihat bagus.</p>
       </div>
     </div>
 
     <!-- BOTTOM GRID -->
     <div class="bottom-grid">
 
-      <!-- LEFT: 5 Human Drivers Breakdown (From Word Knowledge Base + AI Personalized Formulation) -->
+      <!-- LEFT: 5 Human Drivers -->
       <div>
         <div class="section-navy-header">MEMAHAMI 5 HUMAN DRIVERS™ ANDA</div>
         <div class="section-body">
 
-          <!-- 1. Security -->
-          <?php 
-            $secLvl = $driverLevels['security']['level_info'] ?? null; 
-            $secLvlNum = $driverLevels['security']['level_number'] ?? 3;
-          ?>
           <div class="driver-row">
             <div class="driver-icon" style="background:#2f6fed;">🛡️</div>
             <div>
               <span class="driver-score" style="color:#2f6fed;"><?php echo e(round($scoreSec)); ?></span>
-              <span class="driver-name">SECURITY — <?php echo e($secLvl['name'] ?? 'The Balancer™'); ?> (Level <?php echo e($secLvlNum); ?>)</span>
-              <p class="driver-desc">
-                <?php echo e($aiDriversExp['security'] ?? ($secLvl['desc'] ?? ($kDrivers['security']['description'] ?? ''))); ?>
-
-              </p>
-              <div class="tags">
-                <span class="label">Karakter</span>
-                <?php $__currentLoopData = array_slice($kDrivers['security']['positive_traits'] ?? ['Konsisten', 'Rasional', 'Terstruktur'], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trait): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span><?php echo e($trait); ?></span>
+              <span class="driver-name">SECURITY</span>
+              <p class="driver-desc"><?php echo e($driverLevels['security']['level_info']['desc'] ?? ''); ?></p>
+              <div class="tags"><span class="label">Kekuatan Anda</span>
+                <?php $__currentLoopData = array_slice($driverLevels['security']['level_info']['characteristics'] ?? [], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span><?php echo e($tag); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             </div>
           </div>
 
-          <!-- 2. Significance -->
-          <?php 
-            $sigLvl = $driverLevels['significance']['level_info'] ?? null; 
-            $sigLvlNum = $driverLevels['significance']['level_number'] ?? 3;
-          ?>
           <div class="driver-row">
             <div class="driver-icon" style="background:#e8862e;">🏅</div>
             <div>
               <span class="driver-score" style="color:#e8862e;"><?php echo e(round($scoreSig)); ?></span>
-              <span class="driver-name">SIGNIFICANCE — <?php echo e($sigLvl['name'] ?? 'The Builder™'); ?> (Level <?php echo e($sigLvlNum); ?>)</span>
-              <p class="driver-desc">
-                <?php echo e($aiDriversExp['significance'] ?? ($sigLvl['desc'] ?? ($kDrivers['significance']['description'] ?? ''))); ?>
-
-              </p>
-              <div class="tags">
-                <span class="label">Karakter</span>
-                <?php $__currentLoopData = array_slice($kDrivers['significance']['positive_traits'] ?? ['Ambisi Sehat', 'Standar Tinggi', 'Fokus Hasil'], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trait): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span><?php echo e($trait); ?></span>
+              <span class="driver-name">SIGNIFICANCE</span>
+              <p class="driver-desc"><?php echo e($driverLevels['significance']['level_info']['desc'] ?? ''); ?></p>
+              <div class="tags"><span class="label">Kekuatan Anda</span>
+                <?php $__currentLoopData = array_slice($driverLevels['significance']['level_info']['characteristics'] ?? [], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span><?php echo e($tag); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             </div>
           </div>
 
-          <!-- 3. Connection -->
-          <?php 
-            $conLvl = $driverLevels['connection']['level_info'] ?? null; 
-            $conLvlNum = $driverLevels['connection']['level_number'] ?? 3;
-          ?>
           <div class="driver-row">
             <div class="driver-icon" style="background:#3aa65a;">💚</div>
             <div>
               <span class="driver-score" style="color:#3aa65a;"><?php echo e(round($scoreCon)); ?></span>
-              <span class="driver-name">CONNECTION — <?php echo e($conLvl['name'] ?? 'The Relationship Builder™'); ?> (Level <?php echo e($conLvlNum); ?>)</span>
-              <p class="driver-desc">
-                <?php echo e($aiDriversExp['connection'] ?? ($conLvl['desc'] ?? ($kDrivers['connection']['description'] ?? ''))); ?>
-
-              </p>
-              <div class="tags">
-                <span class="label">Karakter</span>
-                <?php $__currentLoopData = array_slice($kDrivers['connection']['positive_traits'] ?? ['Empatik', 'Dapat Dipercaya', 'Kolaboratif'], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trait): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span><?php echo e($trait); ?></span>
+              <span class="driver-name">CONNECTION</span>
+              <p class="driver-desc"><?php echo e($driverLevels['connection']['level_info']['desc'] ?? ''); ?></p>
+              <div class="tags"><span class="label">Kekuatan Anda</span>
+                <?php $__currentLoopData = array_slice($driverLevels['connection']['level_info']['characteristics'] ?? [], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span><?php echo e($tag); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             </div>
           </div>
 
-          <!-- 4. Growth -->
-          <?php 
-            $groLvl = $driverLevels['growth']['level_info'] ?? null; 
-            $groLvlNum = $driverLevels['growth']['level_number'] ?? 3;
-          ?>
           <div class="driver-row">
-            <div class="driver-icon" style="background:#7a5cc7;">🌱</div>
+            <div class="driver-icon" style="background:#7a5cc7;">🚀</div>
             <div>
               <span class="driver-score" style="color:#7a5cc7;"><?php echo e(round($scoreGro)); ?></span>
-              <span class="driver-name">GROWTH — <?php echo e($groLvl['name'] ?? 'The Learner™'); ?> (Level <?php echo e($groLvlNum); ?>)</span>
-              <p class="driver-desc">
-                <?php echo e($aiDriversExp['growth'] ?? ($groLvl['desc'] ?? ($kDrivers['growth']['description'] ?? ''))); ?>
-
-              </p>
-              <div class="tags">
-                <span class="label">Karakter</span>
-                <?php $__currentLoopData = array_slice($kDrivers['growth']['positive_traits'] ?? ['Inovatif', 'Cepat Belajar', 'Adaptif'], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trait): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span><?php echo e($trait); ?></span>
+              <span class="driver-name">GROWTH</span>
+              <p class="driver-desc"><?php echo e($driverLevels['growth']['level_info']['desc'] ?? ''); ?></p>
+              <div class="tags"><span class="label">Kekuatan Anda</span>
+                <?php $__currentLoopData = array_slice($driverLevels['growth']['level_info']['characteristics'] ?? [], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span><?php echo e($tag); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             </div>
           </div>
 
-          <!-- 5. Contribution -->
-          <?php 
-            $ctrLvl = $driverLevels['contribution']['level_info'] ?? null; 
-            $ctrLvlNum = $driverLevels['contribution']['level_number'] ?? 3;
-          ?>
           <div class="driver-row">
             <div class="driver-icon" style="background:#1f8a6e;">🤝</div>
             <div>
               <span class="driver-score" style="color:#1f8a6e;"><?php echo e(round($scoreCtr)); ?></span>
-              <span class="driver-name">CONTRIBUTION — <?php echo e($ctrLvl['name'] ?? 'The Balanced Giver™'); ?> (Level <?php echo e($ctrLvlNum); ?>)</span>
-              <p class="driver-desc">
-                <?php echo e($aiDriversExp['contribution'] ?? ($ctrLvl['desc'] ?? ($kDrivers['contribution']['description'] ?? ''))); ?>
-
-              </p>
-              <div class="tags">
-                <span class="label">Karakter</span>
-                <?php $__currentLoopData = array_slice($kDrivers['contribution']['positive_traits'] ?? ['Tanggung Jawab', 'Peduli Sesama', 'Tulus Melayani'], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trait): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span><?php echo e($trait); ?></span>
+              <span class="driver-name">CONTRIBUTION</span>
+              <p class="driver-desc"><?php echo e($driverLevels['contribution']['level_info']['desc'] ?? ''); ?></p>
+              <div class="tags"><span class="label">Kekuatan Anda</span>
+                <?php $__currentLoopData = array_slice($driverLevels['contribution']['level_info']['characteristics'] ?? [], 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span><?php echo e($tag); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             </div>
@@ -1168,236 +1333,305 @@
 
         </div>
 
-        <!-- WAWASAN UTAMA BOX -->
         <div class="insight-box">
           <h4>💡 WAWASAN UTAMA</h4>
-          <p><?php echo e($ai_narasi['wawasan_utama'] ?? ($arch['growth_path'] ?? 'Memuat wawasan pengembangan diri...')); ?></p>
+          <p>Anda berkembang paling baik ketika proses belajar Anda memiliki fondasi yang jelas.
+            Pertumbuhan terbesar Anda terjadi saat menyadari bahwa tidak semua hal bisa
+            diprediksi — terkadang tindakan kecil lebih berarti daripada menunggu kondisi yang
+            benar-benar sempurna.</p>
         </div>
       </div>
 
-      <!-- RIGHT: Strengths / Growth / Actions / Energy (From Word Knowledge Base + AI Formulation) -->
+      <!-- RIGHT: Strengths / Growth / Actions / Energy -->
       <div>
         <div class="section-navy-header">KEKUATAN ANDA DALAM TINDAKAN</div>
         <div class="section-body">
           <ul class="check-list">
-            <?php if(!empty($displayStrengths)): ?>
-              <?php $__currentLoopData = array_slice($displayStrengths, 0, 4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $str): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li><b><?php echo e($str['title'] ?? ''); ?></b> — <?php echo e($str['desc'] ?? ''); ?></li>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php else: ?>
-              <li>Mencari cara untuk menjadi lebih baik secara berkelanjutan (Continuous Improvement™).</li>
-              <li>Mampu beradaptasi terhadap perubahan tanpa kehilangan arah (Calculated Adaptability™).</li>
-            <?php endif; ?>
+            <li>Anda selalu mencari cara untuk menjadi lebih baik secara berkelanjutan (Continuous Improvement™).</li>
+            <li>Anda mampu beradaptasi terhadap perubahan tanpa kehilangan arah (Calculated Adaptability™).</li>
+            <li>Anda belajar dengan tujuan yang jelas dan terukur (Strategic Learning™).</li>
+            <li>Anda menyiapkan diri menghadapi masa depan dengan matang (Future Readiness™).</li>
           </ul>
 
-          <h4 style="color:var(--navy); font-size:12.5px; margin:14px 0 6px;">PELUANG UNTUK BERTUMBUH (BLIND SPOTS)</h4>
+          <h4 style="color:var(--navy); font-size:12.5px; margin:14px 0 6px;">PELUANG UNTUK BERTUMBUH</h4>
           <ul class="check-list growth">
-            <?php if(!empty($displayBlindspots)): ?>
-              <?php $__currentLoopData = array_slice($displayBlindspots, 0, 4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bsp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li><b><?php echo e($bsp['title'] ?? ''); ?></b> — <?php echo e($bsp['desc'] ?? ''); ?></li>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php else: ?>
-              <li>Waspadai kecenderungan terlalu banyak berpikir sebelum bertindak (Analysis Paralysis™).</li>
-              <li>Sesekali beri ruang untuk spontanitas dalam menghadapi peluang baru.</li>
-            <?php endif; ?>
+            <li>Waspadai kecenderungan terlalu banyak berpikir sebelum bertindak (Analysis Paralysis™).</li>
+            <li>Sesekali beri ruang untuk spontanitas — tidak semua hal perlu direncanakan sepenuhnya.</li>
+            <li>Jangan menunda langkah hanya karena khawatir mengambil keputusan yang salah.</li>
+            <li>Berani mengambil peluang besar, bukan hanya memperluas zona nyaman secara bertahap.</li>
           </ul>
         </div>
 
         <div class="action-box" style="margin-top:16px;">
-          <h4>🎯 APA YANG MENDORONG ANDA (WHAT DRIVES YOU)</h4>
+          <h4>🎯 LANGKAH PRAKTIS UNTUK ANDA</h4>
           <ul class="check-list">
-            <?php if(!empty($arch['what_drives'])): ?>
-              <?php $__currentLoopData = $arch['what_drives']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li><?php echo e($wd); ?></li>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php else: ?>
-              <li>Memiliki kesempatan belajar hal baru</li>
-              <li>Melihat kemajuan nyata dan terukur dalam hidup</li>
-            <?php endif; ?>
+            <li>Tetapkan target belajar yang jelas dan terukur setiap periode waktu tertentu.</li>
+            <li>Mulai dari tindakan kecil, bukan menunggu momen yang benar-benar sempurna.</li>
+            <li>Bangun kebiasaan evaluasi rutin agar perkembangan tetap berada di atas fondasi yang stabil.</li>
+            <li>Cari lingkungan atau mentor yang mendorong sekaligus menghargai kehati-hatian Anda.</li>
           </ul>
         </div>
 
         <div class="energy-box">
-          <h4>⚡ ENERGI ANDA MENURUN KETIKA (WHAT DRAINS YOU)...</h4>
-          <p>
-            <?php if(!empty($arch['what_drains'])): ?>
-              <?php echo e(implode(', ', $arch['what_drains'])); ?>.
-            <?php else: ?>
-              Terjebak dalam rutinitas yang monoton atau dipaksa berubah tanpa persiapan yang cukup.
-            <?php endif; ?>
-          </p>
+          <h4>⚡ ENERGI ANDA PALING TINGGI KETIKA...</h4>
+          <p>Anda memiliki kesempatan belajar hal baru, melihat kemajuan nyata dalam hidup Anda,
+            dan menghadapi tantangan yang mendorong pertumbuhan. Energi Anda menurun ketika
+            terjebak dalam rutinitas yang monoton atau dipaksa berubah tanpa persiapan yang cukup.</p>
         </div>
       </div>
 
     </div>
 
-    <!-- ================= DRIVER DYNAMIX SECTION (From Word Knowledge Base) ================= -->
+    <!-- ================= DRIVER DYNAMIX SECTION ================= -->
     <div class="section-wrap">
       <div class="section-navy-header">DRIVER DYNAMIX™ — HEALTHY STATE VS SHADOW STATE</div>
       <div class="section-body">
-        <p style="font-size:12px; color:var(--muted); margin:0 0 12px; line-height:1.6;">
+        <p style="font-size:12px; color:var(--muted); margin:0 0 14px; line-height:1.6;">
           Setiap Human Driver™ memiliki dua sisi: kondisi sehat (Healthy State™) ketika driver
           bekerja secara seimbang, dan kondisi bayangan (Shadow State™) ketika driver tersebut
           terlalu ditekan atau dipaksakan. Memahami kedua sisi ini membantu Anda mengenali kapan
           motivasi Anda sedang bekerja untuk Anda, dan kapan mulai bekerja melawan Anda.
         </p>
-        <?php if(!empty($ai_narasi['dynamix_reflection'])): ?>
-          <div style="background:rgba(47,111,237,0.06); border-left:3px solid var(--navy); border-radius:6px; padding:10px 14px; font-size:12px; line-height:1.6; color:var(--text); margin-bottom:14px;">
-            <b style="color:var(--navy); display:block; margin-bottom:3px; font-size:11px; letter-spacing:0.5px;">🔍 REFLEKSI DINAMIKA PERSONAL ANDA:</b>
-            <?php echo e($ai_narasi['dynamix_reflection']); ?>
-
-          </div>
-        <?php endif; ?>
         <div class="dynamix-grid">
 
-          <?php $__currentLoopData = ['security', 'significance', 'connection', 'growth', 'contribution']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dKey): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php $dData = $kDrivers[$dKey] ?? []; ?>
-            <div class="dynamix-card">
-              <div class="dynamix-head" style="background: <?php echo e($dData['color'] ?? '#2f6fed'); ?>;">
-                <?php echo e(strtoupper($dData['name'] ?? $dKey)); ?>™<br>
-                <span style="font-weight:400; font-size:10px;"><?php echo e($dData['tagline'] ?? 'Human Driver™'); ?></span>
+          <div class="dynamix-card">
+            <div class="dynamix-head" style="background:#2f6fed;">SECURITY™<br><span
+                style="font-weight:400; font-size:10px;">The Stability Driver™</span></div>
+            <div class="dynamix-body">
+              <div class="block">
+                <div class="state-label healthy">✔ Healthy State™</div>
+                <p class="quote">"Saya merasa aman dan siap menghadapi kehidupan."</p>
+                Tenang menghadapi ketidakpastian, mampu merencanakan masa depan, dapat dipercaya,
+                konsisten, dan memiliki fondasi emosional yang kuat.
               </div>
-              <div class="dynamix-body">
-                <div class="block">
-                  <div class="state-label healthy">✔ Healthy State™</div>
-                  <p class="quote">"<?php echo e($dData['healthy_state']['quote'] ?? ''); ?>"</p>
-                  <?php echo e($dData['healthy_state']['desc'] ?? ''); ?>
-
-                </div>
-                <div class="block">
-                  <div class="state-label shadow">⚠ Shadow State™</div>
-                  <p class="quote">"<?php echo e($dData['shadow_state']['quote'] ?? ''); ?>"</p>
-                  <?php echo e($dData['shadow_state']['desc'] ?? ''); ?>
-
-                </div>
-                <div class="challenge">
-                  <b>Core Challenge:</b> <?php echo e($dData['core_challenge'] ?? ''); ?>
-
-                </div>
+              <div class="block">
+                <div class="state-label shadow">⚠ Shadow State™</div>
+                <p class="quote">"Saya harus mengontrol semuanya agar tetap aman."</p>
+                Perfeksionisme ekstrem, rigid terhadap perubahan, micromanagement, dan sulit
+                mempercayai orang lain.
               </div>
+              <div class="challenge"><b>Core Challenge:</b> Learning Trust™ — belajar mempercayai diri sendiri ketika
+                kepastian tidak tersedia.</div>
             </div>
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </div>
+
+          <div class="dynamix-card">
+            <div class="dynamix-head" style="background:#e8862e;">SIGNIFICANCE™<br><span
+                style="font-weight:400; font-size:10px;">The Achievement Driver™</span></div>
+            <div class="dynamix-body">
+              <div class="block">
+                <div class="state-label healthy">✔ Healthy State™</div>
+                <p class="quote">"Saya tahu hidup saya bernilai dan mampu memberikan yang terbaik."</p>
+                Percaya pada kemampuan yang dimiliki, memiliki tujuan jelas, berani bertanggung
+                jawab, dan termotivasi untuk berkembang.
+              </div>
+              <div class="block">
+                <div class="state-label shadow">⚠ Shadow State™</div>
+                <p class="quote">"Saya harus membuktikan bahwa saya lebih baik."</p>
+                Haus pengakuan, kompetitif berlebihan, sulit menerima kelemahan, dan menilai diri
+                hanya dari pencapaian.
+              </div>
+              <div class="challenge"><b>Core Challenge:</b> Learning Self-Worth™ — nilai diri tidak harus diperoleh
+                melalui pembuktian terus-menerus.</div>
+            </div>
+          </div>
+
+          <div class="dynamix-card">
+            <div class="dynamix-head" style="background:#3aa65a;">CONNECTION™<br><span
+                style="font-weight:400; font-size:10px;">The Relationship Driver™</span></div>
+            <div class="dynamix-body">
+              <div class="block">
+                <div class="state-label healthy">✔ Healthy State™</div>
+                <p class="quote">"Saya merasa terhubung, diterima, dan menjadi bagian dari sesuatu yang bermakna."</p>
+                Mudah membangun kepercayaan, empati tulus, menjaga hubungan penting, dan
+                menciptakan rasa aman secara emosional.
+              </div>
+              <div class="block">
+                <div class="state-label shadow">⚠ Shadow State™</div>
+                <p class="quote">"Saya harus menjaga semua orang tetap senang agar hubungan tetap aman."</p>
+                People pleasing, sulit mengatakan tidak, menghindari konflik berlebihan, dan
+                bergantung pada validasi hubungan.
+              </div>
+              <div class="challenge"><b>Core Challenge:</b> Learning Authentic Connection™ — diterima semua orang tidak
+                sama dengan hubungan yang sehat.</div>
+            </div>
+          </div>
+
+          <div class="dynamix-card">
+            <div class="dynamix-head" style="background:#7a5cc7;">GROWTH™<br><span
+                style="font-weight:400; font-size:10px;">The Development Driver™</span></div>
+            <div class="dynamix-body">
+              <div class="block">
+                <div class="state-label healthy">✔ Healthy State™</div>
+                <p class="quote">"Saya terus berkembang tanpa kehilangan keseimbangan dalam hidup."</p>
+                Terbuka terhadap ide baru, menikmati proses belajar, mudah beradaptasi, dan
+                memiliki growth mindset.
+              </div>
+              <div class="block">
+                <div class="state-label shadow">⚠ Shadow State™</div>
+                <p class="quote">"Saya harus terus berkembang, apa pun yang terjadi."</p>
+                Tidak pernah merasa cukup, sulit puas terhadap pencapaian, selalu mengejar hal
+                berikutnya, dan mudah bosan pada rutinitas.
+              </div>
+              <div class="challenge"><b>Core Challenge:</b> Learning Contentment in Growth™ — bertumbuh dengan lebih
+                bijaksana, bukan sekadar lebih cepat.</div>
+            </div>
+          </div>
+
+          <div class="dynamix-card">
+            <div class="dynamix-head" style="background:#1f8a6e;">CONTRIBUTION™<br><span
+                style="font-weight:400; font-size:10px;">The Purpose Driver™</span></div>
+            <div class="dynamix-body">
+              <div class="block">
+                <div class="state-label healthy">✔ Healthy State™</div>
+                <p class="quote">"Apa yang saya lakukan memiliki makna dan memberi manfaat."</p>
+                Rasa tanggung jawab yang sehat, berorientasi manfaat jangka panjang, dan senang
+                membantu serta memberdayakan orang lain.
+              </div>
+              <div class="block">
+                <div class="state-label shadow">⚠ Shadow State™</div>
+                <p class="quote">"Saya harus terus memberi agar hidup saya bernilai."</p>
+                Mengorbankan diri berlebihan, sulit menetapkan batasan, dan menilai diri dari
+                seberapa banyak kontribusi yang diberikan.
+              </div>
+              <div class="challenge"><b>Core Challenge:</b> Learning Sustainable Contribution™ — memberi berkelanjutan
+                lebih berharga daripada mengorbankan diri tanpa batas.</div>
+            </div>
+          </div>
 
         </div>
       </div>
     </div>
 
-    <!-- ================= SYNERGY MATRIX SECTION (From Word Knowledge Base) ================= -->
+    <!-- ================= SYNERGY MATRIX SECTION ================= -->
     <div class="section-wrap">
-      <div class="section-navy-header">SYNERGY MATRIX™ — <?php echo e(strtoupper($arch['combination'] ?? ($primaryName . ' + ' . $secondaryName))); ?></div>
+      <div class="section-navy-header">SYNERGY MATRIX™ — SECURITY + GROWTH</div>
       <div class="section-body">
 
         <div class="synergy-hero">
           <div class="tag">DUAL DOMINANT DRIVERS</div>
-          <h2><?php echo e($arch['name'] ?? $assessment->archetype_name); ?></h2>
+          <h2>The Strategic Explorer™</h2>
           <p>
-            <?php echo e($arch['description'] ?? ''); ?>
-
+            The Strategic Explorer™ adalah kombinasi antara kebutuhan untuk menciptakan stabilitas
+            hidup (Security™) dan kebutuhan untuk terus berkembang, belajar, dan mengeksplorasi
+            kemungkinan baru (Growth™). Berbeda dari individu Growth™ murni yang sering mencoba hal
+            baru secara spontan, Anda cenderung lebih terukur — mempelajari situasi terlebih dahulu,
+            mempertimbangkan berbagai kemungkinan, lalu bergerak dengan keyakinan yang lebih besar.
           </p>
           <div class="synergy-quote-row">
             <div class="synergy-quote">
               <b>Core Desire</b>
-              "<?php echo e($arch['core_desire'] ?? 'Saya ingin terus berkembang dan berinovasi tanpa kehilangan stabilitas yang telah dibangun.'); ?>"
+              "Saya ingin terus berkembang tanpa kehilangan stabilitas yang telah saya bangun."
             </div>
             <div class="synergy-quote">
               <b>Core Fear</b>
-              "<?php echo e($arch['core_fear'] ?? 'Terjebak dalam stagnasi atau mengambil langkah yang terlalu berisiko.'); ?>"
+              "Terjebak dalam stagnasi, atau mengambil langkah yang terlalu berisiko hingga
+              merusak apa yang sudah saya miliki."
             </div>
           </div>
         </div>
 
         <div class="synergy-grid">
 
-          <!-- Natural Strengths -->
           <div class="synergy-panel">
             <h4>💪 NATURAL STRENGTHS</h4>
-            <?php if(!empty($arch['strengths'])): ?>
-              <?php $__currentLoopData = $arch['strengths']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $st): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="strength-item"><b><?php echo e($st['title']); ?></b> — <?php echo e($st['desc']); ?></div>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php endif; ?>
+            <div class="strength-item"><b>Continuous Improvement™</b> — Selalu mencari cara untuk menjadi lebih baik.
+            </div>
+            <div class="strength-item"><b>Calculated Adaptability™</b> — Mampu beradaptasi tanpa kehilangan arah.</div>
+            <div class="strength-item"><b>Strategic Learning™</b> — Belajar dengan tujuan yang jelas dan terukur.</div>
+            <div class="strength-item"><b>Future Readiness™</b> — Kesadaran mempersiapkan diri menghadapi masa depan.
+            </div>
+            <div class="strength-item"><b>Sustainable Growth™</b> — Berorientasi pada perkembangan jangka panjang yang
+              stabil.</div>
           </div>
 
-          <!-- Blind Spots -->
           <div class="synergy-panel">
             <h4>🕳️ BLIND SPOTS</h4>
-            <?php if(!empty($arch['blindspots'])): ?>
-              <?php $__currentLoopData = $arch['blindspots']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="strength-item"><b><?php echo e($bs['title']); ?></b> — <?php echo e($bs['desc']); ?></div>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php endif; ?>
+            <div class="strength-item"><b>Analysis Paralysis™</b> — Terlalu banyak berpikir sebelum bertindak.</div>
+            <div class="strength-item"><b>Controlled Exploration™</b> — Sulit menikmati spontanitas karena ingin
+              semuanya terencana.</div>
+            <div class="strength-item"><b>Comfort Zone Expansion™</b> — Berkembang, tetapi terlalu hati-hati mengambil
+              peluang besar.</div>
+            <div class="strength-item"><b>Fear of Failure™</b> — Menunda langkah karena khawatir keputusan yang salah.
+            </div>
+            <div class="strength-item"><b>Over-Preparation™</b> — Menghabiskan terlalu banyak waktu untuk persiapan.
+            </div>
           </div>
 
-          <!-- What Drives Them -->
           <div class="synergy-panel">
             <h4>⚡ WHAT DRIVES THEM</h4>
             <ul>
-              <?php if(!empty($arch['what_drives'])): ?>
-                <?php $__currentLoopData = $arch['what_drives']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <li><?php echo e($item); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              <?php endif; ?>
+              <li>Memiliki kesempatan belajar hal baru</li>
+              <li>Melihat kemajuan yang nyata dalam hidupnya</li>
+              <li>Dapat meningkatkan kompetensi atau kemampuan</li>
+              <li>Menghadapi tantangan yang mendorong pertumbuhan</li>
             </ul>
           </div>
 
-          <!-- What Drains Them -->
           <div class="synergy-panel">
             <h4>🪫 WHAT DRAINS THEM</h4>
             <ul>
-              <?php if(!empty($arch['what_drains'])): ?>
-                <?php $__currentLoopData = $arch['what_drains']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <li><?php echo e($item); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              <?php endif; ?>
+              <li>Terjebak dalam rutinitas yang monoton</li>
+              <li>Tidak melihat peluang untuk berkembang</li>
+              <li>Dipaksa berubah tanpa persiapan yang cukup</li>
+              <li>Berada di lingkungan yang menolak pembelajaran dan inovasi</li>
             </ul>
           </div>
 
-          <!-- Leadership Style -->
           <div class="synergy-panel">
-            <h4>🧭 LEADERSHIP STYLE™ — <?php echo e($arch['leadership_style']['title'] ?? 'The Progressive Stabilizer™'); ?></h4>
-            <p><?php echo e($arch['leadership_style']['desc'] ?? ''); ?></p>
+            <h4>🧭 LEADERSHIP STYLE™ — The Progressive Stabilizer™</h4>
+            <p>Terbuka terhadap ide baru, mengelola risiko sebelum mengambil keputusan,
+              mengembangkan tim secara sistematis, dan menjaga keseimbangan antara inovasi dan
+              stabilitas. Tim sering melihat mereka sebagai pemimpin yang visioner namun realistis.</p>
           </div>
 
-          <!-- Communication Style -->
           <div class="synergy-panel">
-            <h4>💬 COMMUNICATION STYLE™ — <?php echo e($arch['communication_style']['title'] ?? 'Thoughtful & Structured'); ?></h4>
-            <p><?php echo e($arch['communication_style']['desc'] ?? ''); ?></p>
+            <h4>💬 COMMUNICATION STYLE™ — Thoughtful, Curious &amp; Structured</h4>
+            <p>Bertanya sebelum mengambil kesimpulan, terbuka terhadap perspektif baru,
+              menyampaikan ide secara logis, serta menggunakan data dan pengalaman sebagai dasar
+              diskusi.</p>
           </div>
 
-          <!-- Growth Path -->
           <div class="synergy-panel synergy-full-wide">
             <h4>🌱 GROWTH PATH™</h4>
-            <p><?php echo e($arch['growth_path'] ?? ''); ?></p>
+            <p>Pertumbuhan terbesar Anda terjadi ketika belajar bahwa tidak semua hal dapat
+              diprediksi; perkembangan sering membutuhkan keberanian untuk mencoba; kesalahan
+              adalah bagian dari proses belajar; tindakan kecil lebih baik daripada menunggu kondisi
+              sempurna; dan ketidakpastian sering menjadi pintu menuju peluang baru.</p>
           </div>
 
-          <!-- Synergy Summary -->
           <div class="synergy-panel synergy-full-wide">
             <h4>📌 SYNERGY SUMMARY™</h4>
-            <p><?php echo e($arch['synergy_summary'] ?? $arch['description'] ?? ''); ?></p>
+            <p>The Strategic Explorer™ adalah kombinasi antara keamanan dan pertumbuhan. Anda ingin
+              terus berkembang, tetapi tidak dengan mengorbankan fondasi yang telah dibangun. Anda
+              percaya bahwa perubahan terbaik adalah perubahan yang direncanakan dengan baik,
+              dijalankan dengan bijaksana, dan menghasilkan kemajuan yang dapat dipertahankan dalam
+              jangka panjang.</p>
           </div>
 
         </div>
 
-        <!-- Key Question -->
         <div class="key-question-box">
           <b>KEY QUESTION™</b>
-          <p>"<?php echo e($arch['key_question'] ?? 'Apakah saya sedang mempersiapkan diri untuk berkembang, atau menggunakan persiapan sebagai alasan untuk tidak bergerak?'); ?>"</p>
+          <p>"Apakah saya sedang mempersiapkan diri untuk berkembang, atau menggunakan persiapan sebagai alasan untuk
+            tidak bergerak?"</p>
         </div>
 
       </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
       <div class="flogo">☆ IMT</div>
-      <div class="fitem"><b>🔬 BERBASIS SAINS</b><span>Dibangun berdasarkan penelitian psikometri modern dan prinsip ilmiah.</span></div>
-      <div class="fitem"><b>🎯 AKURAT &amp; TERPERCAYA</b><span>Model psikometri dengan standar yang tinggi.</span></div>
+      <div class="fitem"><b>🔬 BERBASIS SAINS</b><span>Dibangun berdasarkan penelitian psikometri modern dan prinsip
+          ilmiah.</span></div>
+      <div class="fitem"><b>🎯 AKURAT &amp; TERPERCAYA</b><span>Model psikometri dengan standar yang tinggi.</span>
+      </div>
       <div class="fitem"><b>💬 MUDAH DIPAHAMI</b><span>Bahasa sederhana, wawasan bermakna.</span></div>
-      <div class="fitem"><b>📈 WAWASAN YANG DAPAT DITINDAKLANJUTI</b><span>Panduan praktis untuk perbaikan nyata.</span></div>
+      <div class="fitem"><b>📈 WAWASAN YANG DAPAT DITINDAKLANJUTI</b><span>Panduan praktis untuk perbaikan nyata.</span>
+      </div>
     </div>
 
   </div>
 </body>
 
-</html>
-<?php /**PATH C:\Users\CSO KUTA 2\Documents\web\IMT\resources\views/laporan.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\CSO KUTA 2\Documents\web\IMT\resources\views/laporan.blade.php ENDPATH**/ ?>

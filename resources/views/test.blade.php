@@ -30,6 +30,11 @@
     </div>
     <div class="q-card" style="display:block;">
       <div class="grid grid-2" style="gap:16px;">
+        <div style="grid-column: span 2;">
+            <label style="font-size:12.5px; color:var(--muted); font-weight:600;">Kode Grup (Opsional)</label>
+            <input id="f-group" type="text" placeholder="Masukkan kode grup jika ada" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px; background:#f8f9fc; font-family:monospace; text-transform:uppercase;">
+            <div style="font-size:11px; color:#6b7280; margin-top:4px;">Hanya diisi jika Anda mendapat tes ini dari perusahaan/organisasi.</div>
+        </div>
         <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Nama Lengkap</label>
           <input id="f-name" type="text" placeholder="Nama Anda" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
         <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Email</label>
@@ -39,7 +44,7 @@
         <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Pekerjaan</label>
           <input id="f-job" type="text" placeholder="Cth: Entrepreneur" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
       </div>
-      <button class="btn btn-primary btn-block" style="margin-top:24px;" onclick="startTest()">Mulai Tes Sekarang →</button>
+      <button id="btnStart" class="btn btn-primary btn-block" style="margin-top:24px;" onclick="startTest()">Mulai Tes Sekarang →</button>
     </div>
   </div>
 
@@ -89,10 +94,17 @@
   
   // Merge data.js IMT_QUESTIONS with data from Database to preserve pairWith metadata
   const dbQuestions = @json($dbQuestions);
-  IMT_QUESTIONS = IMT_QUESTIONS.map(q => {
-      const dbq = dbQuestions.find(d => d.id === q.id);
-      return dbq ? { ...q, text: dbq.text, type: dbq.type, driver: dbq.driver } : q;
-  });
+  const oldPairWith = {};
+  IMT_QUESTIONS.forEach(q => { oldPairWith[q.id] = q.pairWith; });
+  
+  IMT_QUESTIONS = dbQuestions.map(dbq => ({
+      id: dbq.id,
+      driver: dbq.driver,
+      type: dbq.type,
+      subComposite: dbq.subComposite,
+      pairWith: oldPairWith[dbq.id] || null,
+      text: dbq.text
+  }));
   
   let questionOrder = IMT_QUESTIONS; // diganti dengan urutan acak + modul validitas saat tes dimulai
 
@@ -104,12 +116,55 @@
   const FAST_THRESHOLD_MS = 1000;
   const FAST_STREAK_LIMIT = 3;
 
-  function startTest(){
+  // Prefill group from URL if exists
+  window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const groupCode = urlParams.get('group');
+      if(groupCode) {
+          document.getElementById('f-group').value = groupCode;
+      }
+  });
+
+  async function startTest(){
+    const groupCode = document.getElementById('f-group').value.trim();
+    let groupId = null;
+
+    if (groupCode) {
+        const btn = document.getElementById('btnStart');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = 'Memvalidasi Grup...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch("{{ route('api.validate.group') }}", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
+                body: JSON.stringify({ code: groupCode })
+            });
+            const data = await res.json();
+            
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+
+            if (!data.valid) {
+                alert(data.message);
+                return;
+            }
+            groupId = data.group.id;
+        } catch (e) {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+            alert("Gagal memvalidasi kode grup. Periksa koneksi Anda.");
+            return;
+        }
+    }
+
     const profile = {
       name: document.getElementById('f-name').value || 'Peserta IMT',
       email: document.getElementById('f-email').value || '-',
       dob: document.getElementById('f-dob').value || '-',
       job: document.getElementById('f-job').value || '-',
+      group_id: groupId,
       date: new Date().toISOString().slice(0,10)
     };
     localStorage.setItem('imt_profile', JSON.stringify(profile));
@@ -204,6 +259,7 @@
             body: JSON.stringify({
                 participant_name: profile.name,
                 job: profile.job,
+                group_id: profile.group_id,
                 answers: answers
             })
         });
