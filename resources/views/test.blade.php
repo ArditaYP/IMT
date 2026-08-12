@@ -242,6 +242,25 @@
   function back(){ if(idx>0){ idx--; renderQ(); } }
 
   async function finish(){
+    // Final Validation
+    const answeredCount = Object.keys(answers).length;
+    if (answeredCount < questionOrder.length) {
+      // Cari soal pertama yang belum dijawab
+      let firstUnansweredIdx = -1;
+      for (let i = 0; i < questionOrder.length; i++) {
+        if (!answers[questionOrder[i].id]) {
+          firstUnansweredIdx = i;
+          break;
+        }
+      }
+      if (firstUnansweredIdx !== -1) {
+        alert(`Masih ada ${questionOrder.length - answeredCount} soal yang belum terjawab. Mengembalikan Anda ke soal ${firstUnansweredIdx + 1}.`);
+        idx = firstUnansweredIdx;
+        renderQ();
+        return;
+      }
+    }
+
     document.getElementById('pfill').style.width = '100%';
     const scores = imtScore(answers);
     const meta = { fastAnswerCount, totalAnswered };

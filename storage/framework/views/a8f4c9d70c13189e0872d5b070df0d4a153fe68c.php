@@ -126,6 +126,16 @@
   });
 
   async function startTest(){
+    const nameVal = document.getElementById('f-name').value.trim();
+    const emailVal = document.getElementById('f-email').value.trim();
+    const dobVal = document.getElementById('f-dob').value.trim();
+    const jobVal = document.getElementById('f-job').value.trim();
+
+    if (!nameVal || !emailVal || !dobVal || !jobVal) {
+        alert("Mohon lengkapi semua data diri Anda (Nama, Email, Tanggal Lahir, Pekerjaan) sebelum memulai tes.");
+        return;
+    }
+
     const groupCode = document.getElementById('f-group').value.trim();
     let groupId = null;
 
@@ -160,10 +170,10 @@
     }
 
     const profile = {
-      name: document.getElementById('f-name').value || 'Peserta IMT',
-      email: document.getElementById('f-email').value || '-',
-      dob: document.getElementById('f-dob').value || '-',
-      job: document.getElementById('f-job').value || '-',
+      name: nameVal,
+      email: emailVal,
+      dob: dobVal,
+      job: jobVal,
       group_id: groupId,
       date: new Date().toISOString().slice(0,10)
     };
