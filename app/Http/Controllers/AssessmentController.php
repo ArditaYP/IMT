@@ -82,6 +82,9 @@ class AssessmentController extends Controller
      */
     public function showTest()
     {
+        // Record start time in session
+        session(['assessment_start_time' => now()]);
+
         $questions = Question::with(['driver', 'subDriver'])
             ->where('is_active', true)
             ->orderBy('order', 'asc')
@@ -113,6 +116,9 @@ class AssessmentController extends Controller
     {
         $validated = $request->validate([
             'participant_name' => 'required|string|max:100',
+            'email'            => 'nullable|email|max:255',
+            'dob'              => 'nullable|string|max:20',
+            'job'              => 'nullable|string|max:100',
             'group_id'         => 'nullable|exists:groups,id',
             'answers'          => 'required|array|min:1',
             'answers.*'        => 'required|integer|min:1|max:7',
@@ -188,15 +194,26 @@ class AssessmentController extends Controller
             }
         }
 
-        $userAssessment = DB::transaction(function () use ($validated, $finalScores, $finalSubScores, $questions) {
+        $durationSeconds = null;
+        if (session()->has('assessment_start_time')) {
+            $startTime = session('assessment_start_time');
+            $durationSeconds = $startTime->diffInSeconds(now());
+            session()->forget('assessment_start_time');
+        }
+
+        $userAssessment = DB::transaction(function () use ($validated, $finalScores, $finalSubScores, $questions, $durationSeconds) {
             $assessment = UserAssessment::create([
                 'name'               => $validated['participant_name'],
+                'email'              => $validated['email'] ?? null,
+                'dob'                => $validated['dob'] ?? null,
+                'job'                => $validated['job'] ?? null,
                 'group_id'           => $validated['group_id'] ?? null,
                 'security_score'     => $finalScores['security'],
                 'significance_score' => $finalScores['significance'],
                 'connection_score'   => $finalScores['connection'],
                 'growth_score'       => $finalScores['growth'],
                 'contribution_score' => $finalScores['contribution'],
+                'duration_seconds'   => $durationSeconds,
             ]);
 
             $answersData = [];
@@ -304,11 +321,19 @@ class AssessmentController extends Controller
                 ];
             });
 
+        $answers = \App\Models\AssessmentAnswer::where('user_assessment_id', $assessment->id)
+            ->pluck('score', 'question_id')
+            ->toArray();
+
+        $isAdmin = auth()->check();
+
         return view('report', compact(
             'assessment', 
             'scores',
             'ai_summary',
-            'dbQuestions'
+            'dbQuestions',
+            'answers',
+            'isAdmin'
         ));
     }
 }

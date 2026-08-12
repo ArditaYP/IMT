@@ -11,6 +11,7 @@
             <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No / Order</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Driver</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sub Driver</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pertanyaan</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -23,6 +24,9 @@
                 <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-700">{{ $q->order }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-xs font-bold uppercase">{{ $q->driver ? $q->driver->name : 'General' }}</span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-md text-xs font-bold">{{ $q->subDriver ? $q->subDriver->name : '-' }}</span>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-gray-500">{{ $q->type }}</td>
                 <td class="px-6 py-4 text-gray-800">{{ $q->question_text }}</td>

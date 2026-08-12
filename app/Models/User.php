@@ -20,7 +20,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    public function isSuperAdmin()
+    {
+        return $this->role === 'super_admin';
+    }
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

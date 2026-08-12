@@ -22,10 +22,15 @@
         <div class="brand">IMT <span>ADMIN</span></div>
         <nav class="mt-4">
             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
+            @if(auth()->user()->isSuperAdmin())
             <a href="{{ route('admin.questions') }}" class="{{ request()->routeIs('admin.questions*') ? 'active' : '' }}">Bank Soal</a>
             <a href="{{ route('admin.assessments') }}" class="{{ request()->routeIs('admin.assessments*') ? 'active' : '' }}">Jawaban User</a>
             <!-- <a href="{{ route('admin.payments') }}" class="{{ request()->routeIs('admin.payments*') ? 'active' : '' }}">Data Pembayaran</a> -->
+            @endif
             <a href="{{ route('admin.groups') }}" class="{{ request()->routeIs('admin.groups*') ? 'active' : '' }}">Manajemen Grup</a>
+            @if(auth()->user()->isSuperAdmin())
+            <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users*') ? 'active' : '' }}">Role Akses</a>
+            @endif
             <a href="{{ route('home') }}" class="mt-8 opacity-75 hover:opacity-100">← Ke Halaman Depan</a>
             
             <!-- Tombol Keluar (Logout) -->

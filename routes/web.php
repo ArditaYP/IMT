@@ -35,20 +35,33 @@ Route::get('/hasil', [AssessmentController::class, 'results'])->name('assessment
 
 // 6. Admin Dashboard
 Route::middleware(['auth'])->prefix('admin')->group(function () {
+    // Akses Bersama (Super Admin & Client Admin)
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/questions', [AdminController::class, 'questions'])->name('admin.questions');
-    Route::get('/questions/{id}/edit', [AdminController::class, 'questionsEdit'])->name('admin.questions.edit');
-    Route::put('/questions/{id}', [AdminController::class, 'questionsUpdate'])->name('admin.questions.update');
-    
-    Route::get('/assessments', [AdminController::class, 'assessments'])->name('admin.assessments');
-    Route::get('/payments', [AdminController::class, 'payments'])->name('admin.payments');
-
     Route::get('/groups', [AdminController::class, 'groups'])->name('admin.groups');
-    Route::post('/groups', [AdminController::class, 'groupsStore'])->name('admin.groups.store');
-    Route::get('/groups/{id}/edit', [AdminController::class, 'groupsEdit'])->name('admin.groups.edit');
-    Route::put('/groups/{id}', [AdminController::class, 'groupsUpdate'])->name('admin.groups.update');
-    Route::delete('/groups/{id}', [AdminController::class, 'groupsDestroy'])->name('admin.groups.destroy');
     Route::get('/groups/{id}/report', [AdminController::class, 'groupsReport'])->name('admin.groups.report');
+    Route::get('/groups/{id}/members', [AdminController::class, 'groupsMembers'])->name('admin.groups.members');
+
+    // Akses Khusus Super Admin
+    Route::middleware(['superadmin'])->group(function () {
+        Route::get('/questions', [AdminController::class, 'questions'])->name('admin.questions');
+        Route::get('/questions/{id}/edit', [AdminController::class, 'questionsEdit'])->name('admin.questions.edit');
+        Route::put('/questions/{id}', [AdminController::class, 'questionsUpdate'])->name('admin.questions.update');
+        
+        Route::get('/assessments', [AdminController::class, 'assessments'])->name('admin.assessments');
+        Route::delete('/assessments/{id}', [AdminController::class, 'assessmentsDestroy'])->name('admin.assessments.destroy');
+        Route::get('/payments', [AdminController::class, 'payments'])->name('admin.payments');
+
+        Route::post('/groups', [AdminController::class, 'groupsStore'])->name('admin.groups.store');
+        Route::get('/groups/{id}/edit', [AdminController::class, 'groupsEdit'])->name('admin.groups.edit');
+        Route::put('/groups/{id}', [AdminController::class, 'groupsUpdate'])->name('admin.groups.update');
+        Route::delete('/groups/{id}', [AdminController::class, 'groupsDestroy'])->name('admin.groups.destroy');
+
+        Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+        Route::post('/users', [AdminController::class, 'usersStore'])->name('admin.users.store');
+        Route::get('/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
+        Route::put('/users/{id}', [AdminController::class, 'usersUpdate'])->name('admin.users.update');
+        Route::delete('/users/{id}', [AdminController::class, 'usersDestroy'])->name('admin.users.destroy');
+    });
 });
 
 // API Routes (Frontend Validation)

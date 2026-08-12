@@ -22,10 +22,15 @@
         <div class="brand">IMT <span>ADMIN</span></div>
         <nav class="mt-4">
             <a href="<?php echo e(route('admin.dashboard')); ?>" class="<?php echo e(request()->routeIs('admin.dashboard') ? 'active' : ''); ?>">Dashboard</a>
+            <?php if(auth()->user()->isSuperAdmin()): ?>
             <a href="<?php echo e(route('admin.questions')); ?>" class="<?php echo e(request()->routeIs('admin.questions*') ? 'active' : ''); ?>">Bank Soal</a>
             <a href="<?php echo e(route('admin.assessments')); ?>" class="<?php echo e(request()->routeIs('admin.assessments*') ? 'active' : ''); ?>">Jawaban User</a>
             <!-- <a href="<?php echo e(route('admin.payments')); ?>" class="<?php echo e(request()->routeIs('admin.payments*') ? 'active' : ''); ?>">Data Pembayaran</a> -->
+            <?php endif; ?>
             <a href="<?php echo e(route('admin.groups')); ?>" class="<?php echo e(request()->routeIs('admin.groups*') ? 'active' : ''); ?>">Manajemen Grup</a>
+            <?php if(auth()->user()->isSuperAdmin()): ?>
+            <a href="<?php echo e(route('admin.users')); ?>" class="<?php echo e(request()->routeIs('admin.users*') ? 'active' : ''); ?>">Role Akses</a>
+            <?php endif; ?>
             <a href="<?php echo e(route('home')); ?>" class="mt-8 opacity-75 hover:opacity-100">← Ke Halaman Depan</a>
             
             <!-- Tombol Keluar (Logout) -->

@@ -21,13 +21,13 @@ class AdminController extends Controller
 
     public function questions()
     {
-        $questions = Question::with('driver')->orderBy('order')->get();
+        $questions = Question::with(['driver', 'subDriver'])->orderBy('order')->get();
         return view('admin.questions.index', compact('questions'));
     }
 
     public function questionsEdit($id)
     {
-        $question = Question::findOrFail($id);
+        $question = Question::with(['driver', 'subDriver'])->findOrFail($id);
         return view('admin.questions.edit', compact('question'));
     }
 
@@ -52,6 +52,13 @@ class AdminController extends Controller
         return view('admin.assessments.index', compact('assessments'));
     }
 
+    public function assessmentsDestroy($id)
+    {
+        $assessment = UserAssessment::findOrFail($id);
+        $assessment->delete();
+        return redirect()->route('admin.assessments')->with('success', 'Jawaban user berhasil dihapus.');
+    }
+
     public function payments()
     {
         $payments = DB::table('payments')
@@ -65,10 +72,20 @@ class AdminController extends Controller
 
     // --- MANAJEMEN GRUP ---
 
-    public function groups()
+    public function groups(Request $request)
     {
-        $groups = \App\Models\Group::withCount('assessments')->orderBy('created_at', 'desc')->get();
-        return view('admin.groups.index', compact('groups'));
+        $query = \App\Models\Group::withCount('assessments')->with('user')->orderBy('created_at', 'desc');
+        if (!$request->user()->isSuperAdmin()) {
+            $query->where('user_id', $request->user()->id);
+        }
+        $groups = $query->get();
+        
+        $clients = collect();
+        if ($request->user()->isSuperAdmin()) {
+            $clients = \App\Models\User::where('role', 'client_admin')->get();
+        }
+
+        return view('admin.groups.index', compact('groups', 'clients'));
     }
 
     public function groupsStore(Request $request)
@@ -79,6 +96,7 @@ class AdminController extends Controller
             'report_visibility' => 'required|in:admin_only,individual',
             'start_time' => 'nullable|date',
             'end_time' => 'nullable|date|after_or_equal:start_time',
+            'user_id' => 'nullable|exists:users,id',
         ]);
 
         // Generate unique code (e.g. GRUP-XYZ123)
@@ -94,7 +112,8 @@ class AdminController extends Controller
     public function groupsEdit($id)
     {
         $group = \App\Models\Group::findOrFail($id);
-        return view('admin.groups.edit', compact('group'));
+        $clients = \App\Models\User::where('role', 'client_admin')->get();
+        return view('admin.groups.edit', compact('group', 'clients'));
     }
 
     public function groupsUpdate(Request $request, $id)
@@ -105,6 +124,7 @@ class AdminController extends Controller
             'report_visibility' => 'required|in:admin_only,individual',
             'start_time' => 'nullable|date',
             'end_time' => 'nullable|date|after_or_equal:start_time',
+            'user_id' => 'nullable|exists:users,id',
             'is_active' => 'boolean',
         ]);
 
@@ -125,18 +145,53 @@ class AdminController extends Controller
         return redirect()->route('admin.groups')->with('success', 'Grup berhasil dihapus.');
     }
 
-    public function groupsReport($id)
+    public function groupsReport(Request $request, $id)
     {
         $group = \App\Models\Group::findOrFail($id);
+        if (!$request->user()->isSuperAdmin() && $group->user_id !== $request->user()->id) abort(403, 'Akses ditolak.');
         
-        // Need to calculate average scores for the group
         $assessments = UserAssessment::where('group_id', $group->id)->get();
         
         if ($assessments->count() === 0) {
             return redirect()->route('admin.groups')->with('error', 'Belum ada peserta di grup ini.');
         }
 
-        $scores = [
+        $totalParticipants = $assessments->count();
+
+        // 1. Average Scores & Min/Max & Composition
+        $driverStats = [
+            'security' => ['min' => 100, 'max' => 0, 'count' => 0],
+            'significance' => ['min' => 100, 'max' => 0, 'count' => 0],
+            'connection' => ['min' => 100, 'max' => 0, 'count' => 0],
+            'growth' => ['min' => 100, 'max' => 0, 'count' => 0],
+            'contribution' => ['min' => 100, 'max' => 0, 'count' => 0],
+        ];
+
+        foreach ($assessments as $a) {
+            $s = [
+                'security' => $a->security_score,
+                'significance' => $a->significance_score,
+                'connection' => $a->connection_score,
+                'growth' => $a->growth_score,
+                'contribution' => $a->contribution_score,
+            ];
+            
+            arsort($s);
+            $topDriver = array_key_first($s);
+            $driverStats[$topDriver]['count']++;
+            
+            foreach ($s as $driver => $score) {
+                if ($score < $driverStats[$driver]['min']) $driverStats[$driver]['min'] = $score;
+                if ($score > $driverStats[$driver]['max']) $driverStats[$driver]['max'] = $score;
+            }
+        }
+
+        foreach ($driverStats as $driver => &$stat) {
+            if ($stat['min'] == 100 && $stat['max'] == 0) $stat['min'] = 0;
+            $stat['percentage'] = round(($stat['count'] / $totalParticipants) * 100);
+        }
+
+        $avgScores = [
             'security' => round($assessments->avg('security_score')),
             'significance' => round($assessments->avg('significance_score')),
             'connection' => round($assessments->avg('connection_score')),
@@ -144,47 +199,136 @@ class AdminController extends Controller
             'contribution' => round($assessments->avg('contribution_score')),
         ];
 
-        // Create a mock assessment object to satisfy the view
-        $assessment = new UserAssessment();
-        $assessment->name = $group->name;
+        // 2. Determine Archetype
+        $sortedAverages = $avgScores;
+        arsort($sortedAverages);
+        $top1 = array_keys($sortedAverages)[0];
+        $top2 = array_keys($sortedAverages)[1];
         
-        // Pass ai_summary placeholder (you might want to generate this based on group averages)
-        $ai_summary = "Berdasarkan hasil agregat asesmen grup {$group->name}, skor rata-rata menunjukkan dinamika yang berpusat pada stabilitas dan pertumbuhan berkelanjutan. Tim ini cenderung menghargai kejelasan namun tetap berupaya untuk berkembang bersama.";
+        $fixedOrder = ['security', 'significance', 'connection', 'growth', 'contribution'];
+        $idx1 = array_search($top1, $fixedOrder);
+        $idx2 = array_search($top2, $fixedOrder);
+        $archTop1 = $idx1 < $idx2 ? $top1 : $top2;
+        $archTop2 = $idx1 < $idx2 ? $top2 : $top1;
+        $archetypeKey = "{$archTop1}_{$archTop2}";
+        $archetype = config("imt_team_archetypes.archetypes.$archetypeKey");
 
-        $dbQuestions = Question::with(['driver', 'subDriver'])
-            ->where('is_active', true)
-            ->orderBy('order')
-            ->get()
-            ->map(function ($q) {
-                return [
-                    'id' => $q->id,
-                    'driver' => $q->driver ? strtolower($q->driver->name) : 'general',
-                    'type' => $q->type,
-                    'subComposite' => $q->subDriver ? $q->subDriver->name : null,
-                    'text' => $q->question_text
-                ];
-            });
+        // 3. Team DQ
+        $diValues = [
+            'awareness' => round(($avgScores[$top1] + $avgScores['growth']) / 2),
+            'insight' => round(($avgScores['significance'] + $avgScores['connection']) / 2),
+            'regulation' => round(($avgScores['security'] + $avgScores['growth']) / 2),
+            'development' => $avgScores['growth'],
+            'transformation' => round(array_sum($avgScores) / 5),
+        ];
+        $avgDq = round(array_sum($diValues) / 5);
 
-        // Calculate average answers for the group to satisfy sub-driver calculations in JS
-        $allAnswers = DB::table('assessment_answers')
+        // 4. Sub Composites Top 5 & Bottom 5
+        $subDriverStats = \Illuminate\Support\Facades\DB::table('assessment_answers')
             ->join('user_assessments', 'assessment_answers.user_assessment_id', '=', 'user_assessments.id')
+            ->join('questions', 'assessment_answers.question_id', '=', 'questions.id')
+            ->join('sub_drivers', 'questions.sub_driver_id', '=', 'sub_drivers.id')
+            ->join('drivers', 'sub_drivers.driver_id', '=', 'drivers.id')
             ->where('user_assessments.group_id', $group->id)
-            ->select('question_id', DB::raw('AVG(score) as avg_score'))
-            ->groupBy('question_id')
-            ->pluck('avg_score', 'question_id');
+            ->whereNotNull('questions.sub_driver_id')
+            ->select(
+                'sub_drivers.id',
+                'sub_drivers.name',
+                'drivers.name as driver_name',
+                \Illuminate\Support\Facades\DB::raw("AVG(CASE WHEN questions.type = 'reverse core' THEN 8 - assessment_answers.score ELSE assessment_answers.score END) as avg_score")
+            )
+            ->groupBy('sub_drivers.id', 'sub_drivers.name', 'drivers.name')
+            ->get();
 
-        $answers = $allAnswers->toArray();
-        $isGroupReport = true;
-        $totalParticipants = $assessments->count();
+        $subComposites = $subDriverStats->map(function($stat) {
+            $normalized = (($stat->avg_score - 1) / 6) * 100;
+            return [
+                'name' => $stat->name,
+                'driver' => strtolower($stat->driver_name),
+                'score' => round($normalized)
+            ];
+        })->sortByDesc('score')->values();
 
-        return view('report', compact(
-            'assessment', 
-            'scores',
-            'ai_summary',
-            'dbQuestions',
-            'answers',
-            'isGroupReport',
-            'totalParticipants'
+        $top5SubComposites = $subComposites->take(5);
+        $bottom5SubComposites = $subComposites->reverse()->take(5)->values();
+
+        $avgDurationSeconds = $assessments->whereNotNull('duration_seconds')->avg('duration_seconds');
+        $avgDurationFormatted = '-';
+        if ($avgDurationSeconds) {
+            $avgDurationFormatted = floor($avgDurationSeconds / 60) . 'm ' . round($avgDurationSeconds % 60) . 's';
+        }
+
+        return view('admin.groups.team-report', compact(
+            'group', 'totalParticipants', 'avgScores', 'driverStats', 
+            'archetype', 'avgDq', 'diValues', 'top5SubComposites', 'bottom5SubComposites', 'top1', 'avgDurationFormatted'
         ));
+    }
+
+    public function groupsMembers(Request $request, $id)
+    {
+        $group = \App\Models\Group::findOrFail($id);
+        if (!$request->user()->isSuperAdmin() && $group->user_id !== $request->user()->id) abort(403, 'Akses ditolak.');
+        $members = UserAssessment::where('group_id', $group->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+        
+        return view('admin.groups.members', compact('group', 'members'));
+    }
+    // --- MANAJEMEN USERS (ROLE AKSES) ---
+    public function users()
+    {
+        $users = \App\Models\User::orderBy('role', 'desc')->orderBy('name')->get();
+        return view('admin.users.index', compact('users'));
+    }
+
+    public function usersStore(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $validated['password'] = \Illuminate\Support\Facades\Hash::make($validated['password']);
+        $validated['role'] = 'client_admin';
+
+        \App\Models\User::create($validated);
+        return redirect()->route('admin.users')->with('success', 'Akses Client Admin berhasil dibuat.');
+    }
+
+    public function usersEdit($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        if ($user->role === 'super_admin') abort(403, 'Tidak bisa mengedit Super Admin');
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function usersUpdate(Request $request, $id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        if ($user->role === 'super_admin') abort(403);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'nullable|string|min:6',
+        ]);
+
+        if (!empty($validated['password'])) {
+            $validated['password'] = \Illuminate\Support\Facades\Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
+        return redirect()->route('admin.users')->with('success', 'Akses Client Admin diperbarui.');
+    }
+
+    public function usersDestroy($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        if ($user->role === 'super_admin') abort(403);
+        $user->delete();
+        return redirect()->route('admin.users')->with('success', 'Akses Client Admin dihapus.');
     }
 }

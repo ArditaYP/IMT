@@ -297,6 +297,7 @@
         <div><span class="label">Pekerjaan</span><span class="val" id="pjob">-</span></div>
         <div><span class="label">Tanggal Tes</span><span class="val" id="pdate">-</span></div>
         <div><span class="label">ID Laporan</span><span class="val" id="pid">-</span></div>
+        <div><span class="label">Durasi Tes</span><span class="val" id="pduration">-</span></div>
       </div>
       <div class="about-box">
         <h3>TENTANG IMT DISCOVERY™</h3>
@@ -475,16 +476,27 @@
   const isGroupReport = <?php echo json_encode($isGroupReport ?? false, 15, 512) ?>;
   const totalParticipants = <?php echo json_encode($totalParticipants ?? 0, 15, 512) ?>;
   const backendAnswers = <?php echo json_encode($answers ?? null, 15, 512) ?>;
+  const assessmentDuration = <?php echo json_encode($assessment->duration_seconds ?? null, 15, 512) ?>;
+  const isAdmin = <?php echo json_encode($isAdmin ?? false, 15, 512) ?>;
   
-  // Jika group report, override answers dan bypass cek profile/bayar
+  // Jika load dari backend, bypass cek profile/bayar lokal
   let isPaid = paid;
   let activeProfile = profile;
+
   if (isGroupReport) {
       if (backendAnswers) Object.assign(answers, backendAnswers);
-      // Buat profile palsu agar tidak error
       const mockName = <?php echo json_encode($assessment->name ?? 'Grup', 15, 512) ?>;
       activeProfile = { name: mockName, job: '-', dob: '-', date: new Date().toISOString() };
-      isPaid = true; // Bypass lock
+      isPaid = true;
+  } else if (backendAnswers || isAdmin) {
+      if (backendAnswers) Object.assign(answers, backendAnswers);
+      activeProfile = { 
+          name: <?php echo json_encode($assessment->name ?? '-', 15, 512) ?>, 
+          job: <?php echo json_encode($assessment->job ?? '-', 15, 512) ?>, 
+          dob: <?php echo json_encode($assessment->dob ?? '-', 15, 512) ?>, 
+          date: <?php echo json_encode($assessment->created_at ? $assessment->created_at->toISOString() : now()->toISOString(), 15, 512) ?> 
+      };
+      isPaid = true;
   }
 
   // segera di bawah, sebelum baris kode lain di bawahnya sempat berjalan.
@@ -522,9 +534,9 @@
 
   function renderOverview(){
     const order = ['security','significance','connection','growth','contribution'];
-    document.getElementById('ovName').textContent = profile.name.toUpperCase();
-    document.getElementById('ovJob').textContent = profile.job;
-    document.getElementById('ovDate').textContent = new Date(profile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+    document.getElementById('ovName').textContent = activeProfile.name.toUpperCase();
+    document.getElementById('ovJob').textContent = activeProfile.job;
+    document.getElementById('ovDate').textContent = new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
 
     // Total DQ: pakai formula identik dengan yang dipakai di halaman report
     // (rata-rata 5 dimensi DI, lihat renderReport() di bawah untuk definisi lengkap).
@@ -581,13 +593,38 @@
         
         document.getElementById('pdate').textContent = ': ' + new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
         document.getElementById('pid').textContent = ': GRP-' + String(Math.floor(Math.random()*9000)+1000);
+        
+        if (assessmentDuration !== null) {
+            document.getElementById('pduration').textContent = ': ' + Math.floor(assessmentDuration/60) + 'm ' + (assessmentDuration%60) + 's';
+        } else {
+            document.getElementById('pduration').parentElement.style.display = 'none';
+        }
     } else {
         document.getElementById('pname').textContent = activeProfile.name.toUpperCase();
         document.getElementById('avatar').textContent = activeProfile.name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-        document.getElementById('pdob').textContent = ': ' + (activeProfile.dob !== '-' ? new Date(activeProfile.dob).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) : '-');
-        document.getElementById('pjob').textContent = ': ' + activeProfile.job;
+        
+        if (activeProfile.dob && activeProfile.dob !== '-') {
+            document.getElementById('pdob').textContent = ': ' + new Date(activeProfile.dob).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+        } else {
+            document.getElementById('pdob').parentElement.style.display = 'none';
+        }
+
+        if (activeProfile.job && activeProfile.job !== '-') {
+            document.getElementById('pjob').textContent = ': ' + activeProfile.job;
+        } else {
+            document.getElementById('pjob').parentElement.style.display = 'none';
+        }
+
         document.getElementById('pdate').textContent = ': ' + new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
-        document.getElementById('pid').textContent = ': IMT-D-' + activeProfile.date.replace(/-/g,'').slice(2) + '-' + String(Math.floor(Math.random()*900)+100);
+        
+        let datePart = activeProfile.date.split('T')[0];
+        document.getElementById('pid').textContent = ': IMT-D-' + datePart.replace(/-/g,'').slice(2) + '-' + <?php echo json_encode($assessment->id ?? String(Math.floor(Math.random()*900)+100), 15, 512) ?>;
+        
+        if (assessmentDuration !== null) {
+            document.getElementById('pduration').textContent = ': ' + Math.floor(assessmentDuration/60) + 'm ' + (assessmentDuration%60) + 's';
+        } else {
+            document.getElementById('pduration').textContent = ': -';
+        }
     }
 
     document.getElementById('archName').innerHTML = arch.name.replace('™','').trim().toUpperCase();

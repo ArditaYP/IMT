@@ -10,21 +10,26 @@ class Group extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
+        'user_id',
         'name',
+        'code',
+        'quota',
+        'report_visibility',
+        'is_active',
         'start_time',
         'end_time',
-        'quota',
-        'is_active',
-        'report_visibility',
     ];
 
     protected $casts = [
+        'is_active' => 'boolean',
         'start_time' => 'datetime',
         'end_time' => 'datetime',
-        'quota' => 'integer',
-        'is_active' => 'boolean',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function assessments()
     {

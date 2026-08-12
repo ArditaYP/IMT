@@ -9,11 +9,17 @@
         <?php echo csrf_field(); ?>
         <?php echo method_field('PUT'); ?>
         
-        <div class="mb-6">
-            <label class="block text-sm font-semibold text-gray-700 mb-2">Driver Utama</label>
-            <input type="text" disabled value="<?php echo e($question->driver ? $question->driver->name : 'General'); ?>" class="w-full bg-gray-100 border border-gray-300 text-gray-600 rounded-lg px-4 py-2 cursor-not-allowed">
-            <p class="text-xs text-gray-400 mt-1">Driver tidak dapat diubah agar tidak merusak kalkulasi hasil.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Driver Utama</label>
+                <input type="text" disabled value="<?php echo e($question->driver ? $question->driver->name : 'General'); ?>" class="w-full bg-gray-100 border border-gray-300 text-gray-600 rounded-lg px-4 py-2 cursor-not-allowed">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Sub Driver</label>
+                <input type="text" disabled value="<?php echo e($question->subDriver ? $question->subDriver->name : '-'); ?>" class="w-full bg-gray-100 border border-gray-300 text-gray-600 rounded-lg px-4 py-2 cursor-not-allowed">
+            </div>
         </div>
+        <p class="text-xs text-gray-400 mb-6 -mt-4">Driver dan Sub Driver tidak dapat diubah agar tidak merusak kalkulasi hasil.</p>
 
         <div class="mb-6">
             <label class="block text-sm font-semibold text-gray-700 mb-2">Teks Pertanyaan</label>

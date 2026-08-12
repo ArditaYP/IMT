@@ -16,6 +16,16 @@
             <div class="text-xs text-gray-400 mt-1">Kode akses tidak bisa diubah karena digunakan untuk URL undangan.</div>
         </div>
         
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Pemilik Grup (Client Admin)</label>
+            <select name="user_id" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- Tidak Ada / Kosong --</option>
+                @foreach($clients as $client)
+                    <option value="{{ $client->id }}" {{ old('user_id', $group->user_id) == $client->id ? 'selected' : '' }}>{{ $client->name }} ({{ $client->email }})</option>
+                @endforeach
+            </select>
+        </div>
+        
         <div class="grid grid-cols-4 gap-4 mb-4">
             <div class="col-span-2">
                 <label class="block text-sm font-medium text-gray-600 mb-1">Nama Grup / Perusahaan</label>

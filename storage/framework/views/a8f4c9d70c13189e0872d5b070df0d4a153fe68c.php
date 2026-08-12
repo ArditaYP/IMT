@@ -258,6 +258,8 @@
             },
             body: JSON.stringify({
                 participant_name: profile.name,
+                email: profile.email,
+                dob: profile.dob,
                 job: profile.job,
                 group_id: profile.group_id,
                 answers: answers

@@ -32,6 +32,9 @@ class UserAssessment extends Model
     protected $fillable = [
         'group_id',
         'name',
+        'email',
+        'dob',
+        'job',
         'security_score',
         'significance_score',
         'connection_score',
@@ -39,6 +42,7 @@ class UserAssessment extends Model
         'contribution_score',
         'archetype_name',
         'ai_narasi',
+        'duration_seconds',
     ];
 
     /**

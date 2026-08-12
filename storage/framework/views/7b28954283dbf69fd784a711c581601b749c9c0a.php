@@ -3,6 +3,7 @@
     <h1 class="text-2xl font-bold text-gray-800">Manajemen Grup</h1>
 </div>
 
+<?php if(auth()->user()->isSuperAdmin()): ?>
 <div class="bg-white rounded shadow-sm border border-gray-200 overflow-hidden mb-8">
     <div class="p-6 bg-gray-50 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-700">Buat Grup Baru</h2>
@@ -12,6 +13,15 @@
                 <div class="flex-1">
                     <label class="block text-sm font-medium text-gray-600 mb-1">Nama Grup / Perusahaan</label>
                     <input type="text" name="name" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contoh: PT. Maju Jaya" required>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">Pemilik (Client Admin)</label>
+                    <select name="user_id" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- Tidak Ada / Kosong --</option>
+                        <?php $__currentLoopData = $clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($client->id); ?>"><?php echo e($client->name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
                 </div>
                 <div style="width: 100px;">
                     <label class="block text-sm font-medium text-gray-600 mb-1">Kuota</label>
@@ -48,6 +58,7 @@
         <?php endif; ?>
     </div>
 </div>
+<?php endif; ?>
 
 <div class="bg-white rounded shadow-sm border border-gray-200 overflow-hidden">
     <table class="w-full text-left border-collapse">
@@ -58,6 +69,9 @@
                 <th class="p-4 border-b">Waktu Akses</th>
                 <th class="p-4 border-b">Kuota / Peserta</th>
                 <th class="p-4 border-b">Visibilitas</th>
+                <?php if(auth()->user()->isSuperAdmin()): ?>
+                <th class="p-4 border-b">Pemilik (Client)</th>
+                <?php endif; ?>
                 <th class="p-4 border-b">Status</th>
                 <th class="p-4 border-b text-right">Aksi</th>
             </tr>
@@ -92,6 +106,12 @@
                             <span class="bg-teal-100 text-teal-700 px-2 py-1 rounded text-xs font-semibold">Individu (Publik)</span>
                         <?php endif; ?>
                     </td>
+                    <?php if(auth()->user()->isSuperAdmin()): ?>
+                    <td class="p-4 text-xs font-semibold text-gray-700">
+                        <?php echo e($group->user ? $group->user->name : '-'); ?>
+
+                    </td>
+                    <?php endif; ?>
                     <td class="p-4">
                         <?php if($group->is_active): ?>
                             <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">Aktif</span>
@@ -101,19 +121,24 @@
                     </td>
                     <td class="p-4 text-right space-x-2">
                         <?php if($group->assessments_count > 0): ?>
-                            <a href="<?php echo e(route('admin.groups.report', $group->id)); ?>" target="_blank" class="text-indigo-600 hover:underline">Lihat Laporan Grup</a>
+                            <a href="<?php echo e(route('admin.groups.members', $group->id)); ?>" class="text-teal-600 hover:underline">Lihat Anggota (<?php echo e($group->assessments_count); ?>)</a>
+                            <span class="text-gray-300">|</span>
+                            <a href="<?php echo e(route('admin.groups.report', $group->id)); ?>" target="_blank" class="text-indigo-600 hover:underline">Laporan Grup</a>
                         <?php endif; ?>
+                        <?php if(auth()->user()->isSuperAdmin()): ?>
+                        <span class="text-gray-300">|</span>
                         <a href="<?php echo e(route('admin.groups.edit', $group->id)); ?>" class="text-blue-500 hover:underline">Edit</a>
                         
                         <form action="<?php echo e(route('admin.groups.destroy', $group->id)); ?>" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus grup ini? Laporan individu tidak akan terhapus, tapi laporan grup ini akan hilang.')">
                             <?php echo csrf_field(); ?> <?php echo method_field('DELETE'); ?>
                             <button class="text-red-500 hover:underline">Hapus</button>
                         </form>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr>
-                    <td colspan="6" class="p-6 text-center text-gray-500">Belum ada grup yang dibuat.</td>
+                    <td colspan="7" class="p-6 text-center text-gray-500">Belum ada grup yang dibuat.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
