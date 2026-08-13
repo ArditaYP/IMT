@@ -53,7 +53,7 @@
     </div>
     <div class="nav-cta">
       <a href="{{ route('dashboard') }}" class="btn btn-ghost btn-sm">Masuk</a>
-      <a href="{{ route('assessment.test') }}" class="btn btn-primary btn-sm">Mulai Tes</a>
+      <a href="{{ route('pilih-tes') }}" class="btn btn-primary btn-sm">Mulai Tes</a>
     </div>
   </div>
 </nav>
@@ -64,8 +64,8 @@
     <h1>Temukan apa yang <span>benar-benar</span><br>menggerakkan hidup Anda</h1>
     <p class="lead">IMT Discovery™ memetakan 5 Human Drivers dan arketipe motivasi Anda melalui pendekatan psikometri modern — lengkap dengan laporan interpretasi personal yang otomatis dan langsung dapat digunakan.</p>
     <div class="hero-ctas">
-      <a href="{{ route('assessment.test') }}" class="btn btn-primary">Mulai Tes Personal — Rp99rb</a>
-      <a href="team.html" class="btn btn-dark">Tes untuk Tim/Korporasi</a>
+      <a href="{{ route('pilih-tes') }}" class="btn btn-primary">Mulai Tes Sekarang</a>
+      <a href="{{ route('pilih-tes') }}" class="btn btn-dark">Tes untuk Tim/Korporasi</a>
     </div>
     <div class="trust-row">
       <span>⭐ <b>4.9/5</b> dari 1.200+ pengguna</span>

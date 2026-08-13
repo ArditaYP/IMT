@@ -294,6 +294,9 @@
       <div class="profile"><div class="avatar" id="avatar">--</div><div class="name" id="pname">-</div></div>
       <div class="info-list">
         <div><span class="label">Tanggal Lahir</span><span class="val" id="pdob">-</span></div>
+        <div id="row-gender" style="display:none;"><span class="label">Jenis Kelamin</span><span class="val" id="pgender">-</span></div>
+        <div id="row-phone" style="display:none;"><span class="label">Nom. Telepon</span><span class="val" id="pphone">-</span></div>
+        <div id="row-position" style="display:none;"><span class="label">Jabatan</span><span class="val" id="pposition">-</span></div>
         <div><span class="label">Pekerjaan</span><span class="val" id="pjob">-</span></div>
         <div><span class="label">Tanggal Tes</span><span class="val" id="pdate">-</span></div>
         <div><span class="label">ID Laporan</span><span class="val" id="pid">-</span></div>
@@ -494,6 +497,9 @@
           name: <?php echo json_encode($assessment->name ?? '-', 15, 512) ?>, 
           job: <?php echo json_encode($assessment->job ?? '-', 15, 512) ?>, 
           dob: <?php echo json_encode($assessment->dob ?? '-', 15, 512) ?>, 
+          gender: <?php echo json_encode($assessment->gender ?? null, 15, 512) ?>,
+          phone: <?php echo json_encode($assessment->phone ?? null, 15, 512) ?>,
+          position: <?php echo json_encode($assessment->position ?? null, 15, 512) ?>,
           date: <?php echo json_encode($assessment->created_at ? $assessment->created_at->toISOString() : now()->toISOString(), 15, 512) ?> 
       };
       isPaid = true;
@@ -613,6 +619,19 @@
             document.getElementById('pjob').textContent = ': ' + activeProfile.job;
         } else {
             document.getElementById('pjob').parentElement.style.display = 'none';
+        }
+
+        if (activeProfile.gender) {
+            document.getElementById('pgender').textContent = ': ' + activeProfile.gender;
+            document.getElementById('row-gender').style.display = 'block';
+        }
+        if (activeProfile.phone) {
+            document.getElementById('pphone').textContent = ': ' + activeProfile.phone;
+            document.getElementById('row-phone').style.display = 'block';
+        }
+        if (activeProfile.position) {
+            document.getElementById('pposition').textContent = ': ' + activeProfile.position;
+            document.getElementById('row-position').style.display = 'block';
         }
 
         document.getElementById('pdate').textContent = ': ' + new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});

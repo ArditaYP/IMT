@@ -23,28 +23,56 @@
 
   <!-- INTRO -->
   <div id="intro" class="fade-in">
-    <div class="section-head" style="text-align:left; max-width:none; margin-bottom:26px;">
-      <div class="kicker">Sebelum Mulai</div>
-      <h2 style="margin:8px 0 6px;">Lengkapi data diri Anda</h2>
-      <p>Digunakan untuk mempersonalisasi laporan Anda.</p>
-    </div>
-    <div class="q-card" style="display:block;">
-      <div class="grid grid-2" style="gap:16px;">
-        <div style="grid-column: span 2;">
-            <label style="font-size:12.5px; color:var(--muted); font-weight:600;">Kode Grup (Opsional)</label>
-            <input id="f-group" type="text" placeholder="Masukkan kode grup jika ada" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px; background:#f8f9fc; font-family:monospace; text-transform:uppercase;">
-            <div style="font-size:11px; color:#6b7280; margin-top:4px;">Hanya diisi jika Anda mendapat tes ini dari perusahaan/organisasi.</div>
-        </div>
-        <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Nama Lengkap</label>
-          <input id="f-name" type="text" placeholder="Nama Anda" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
-        <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Email</label>
-          <input id="f-email" type="email" placeholder="email@contoh.com" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
-        <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Tanggal Lahir</label>
-          <input id="f-dob" type="date" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
-        <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Pekerjaan</label>
-          <input id="f-job" type="text" placeholder="Cth: Entrepreneur" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+    
+    <!-- STEP 1: GROUP CODE (Only shown if type=group) -->
+    <div id="step-group" style="display:none;">
+      <div class="section-head" style="text-align:left; max-width:none; margin-bottom:26px;">
+        <div class="kicker">Langkah 1 dari 2</div>
+        <h2 style="margin:8px 0 6px;">Masukkan Kode Grup</h2>
+        <p>Akses ini memerlukan kode unik dari perusahaan atau organisasi Anda.</p>
       </div>
-      <button id="btnStart" class="btn btn-primary btn-block" style="margin-top:24px;" onclick="startTest()">Mulai Tes Sekarang →</button>
+      <div class="q-card" style="display:block;">
+        <label style="font-size:12.5px; color:var(--muted); font-weight:600;">Kode Akses Grup</label>
+        <input id="f-group" type="text" placeholder="Contoh: CORP-2026" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px; background:#f8f9fc; font-family:monospace; text-transform:uppercase;">
+        <button id="btnValidateGroup" class="btn btn-dark btn-block" style="margin-top:24px;" onclick="validateGroupCode()">Validasi Kode →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: PROFILE FORM -->
+    <div id="step-profile" style="display:none;">
+      <div class="section-head" style="text-align:left; max-width:none; margin-bottom:26px;">
+        <div class="kicker" id="kicker-profile">Langkah 2 dari 2</div>
+        <h2 style="margin:8px 0 6px;">Lengkapi data diri Anda</h2>
+        <p>Digunakan untuk mempersonalisasi laporan Anda.</p>
+      </div>
+      <div class="q-card" style="display:block;">
+        <div class="grid grid-2" style="gap:16px;">
+          <!-- Hide group code completely from this grid -->
+          <input type="hidden" id="f-group-hidden" value="">
+          
+          <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Nama Lengkap</label>
+            <input id="f-name" type="text" placeholder="Nama Anda" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+          <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Email</label>
+            <input id="f-email" type="email" placeholder="email@contoh.com" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+          <div><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Tanggal Lahir</label>
+            <input id="f-dob" type="date" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+          <div id="field-job"><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Pekerjaan</label>
+            <input id="f-job" type="text" placeholder="Cth: Entrepreneur" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+          
+          <div id="field-gender" style="display:none;"><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Jenis Kelamin</label>
+            <select id="f-gender" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px; background:#fff;">
+              <option value="">Pilih Jenis Kelamin</option>
+              <option value="Pria">Pria</option>
+              <option value="Wanita">Wanita</option>
+            </select>
+          </div>
+          <div id="field-phone" style="display:none;"><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Nomor Telepon</label>
+            <input id="f-phone" type="tel" placeholder="08123456789" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+          <div id="field-position" style="display:none;"><label style="font-size:12.5px; color:var(--muted); font-weight:600;">Jabatan</label>
+            <input id="f-position" type="text" placeholder="Cth: Manager" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--border); margin-top:6px;"></div>
+        </div>
+        <button id="btnStart" class="btn btn-primary btn-block" style="margin-top:24px;" onclick="startTest()">Mulai Tes Sekarang →</button>
+      </div>
     </div>
   </div>
 
@@ -117,54 +145,93 @@
   const FAST_STREAK_LIMIT = 3;
 
   // Prefill group from URL if exists
+  let testType = 'personal';
+  let validatedGroupId = null;
+
   window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
+      testType = urlParams.get('type') || 'personal';
       const groupCode = urlParams.get('group');
-      if(groupCode) {
-          document.getElementById('f-group').value = groupCode;
+      
+      if (testType === 'group') {
+          document.getElementById('step-group').style.display = 'block';
+          document.getElementById('field-job').style.display = 'none';
+          document.getElementById('field-gender').style.display = 'block';
+          document.getElementById('field-phone').style.display = 'block';
+          document.getElementById('field-position').style.display = 'block';
+          if(groupCode) {
+              document.getElementById('f-group').value = groupCode;
+          }
+      } else {
+          // Personal test
+          document.getElementById('kicker-profile').textContent = 'Sebelum Mulai';
+          document.getElementById('field-gender').style.display = 'block';
+          document.getElementById('field-phone').style.display = 'block';
+          document.getElementById('step-profile').style.display = 'block';
       }
   });
+
+  async function validateGroupCode() {
+      const groupCode = document.getElementById('f-group').value.trim();
+      if (!groupCode) {
+          alert('Mohon masukkan kode grup.');
+          return;
+      }
+
+      const btn = document.getElementById('btnValidateGroup');
+      const oldText = btn.innerHTML;
+      btn.innerHTML = 'Memvalidasi...';
+      btn.disabled = true;
+
+      try {
+          const res = await fetch("{{ route('api.validate.group') }}", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
+              body: JSON.stringify({ code: groupCode })
+          });
+          const data = await res.json();
+          
+          btn.innerHTML = oldText;
+          btn.disabled = false;
+
+          if (!data.valid) {
+              alert(data.message);
+              return;
+          }
+          
+          // Save verified group info
+          document.getElementById('f-group-hidden').value = groupCode;
+          validatedGroupId = data.group.id;
+          
+          // Transition to Step 2
+          document.getElementById('step-group').style.display = 'none';
+          document.getElementById('step-profile').classList.add('fade-in');
+          document.getElementById('step-profile').style.display = 'block';
+
+      } catch (e) {
+          btn.innerHTML = oldText;
+          btn.disabled = false;
+          alert("Gagal memvalidasi kode grup. Periksa koneksi Anda.");
+      }
+  }
 
   async function startTest(){
     const nameVal = document.getElementById('f-name').value.trim();
     const emailVal = document.getElementById('f-email').value.trim();
     const dobVal = document.getElementById('f-dob').value.trim();
     const jobVal = document.getElementById('f-job').value.trim();
+    const genderVal = document.getElementById('f-gender').value.trim();
+    const phoneVal = document.getElementById('f-phone').value.trim();
+    const posVal = document.getElementById('f-position').value.trim();
 
-    if (!nameVal || !emailVal || !dobVal || !jobVal) {
-        alert("Mohon lengkapi semua data diri Anda (Nama, Email, Tanggal Lahir, Pekerjaan) sebelum memulai tes.");
-        return;
-    }
-
-    const groupCode = document.getElementById('f-group').value.trim();
-    let groupId = null;
-
-    if (groupCode) {
-        const btn = document.getElementById('btnStart');
-        const oldText = btn.innerHTML;
-        btn.innerHTML = 'Memvalidasi Grup...';
-        btn.disabled = true;
-
-        try {
-            const res = await fetch("{{ route('api.validate.group') }}", {
-                method: "POST",
-                headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
-                body: JSON.stringify({ code: groupCode })
-            });
-            const data = await res.json();
-            
-            btn.innerHTML = oldText;
-            btn.disabled = false;
-
-            if (!data.valid) {
-                alert(data.message);
-                return;
-            }
-            groupId = data.group.id;
-        } catch (e) {
-            btn.innerHTML = oldText;
-            btn.disabled = false;
-            alert("Gagal memvalidasi kode grup. Periksa koneksi Anda.");
+    if (testType === 'personal') {
+        if (!nameVal || !emailVal || !dobVal || !jobVal || !genderVal || !phoneVal) {
+            alert("Mohon lengkapi semua data diri Anda (Nama, Email, Tanggal Lahir, Pekerjaan, Jenis Kelamin, No. Telp) sebelum memulai tes.");
+            return;
+        }
+    } else {
+        if (!nameVal || !emailVal || !dobVal || !genderVal || !phoneVal || !posVal) {
+            alert("Mohon lengkapi semua data diri Anda (Nama, Email, Tanggal Lahir, Jenis Kelamin, No. Telp, Jabatan) sebelum memulai tes.");
             return;
         }
     }
@@ -173,8 +240,11 @@
       name: nameVal,
       email: emailVal,
       dob: dobVal,
-      job: jobVal,
-      group_id: groupId,
+      job: testType === 'personal' ? jobVal : null,
+      gender: genderVal,
+      phone: phoneVal,
+      position: testType === 'group' ? posVal : null,
+      group_id: validatedGroupId,
       date: new Date().toISOString().slice(0,10)
     };
     localStorage.setItem('imt_profile', JSON.stringify(profile));

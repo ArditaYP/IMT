@@ -23,7 +23,11 @@ Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-// 3. Halaman Ujian
+// 3. Halaman Pilih Tes & Ujian
+Route::get('/pilih-tes', function () {
+    return view('pilih-tes');
+})->name('pilih-tes');
+
 Route::get('/tes', [AssessmentController::class, 'showTest'])->name('assessment.test');
 Route::post('/tes/submit', [AssessmentController::class, 'submitAnswers'])->name('assessment.submit');
 
