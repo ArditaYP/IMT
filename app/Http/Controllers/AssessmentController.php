@@ -275,12 +275,25 @@ class AssessmentController extends Controller
         $data = UserAssessment::with('group')->findOrFail($id);
         $assessment = $data;
 
+        $isAdmin = auth()->check();
+        $user = auth()->user();
+
         // Cek visibilitas laporan grup
-        if ($assessment->group && $assessment->group->report_visibility === 'admin_only' && !auth()->check()) {
-            return view('assessment.thankyou', [
-                'assessment' => $assessment,
-                'group' => $assessment->group
-            ]);
+        if ($assessment->group) {
+            // Cek untuk publik/peserta (belum login)
+            if ($assessment->group->report_visibility === 'admin_only' && !$isAdmin) {
+                return view('assessment.thankyou', [
+                    'assessment' => $assessment,
+                    'group' => $assessment->group
+                ]);
+            }
+            
+            // Cek untuk Admin Perusahaan (Client Admin)
+            if ($isAdmin && $user->role === 'client_admin') {
+                if (!$assessment->group->client_can_view_reports) {
+                    abort(403, 'Akses melihat laporan individu belum diberikan oleh Super Admin. Anda tetap bisa melihat laporan keseluruhan Grup.');
+                }
+            }
         }
 
         $scores = [

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isi Tes IMT Discovery™</title>
+<title>Isi Tes IMT Discovery</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
 <link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png') }}">
@@ -360,6 +360,9 @@
                 email: profile.email,
                 dob: profile.dob,
                 job: profile.job,
+                gender: profile.gender,
+                phone: profile.phone,
+                position: profile.position,
                 group_id: profile.group_id,
                 answers: answers
             })

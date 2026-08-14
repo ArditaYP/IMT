@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laporan IMT Discovery™</title>
+<title>Laporan IMT Discovery</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
 <link rel="apple-touch-icon" href="<?php echo e(asset('assets/img/apple-touch-icon.png')); ?>">
@@ -26,7 +26,7 @@
   .profile .name{font-size:18px; font-weight:700; color:var(--navy); line-height:1.2;}
   .info-list{font-size:12.5px; line-height:2; color:var(--text);}
   .info-list div{display:flex; gap:8px;}
-  .info-list span.label{width:110px; color:var(--muted);}
+  .info-list span.label{width:110px; min-width:110px; flex-shrink:0; color:var(--muted);}
   .info-list span.val{font-weight:600;}
   .about-box{background:var(--navy); color:#dde3f2; border-radius:8px; padding:16px; font-size:12px; line-height:1.6; margin:16px 0;}
   .about-box h3{color:var(--orange); font-size:12.5px; margin:0 0 8px; letter-spacing:1px;}
@@ -248,7 +248,7 @@
   <div class="ov-header">
     <div class="ov-brand">
       <img src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery">
-      <div class="t">IMT <span>DISCOVERY™</span></div>
+      <div class="t">IMT <span>DISCOVERY</span></div>
     </div>
     <div class="ov-meta">
       <div><b id="ovName">-</b></div>
@@ -290,7 +290,7 @@
     <div>
       <img src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery" style="height:44px; margin-bottom:4px;">
       <div class="logo-sub">INNER MOTIVATION TRANSFORMATION<br><b>DISCOVER YOUR DRIVER</b></div>
-      <div class="report-title">IMT DISCOVERY™<h2>LAPORAN PERSONAL</h2></div>
+      <div class="report-title">IMT DISCOVERY<h2>LAPORAN PERSONAL</h2></div>
       <div class="profile"><div class="avatar" id="avatar">--</div><div class="name" id="pname">-</div></div>
       <div class="info-list">
         <div><span class="label">Tanggal Lahir</span><span class="val" id="pdob">-</span></div>
@@ -303,7 +303,7 @@
         <div><span class="label">Durasi Tes</span><span class="val" id="pduration">-</span></div>
       </div>
       <div class="about-box">
-        <h3>TENTANG IMT DISCOVERY™</h3>
+        <h3>TENTANG IMT DISCOVERY</h3>
         IMT Discovery membantu Anda memahami apa yang benar-benar mendorong Anda, bagaimana Anda mengambil keputusan, dan apa yang memberi energi setiap hari.
         <blockquote style="margin:12px 0 0; font-style:italic; color:#fff; border-left:3px solid var(--orange); padding-left:10px;">Ketika Anda memahami apa yang paling penting bagi Anda, Anda dapat membuat pilihan yang lebih baik.</blockquote>
       </div>
@@ -311,7 +311,7 @@
 
     <div class="right-col">
       <div class="section-navy-header" style="border-radius:8px;">YOUR INNER DRIVER, YOUR INNER TRANSFORMATION</div>
-      <p style="font-size:12.5px; color:var(--muted); margin:-6px 0 0; line-height:1.6;">IMT Discovery mengidentifikasi 5 Human Drivers™ yang menjadi sumber motivasi, membentuk keputusan, dan memengaruhi perilaku Anda setiap hari.</p>
+      <p style="font-size:12.5px; color:var(--muted); margin:-6px 0 0; line-height:1.6;">IMT Discovery mengidentifikasi 5 Human Drivers yang menjadi sumber motivasi, membentuk keputusan, dan memengaruhi perilaku Anda setiap hari.</p>
       <div class="row-2">
         <div class="archetype-box">
           <div class="tag">ARKETIPE ANDA</div>
@@ -374,7 +374,7 @@
   </div>
 
   <div class="dyn-section">
-    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">DINAMIKA DRIVER ANDA: Driver Dynamics™</div>
+    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">DINAMIKA DRIVER ANDA: Driver Dynamics</div>
     <div class="section-body" style="border-radius:0 0 8px 8px;">
       <p style="font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.6;">Setiap Driver bisa muncul dalam lima kondisi berbeda tergantung situasi yang Anda hadapi, mulai dari versi paling sehat sampai versi paling berlebihan. Berikut cara Driver dominan Anda, <b id="dynDriverName" style="color:var(--navy);">-</b>, biasanya terekspresi, dan apa pelajaran inti yang bisa Anda ambil darinya.</p>
       <p id="dynScene" style="font-size:13px; color:var(--text); margin:0 0 16px; line-height:1.65; font-style:italic;">-</p>
@@ -390,7 +390,7 @@
   </div>
 
   <div class="path-section">
-    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">JALUR PERKEMBANGAN ANDA: Driver Development Path™</div>
+    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">JALUR PERKEMBANGAN ANDA: Driver Development Path</div>
     <div class="section-body" style="border-radius:0 0 8px 8px;">
       <p style="font-size:12.5px; color:var(--muted); margin:0 0 14px; line-height:1.65;">Bagian ini punya dua lapis. <b style="color:var(--navy);">Pertama</b>, seberapa jauh Anda sudah mengenali &amp; mengelola driver Anda secara umum (dihitung dari skor DQ Anda). <b style="color:var(--navy);">Kedua</b>, jalur pengembangan yang spesifik untuk driver dominan Anda, <b id="pathDriverName" style="color:var(--navy);">-</b>, lengkap dengan tujuan, pertanyaan refleksi, dan tantangan nyata untuk mulai bertumbuh.</p>
 
@@ -432,7 +432,7 @@
 
   <div class="bottom-grid">
     <div>
-      <div class="section-navy-header">MEMAHAMI 5 HUMAN DRIVERS™ ANDA</div>
+      <div class="section-navy-header">MEMAHAMI 5 HUMAN DRIVERS ANDA</div>
       <div class="section-body" id="driverRows"></div>
       <div class="insight-box"><h4>WAWASAN UTAMA</h4><p id="insightText">-</p></div>
     </div>
@@ -461,7 +461,10 @@
   const paid = localStorage.getItem('imt_paid') === 'true';
   const scores = <?php echo json_encode($scores, 15, 512) ?>;
   const profile = JSON.parse(localStorage.getItem('imt_profile') || 'null');
-  const answers = JSON.parse(localStorage.getItem('imt_answers') || '{}');
+  const answers_db = <?php echo json_encode($answers ?? [], 15, 512) ?>;
+  const answers = (Object.keys(answers_db).length > 0) 
+      ? answers_db 
+      : JSON.parse(localStorage.getItem('imt_answers') || '{}');
 
   const dbQuestions = <?php echo json_encode($dbQuestions, 15, 512) ?>;
   const oldPairWith = {};
@@ -541,7 +544,7 @@
   function renderOverview(){
     const order = ['security','significance','connection','growth','contribution'];
     document.getElementById('ovName').textContent = activeProfile.name.toUpperCase();
-    document.getElementById('ovJob').textContent = activeProfile.job;
+    document.getElementById('ovJob').textContent = activeProfile.position || activeProfile.job || '-';
     document.getElementById('ovDate').textContent = new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
 
     // Total DQ: pakai formula identik dengan yang dipakai di halaman report
@@ -623,15 +626,15 @@
 
         if (activeProfile.gender) {
             document.getElementById('pgender').textContent = ': ' + activeProfile.gender;
-            document.getElementById('row-gender').style.display = 'block';
+            document.getElementById('row-gender').style.display = '';
         }
         if (activeProfile.phone) {
             document.getElementById('pphone').textContent = ': ' + activeProfile.phone;
-            document.getElementById('row-phone').style.display = 'block';
+            document.getElementById('row-phone').style.display = '';
         }
         if (activeProfile.position) {
             document.getElementById('pposition').textContent = ': ' + activeProfile.position;
-            document.getElementById('row-position').style.display = 'block';
+            document.getElementById('row-position').style.display = '';
         }
 
         document.getElementById('pdate').textContent = ': ' + new Date(activeProfile.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
@@ -646,7 +649,7 @@
         }
     }
 
-    document.getElementById('archName').innerHTML = arch.name.replace('™','').trim().toUpperCase();
+    document.getElementById('archName').innerHTML = arch.name.replace('','').trim().toUpperCase();
     document.getElementById('archIcon').textContent = IMT_DRIVERS[topDriver].icon;
     document.getElementById('archDesire').textContent = arch.desire;
     document.getElementById('archFear').textContent = arch.fear;
@@ -693,7 +696,7 @@
       html += `<text x="${scorePos[i][0]}" y="${scorePos[i][1]}" text-anchor="middle" font-size="18" font-weight="800" fill="${IMT_DRIVERS[d].color}">${scores[d]}</text>`;
     });
     html += `<text x="300" y="264" text-anchor="middle" font-size="14" font-weight="800" fill="#0d1b3e">IMT</text>`;
-    html += `<text x="300" y="280" text-anchor="middle" font-size="10" font-weight="700" fill="#0d1b3e">DISCOVERY™</text>`;
+    html += `<text x="300" y="280" text-anchor="middle" font-size="10" font-weight="700" fill="#0d1b3e">DISCOVERY</text>`;
     svg.innerHTML = html;
 
     // Driver rows
@@ -751,13 +754,13 @@
     const dqScore = Math.round(IMT_DI_DIMENSIONS.reduce((a,dim)=>a+clamp(diValues[dim.key]),0)/IMT_DI_DIMENSIONS.length);
     document.getElementById('dqScore').textContent = dqScore + '%';
 
-    // Sub Composite™ spotlight: dipilih dari driver dominan, diposisikan oleh driver #2
+    // Sub Composite spotlight: dipilih dari driver dominan, diposisikan oleh driver #2
     const spotlight = imtSubCompositeSpotlight(topDriver, secondDriver);
     document.getElementById('spotlightIcon').textContent = IMT_DRIVERS[topDriver].icon;
     document.getElementById('spotlightName').textContent = spotlight.name;
     document.getElementById('spotlightBlurb').textContent = spotlight.blurb;
 
-    // Driver Dynamics™: Healthy / Activated / Stress / Shadow / Growth state
+    // Driver Dynamics: Healthy / Activated / Stress / Shadow / Growth state
     // of the dominant driver, plus its Core Development Challenge.
     const dyn = IMT_DRIVER_DYNAMICS[topDriver];
     document.getElementById('dynDriverName').textContent = IMT_DRIVERS[topDriver].name;
@@ -780,7 +783,7 @@
     document.getElementById('challengePoints').innerHTML = dyn.challenge.points.map(p=>`<li>${p}</li>`).join('');
     document.getElementById('challengeQuestion').textContent = `"${dyn.challenge.question}"`;
 
-    // Driver Development Path™: 5-stage journey positioned by DQ score,
+    // Driver Development Path: 5-stage journey positioned by DQ score,
     // ditampilkan sebagai gauge kontinu (posisi skor persis) + 5 milestone.
     const currentStage = imtStageFor(dqScore);
     const currentIdx = IMT_DEV_STAGES.findIndex(s => s.key === currentStage.key);
@@ -790,12 +793,12 @@
     document.getElementById('stagePinScore').textContent = 'DQ ' + dqScore;
     document.getElementById('stagePoints').innerHTML = IMT_DEV_STAGES.map((s,i)=>{
       const cls = i === currentIdx ? 'current' : (i < currentIdx ? 'done' : '');
-      return `<div class="stage-point ${cls}"><div class="dot">${s.icon}</div><div class="lbl">${s.name.replace('™','')}</div></div>`;
+      return `<div class="stage-point ${cls}"><div class="dot">${s.icon}</div><div class="lbl">${s.name.replace('','')}</div></div>`;
     }).join('');
     document.getElementById('pathFocus').textContent = `Fokus pengembangan Anda saat ini: ${currentStage.focus}`;
     document.getElementById('pathMeaning').textContent = currentStage.meaning;
 
-    // Development Path™ per-driver: tujuan, rumus pertumbuhan, pertanyaan refleksi, tantangan, tanda progres
+    // Development Path per-driver: tujuan, rumus pertumbuhan, pertanyaan refleksi, tantangan, tanda progres
     const devPath = IMT_DEV_PATH[topDriver];
     document.getElementById('pathDriverName').textContent = IMT_DRIVERS[topDriver].name;
     document.getElementById('pathSubheadDriver').textContent = IMT_DRIVERS[topDriver].name.toUpperCase();
@@ -808,7 +811,7 @@
     document.getElementById('pathSigns').innerHTML = devPath.signs.map(s => `<li>${s}</li>`).join('');
 
     // Validity / Consistency Check: deteksi straight-lining & extreme responding
-    const validity = JSON.parse(localStorage.getItem('imt_validity') || 'null') || imtValidity(JSON.parse(localStorage.getItem('imt_answers') || '{}'));
+    const validity = imtValidity(answers);
     const pill = document.getElementById('validityPill');
     pill.textContent = validity.label;
     pill.className = 'validity-pill ' + (validity.flag ? 'warn' : 'ok');

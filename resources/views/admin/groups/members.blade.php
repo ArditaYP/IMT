@@ -53,7 +53,13 @@
                         <span class="font-bold text-gray-800">{{ $topDriver }}</span> <span class="text-gray-500">({{ $topScore }})</span>
                     </td>
                     <td class="p-4 text-right">
-                        <a href="{{ route('assessment.laporan', $m->id) }}" target="_blank" class="bg-teal-50 text-teal-700 border border-teal-200 px-3 py-1 rounded hover:bg-teal-100 font-semibold text-xs">Lihat Laporan Individu</a>
+                        @if(auth()->user()->role === 'super_admin' || $group->client_can_view_reports)
+                            <a href="{{ route('assessment.laporan', $m->id) }}" target="_blank" class="bg-teal-50 text-teal-700 border border-teal-200 px-3 py-1 rounded hover:bg-teal-100 font-semibold text-xs">Lihat Laporan Individu</a>
+                        @else
+                            <button disabled title="Hubungi Super Admin untuk membuka akses laporan individu" class="bg-gray-100 text-gray-400 border border-gray-200 px-3 py-1 rounded font-semibold text-xs cursor-not-allowed">
+                                🔒 Laporan Terkunci
+                            </button>
+                        @endif
                     </td>
                 </tr>
             @empty

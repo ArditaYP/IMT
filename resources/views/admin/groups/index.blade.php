@@ -17,6 +17,27 @@
                     <input type="text" name="name" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contoh: PT. Maju Jaya" required>
                 </div>
                 <div class="flex-1">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">Industri</label>
+                    <select name="industry" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- Pilih Industri --</option>
+                        <option value="Teknologi & TI">Teknologi & TI</option>
+                        <option value="Agensi Digital & Kreatif">Agensi Digital & Kreatif</option>
+                        <option value="Keuangan & Perbankan">Keuangan & Perbankan</option>
+                        <option value="Pendidikan & Pelatihan">Pendidikan & Pelatihan</option>
+                        <option value="Kesehatan & Medis">Kesehatan & Medis</option>
+                        <option value="Manufaktur & Industri">Manufaktur & Industri</option>
+                        <option value="Ritel & E-Commerce">Ritel & E-Commerce</option>
+                        <option value="Konstruksi & Properti">Konstruksi & Properti</option>
+                        <option value="Logistik & Transportasi">Logistik & Transportasi</option>
+                        <option value="Pariwisata & Perhotelan">Pariwisata & Perhotelan</option>
+                        <option value="F&B (Food & Beverage)">F&B (Food & Beverage)</option>
+                        <option value="Pertambangan & Energi">Pertambangan & Energi</option>
+                        <option value="Pelayanan Publik & Pemerintahan">Pelayanan Publik & Pemerintahan</option>
+                        <option value="Layanan Profesional">Layanan Profesional</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="flex-1">
                     <label class="block text-sm font-medium text-gray-600 mb-1">Pemilik (Client Admin)</label>
                     <select name="user_id" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">-- Tidak Ada / Kosong --</option>
@@ -62,8 +83,8 @@
 </div>
 @endif
 
-<div class="bg-white rounded shadow-sm border border-gray-200 overflow-hidden">
-    <table class="w-full text-left border-collapse">
+<div class="bg-white rounded shadow-sm border border-gray-200 overflow-x-auto">
+    <table class="w-full text-left border-collapse min-w-[800px]">
         <thead>
             <tr class="bg-gray-100 text-gray-600 uppercase text-xs">
                 <th class="p-4 border-b">Nama Grup</th>
@@ -102,38 +123,43 @@
                     </td>
                     <td class="p-4">
                         @if($group->report_visibility === 'admin_only')
-                            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-semibold">Admin Saja</span>
+                            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-semibold inline-block whitespace-nowrap">Admin Saja</span>
                         @else
-                            <span class="bg-teal-100 text-teal-700 px-2 py-1 rounded text-xs font-semibold">Individu (Publik)</span>
+                            <span class="bg-teal-100 text-teal-700 px-2 py-1 rounded text-xs font-semibold inline-block whitespace-nowrap">Individu (Publik)</span>
                         @endif
                     </td>
                     @if(auth()->user()->isSuperAdmin())
                     <td class="p-4 text-xs font-semibold text-gray-700">
-                        {{ $group->user ? $group->user->name : '-' }}
+                        <div>{{ $group->user ? $group->user->name : '-' }}</div>
+                        @if($group->user && $group->client_can_view_reports)
+                            <div class="mt-1"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] font-bold">Laporan Terbuka 🔓</span></div>
+                        @elseif($group->user)
+                            <div class="mt-1"><span class="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-[10px] font-bold">Laporan Terkunci 🔒</span></div>
+                        @endif
                     </td>
                     @endif
                     <td class="p-4">
                         @if($group->is_active)
-                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">Aktif</span>
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold inline-block whitespace-nowrap">Aktif</span>
                         @else
-                            <span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-semibold">Nonaktif</span>
+                            <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-semibold inline-block whitespace-nowrap">Nonaktif</span>
                         @endif
                     </td>
-                    <td class="p-4 text-right space-x-2">
-                        @if($group->assessments_count > 0)
-                            <a href="{{ route('admin.groups.members', $group->id) }}" class="text-teal-600 hover:underline">Lihat Anggota ({{ $group->assessments_count }})</a>
-                            <span class="text-gray-300">|</span>
-                            <a href="{{ route('admin.groups.report', $group->id) }}" target="_blank" class="text-indigo-600 hover:underline">Laporan Grup</a>
-                        @endif
-                        @if(auth()->user()->isSuperAdmin())
-                        <span class="text-gray-300">|</span>
-                        <a href="{{ route('admin.groups.edit', $group->id) }}" class="text-blue-500 hover:underline">Edit</a>
-                        
-                        <form action="{{ route('admin.groups.destroy', $group->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus grup ini? Laporan individu tidak akan terhapus, tapi laporan grup ini akan hilang.')">
-                            @csrf @method('DELETE')
-                            <button class="text-red-500 hover:underline">Hapus</button>
-                        </form>
-                        @endif
+                    <td class="p-4">
+                        <div class="flex flex-wrap items-center justify-end gap-2">
+                            @if($group->assessments_count > 0)
+                                <a href="{{ route('admin.groups.members', $group->id) }}" class="px-3 py-1.5 bg-teal-50 text-teal-700 hover:bg-teal-100 rounded text-xs font-semibold transition-colors">Anggota ({{ $group->assessments_count }})</a>
+                                <a href="{{ route('admin.groups.report', $group->id) }}" target="_blank" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded text-xs font-semibold transition-colors">Laporan</a>
+                            @endif
+                            @if(auth()->user()->isSuperAdmin())
+                            <a href="{{ route('admin.groups.edit', $group->id) }}" class="px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded text-xs font-semibold transition-colors">Edit</a>
+                            
+                            <form action="{{ route('admin.groups.destroy', $group->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus grup ini? Laporan individu tidak akan terhapus, tapi laporan grup ini akan hilang.')">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="px-3 py-1.5 bg-red-50 text-red-700 hover:bg-red-100 rounded text-xs font-semibold transition-colors">Hapus</button>
+                            </form>
+                            @endif
+                        </div>
                     </td>
                 </tr>
             @empty

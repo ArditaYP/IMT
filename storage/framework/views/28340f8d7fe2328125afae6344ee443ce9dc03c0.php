@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Laporan Tim: IMT Discovery</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
-<link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png') }}">
-<link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+<link rel="icon" type="image/png" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
+<link rel="apple-touch-icon" href="<?php echo e(asset('assets/img/apple-touch-icon.png')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/style.css')); ?>">
 <style>
   body{background:var(--bg);}
   .page{max-width:1100px; margin:24px auto; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.08);}
@@ -174,7 +174,7 @@
 <body>
 
 <div class="no-print" style="max-width:1100px; margin:16px auto 0; padding:0 24px; display:flex; justify-content:space-between; align-items:center;">
-  <a href="{{ route('admin.groups') }}" class="btn btn-ghost btn-sm">← Kembali ke Dashboard</a>
+  <a href="<?php echo e(route('admin.groups')); ?>" class="btn btn-ghost btn-sm">← Kembali ke Dashboard</a>
   <div style="display:flex; gap:10px;">
     <button class="btn btn-dark btn-sm" onclick="window.print()">Unduh sebagai PDF</button>
   </div>
@@ -184,20 +184,20 @@
 
   <div class="grid-top">
     <div>
-      <img src="{{ asset('assets/img/logo-icon.png') }}" alt="IMT Discovery" style="height:44px; margin-bottom:4px;">
+      <img src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery" style="height:44px; margin-bottom:4px;">
       <div class="logo-sub">INNER MOTIVATION TRANSFORMATION<br><b>DISCOVER YOUR TEAM</b></div>
       <div class="report-title">IMT DISCOVERY<h2>LAPORAN TIM</h2></div>
-      <div class="profile"><div class="avatar">{{ strtoupper(substr($group->name, 0, 3)) }}</div><div class="name">{{ $group->name }}</div></div>
+      <div class="profile"><div class="avatar"><?php echo e(strtoupper(substr($group->name, 0, 3))); ?></div><div class="name"><?php echo e($group->name); ?></div></div>
       <div class="info-list">
-        <div><span class="label">Industri</span><span class="val">{{ $group->industry ?? '-' }}</span></div>
-        <div><span class="label">Staf Dites</span><span class="val">{{ $totalParticipants }} ({{ $group->quota > 0 ? round(($totalParticipants / $group->quota) * 100) : 0 }}%) dari {{ $group->quota }} Kuota</span></div>
-        <div><span class="label">Periode Tes</span><span class="val">{{ $group->created_at->format('d M Y') }}</span></div>
-        <div><span class="label">ID Laporan</span><span class="val">{{ $group->code }}</span></div>
-        <div><span class="label">Rata-rata Durasi</span><span class="val">{{ $avgDurationFormatted ?? '-' }}</span></div>
+        <div><span class="label">Industri</span><span class="val"><?php echo e($group->industry ?? '-'); ?></span></div>
+        <div><span class="label">Staf Dites</span><span class="val"><?php echo e($totalParticipants); ?> (<?php echo e($group->quota > 0 ? round(($totalParticipants / $group->quota) * 100) : 0); ?>%) dari <?php echo e($group->quota); ?> Kuota</span></div>
+        <div><span class="label">Periode Tes</span><span class="val"><?php echo e($group->created_at->format('d M Y')); ?></span></div>
+        <div><span class="label">ID Laporan</span><span class="val"><?php echo e($group->code); ?></span></div>
+        <div><span class="label">Rata-rata Durasi</span><span class="val"><?php echo e($avgDurationFormatted ?? '-'); ?></span></div>
       </div>
       <div class="about-box">
         <h3>TENTANG LAPORAN TIM INI</h3>
-        Laporan ini menggabungkan hasil tes {{ $totalParticipants }} peserta menjadi satu gambaran kolektif. Subjeknya bukan satu orang, tapi kecenderungan Tim secara keseluruhan: pola mana yang paling banyak muncul, dan pola mana yang paling jarang muncul di antara anggota tim.
+        Laporan ini menggabungkan hasil tes <?php echo e($totalParticipants); ?> peserta menjadi satu gambaran kolektif. Subjeknya bukan satu orang, tapi kecenderungan Tim secara keseluruhan: pola mana yang paling banyak muncul, dan pola mana yang paling jarang muncul di antara anggota tim.
         <blockquote style="margin:12px 0 0; font-style:italic; color:#fff; border-left:3px solid var(--orange); padding-left:10px;">Tim yang memahami dorongan kolektifnya bisa merancang cara kerja yang sesuai dengan kekuatan aslinya, bukan cuma meniru cara kerja tim lain.</blockquote>
       </div>
     </div>
@@ -207,13 +207,13 @@
         <div class="archetype-box">
           <div class="tag">ARKETIPE TIM</div>
           <div class="archetype-icon">4</div>
-          <h2>{{ $archetype['name'] }}</h2>
-          <p><b>Dorongan kolektif:</b> {{ $archetype['desire'] }}</p>
+          <h2><?php echo e($archetype['name']); ?></h2>
+          <p><b>Dorongan kolektif:</b> <?php echo e($archetype['desire']); ?></p>
           <div class="arch-divider"></div>
-          <p><b>Kerentanan:</b> {{ $archetype['fear'] }}</p>
+          <p><b>Kerentanan:</b> <?php echo e($archetype['fear']); ?></p>
           <div class="arch-key-q">
             <span>?</span>
-            <p>{{ $archetype['keyQuestion'] }}</p>
+            <p><?php echo e($archetype['keyQuestion']); ?></p>
           </div>
         </div>
 
@@ -221,33 +221,33 @@
           <div class="radar-box">
             <h3>PROFIL 5 DRIVER TIM: RATA-RATA &amp; SEBARAN</h3>
             <div class="range-chart">
-              @php
+              <?php
                 $radarOrder = ['security', 'significance', 'connection', 'growth', 'contribution'];
-              @endphp
-              @foreach($radarOrder as $d)
+              ?>
+              <?php $__currentLoopData = $radarOrder; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <div class="range-row">
-                <div class="rr-head"><span class="rr-name" style="color:{{ config('imt_team.drivers.'.$d.'.color') }};">{{ config('imt_team.drivers.'.$d.'.label') }}</span><span class="rr-avg">{{ $avgScores[$d] }}</span></div>
-                <div class="range-track"><div class="range-fill" style="left:{{ $driverStats[$d]['min'] }}%; width:{{ max(0, $driverStats[$d]['max'] - $driverStats[$d]['min']) }}%; background:{{ config('imt_team.drivers.'.$d.'.color') }};"></div><div class="range-marker" style="left:{{ $avgScores[$d] }}%; background:{{ config('imt_team.drivers.'.$d.'.color') }};"></div></div>
-                <div class="range-minmax"><span>min {{ $driverStats[$d]['min'] }}</span><span>max {{ $driverStats[$d]['max'] }}</span></div>
+                <div class="rr-head"><span class="rr-name" style="color:<?php echo e(config('imt_team.drivers.'.$d.'.color')); ?>;"><?php echo e(config('imt_team.drivers.'.$d.'.label')); ?></span><span class="rr-avg"><?php echo e($avgScores[$d]); ?></span></div>
+                <div class="range-track"><div class="range-fill" style="left:<?php echo e($driverStats[$d]['min']); ?>%; width:<?php echo e(max(0, $driverStats[$d]['max'] - $driverStats[$d]['min'])); ?>%; background:<?php echo e(config('imt_team.drivers.'.$d.'.color')); ?>;"></div><div class="range-marker" style="left:<?php echo e($avgScores[$d]); ?>%; background:<?php echo e(config('imt_team.drivers.'.$d.'.color')); ?>;"></div></div>
+                <div class="range-minmax"><span>min <?php echo e($driverStats[$d]['min']); ?></span><span>max <?php echo e($driverStats[$d]['max']); ?></span></div>
               </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               <div class="range-legend">Garis tebal <b>▍</b> menandai rata-rata tim. Area warna menunjukkan rentang skor dari anggota tim paling rendah sampai paling tinggi di driver itu, supaya sebaran tidak tersembunyi di balik satu angka rata-rata.</div>
             </div>
             
             <div class="team-comp">
               <div style="font-size:10px; letter-spacing:1px; color:var(--muted); margin-bottom:8px; font-weight:700;">KOMPOSISI TIM: DRIVER PALING MENONJOL PER ORANG</div>
-              @php
+              <?php
                   $orderedStats = collect($driverStats)->sortByDesc('count');
-              @endphp
-              @foreach($orderedStats as $driver => $stat)
-              <div class="team-comp-row"><span class="tc-label">{{ ucfirst($driver) }}</span><div class="team-comp-track"><div class="team-comp-fill" style="width:{{ $stat['percentage'] }}%; background:{{ config('imt_team.drivers.'.$driver.'.color') }};"></div></div><span class="tc-val">{{ $stat['percentage'] }}% ({{ $stat['count'] }} org)</span></div>
-              @endforeach
+              ?>
+              <?php $__currentLoopData = $orderedStats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $driver => $stat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <div class="team-comp-row"><span class="tc-label"><?php echo e(ucfirst($driver)); ?></span><div class="team-comp-track"><div class="team-comp-fill" style="width:<?php echo e($stat['percentage']); ?>%; background:<?php echo e(config('imt_team.drivers.'.$driver.'.color')); ?>;"></div></div><span class="tc-val"><?php echo e($stat['percentage']); ?>% (<?php echo e($stat['count']); ?> org)</span></div>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
           </div>
 
           <div class="apa-artinya">
             <h3>APA ARTINYA BAGI TIM</h3>
-            <p>{{ config('imt_team.drivers.' . $top1 . '.team_desc') }} Namun, setiap kekuatan memiliki area buta. {{ config('imt_team.drivers.' . $top1 . '.team_weakness') }} Kekuatan utamanya adalah {{ config('imt_team.drivers.' . $top1 . '.team_strength') }}</p>
+            <p><?php echo e(config('imt_team.drivers.' . $top1 . '.team_desc')); ?> Namun, setiap kekuatan memiliki area buta. <?php echo e(config('imt_team.drivers.' . $top1 . '.team_weakness')); ?> Kekuatan utamanya adalah <?php echo e(config('imt_team.drivers.' . $top1 . '.team_strength')); ?></p>
           </div>
         </div>
       </div>
@@ -257,15 +257,15 @@
   <div class="di-box" style="margin-top:24px;">
     <h3>DQ TIM: TEAM DRIVER QUOTIENT RATA-RATA</h3>
     <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:16px;">
-      <div style="font-size:40px; font-weight:800;">{{ $avgDq }}%</div>
-      <div style="font-size:12px; color:#c7cde0; line-height:1.6;">Rata-rata dari {{ $totalParticipants }} peserta. DQ tim menggambarkan seberapa jauh, secara kolektif, tim ini sudah mengenali dan mengelola dorongan-dorongannya sendiri, bukan angka tetap yang tidak bisa berubah.</div>
+      <div style="font-size:40px; font-weight:800;"><?php echo e($avgDq); ?>%</div>
+      <div style="font-size:12px; color:#c7cde0; line-height:1.6;">Rata-rata dari <?php echo e($totalParticipants); ?> peserta. DQ tim menggambarkan seberapa jauh, secara kolektif, tim ini sudah mengenali dan mengelola dorongan-dorongannya sendiri, bukan angka tetap yang tidak bisa berubah.</div>
     </div>
     <div class="di-grid">
-      <div class="di-item"><div class="n">{{ $diValues['awareness'] }}%</div><div class="l">AWARENESS</div></div>
-      <div class="di-item"><div class="n">{{ $diValues['insight'] }}%</div><div class="l">INSIGHT</div></div>
-      <div class="di-item"><div class="n">{{ $diValues['regulation'] }}%</div><div class="l">REGULATION</div></div>
-      <div class="di-item"><div class="n">{{ $diValues['development'] }}%</div><div class="l">DEVELOPMENT</div></div>
-      <div class="di-item"><div class="n">{{ $diValues['transformation'] }}%</div><div class="l">TRANSFORMATION</div></div>
+      <div class="di-item"><div class="n"><?php echo e($diValues['awareness']); ?>%</div><div class="l">AWARENESS</div></div>
+      <div class="di-item"><div class="n"><?php echo e($diValues['insight']); ?>%</div><div class="l">INSIGHT</div></div>
+      <div class="di-item"><div class="n"><?php echo e($diValues['regulation']); ?>%</div><div class="l">REGULATION</div></div>
+      <div class="di-item"><div class="n"><?php echo e($diValues['development']); ?>%</div><div class="l">DEVELOPMENT</div></div>
+      <div class="di-item"><div class="n"><?php echo e($diValues['transformation']); ?>%</div><div class="l">TRANSFORMATION</div></div>
     </div>
   </div>
 
@@ -275,82 +275,82 @@
   <div class="sc-highlight-grid">
     <div class="sc-highlight-card strength">
       <div class="hdr">5 KEKUATAN TERATAS TIM</div>
-      @foreach($top5SubComposites as $sc)
+      <?php $__currentLoopData = $top5SubComposites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="sc-highlight-row">
-        <div class="sc-row-head"><span><span class="nm">{{ $sc['name'] }}</span><span class="dr">{{ ucfirst($sc['driver']) }}</span></span><span class="sc">{{ $sc['score'] }}</span></div>
-        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:{{ $sc['score'] }}%; background:{{ config('imt_team.drivers.'.$sc['driver'].'.color') }};"></div></div>
-        <div class="sc-bar-minmax"><span>min {{ $sc['min'] }}</span><span>max {{ $sc['max'] }}</span></div>
+        <div class="sc-row-head"><span><span class="nm"><?php echo e($sc['name']); ?></span><span class="dr"><?php echo e(ucfirst($sc['driver'])); ?></span></span><span class="sc"><?php echo e($sc['score']); ?></span></div>
+        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:<?php echo e($sc['score']); ?>%; background:<?php echo e(config('imt_team.drivers.'.$sc['driver'].'.color')); ?>;"></div></div>
+        <div class="sc-bar-minmax"><span>min <?php echo e($sc['min']); ?></span><span>max <?php echo e($sc['max']); ?></span></div>
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
     <div class="sc-highlight-card watch">
       <div class="hdr">5 AREA PENGEMBANGAN TERBESAR TIM</div>
-      @foreach($bottom5SubComposites as $sc)
+      <?php $__currentLoopData = $bottom5SubComposites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="sc-highlight-row">
-        <div class="sc-row-head"><span><span class="nm">{{ $sc['name'] }}</span><span class="dr">{{ ucfirst($sc['driver']) }}</span></span><span class="sc">{{ $sc['score'] }}</span></div>
-        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:{{ $sc['score'] }}%; background:{{ config('imt_team.drivers.'.$sc['driver'].'.color') }};"></div></div>
-        <div class="sc-bar-minmax"><span>min {{ $sc['min'] }}</span><span>max {{ $sc['max'] }}</span></div>
+        <div class="sc-row-head"><span><span class="nm"><?php echo e($sc['name']); ?></span><span class="dr"><?php echo e(ucfirst($sc['driver'])); ?></span></span><span class="sc"><?php echo e($sc['score']); ?></span></div>
+        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:<?php echo e($sc['score']); ?>%; background:<?php echo e(config('imt_team.drivers.'.$sc['driver'].'.color')); ?>;"></div></div>
+        <div class="sc-bar-minmax"><span>min <?php echo e($sc['min']); ?></span><span>max <?php echo e($sc['max']); ?></span></div>
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
   </div>
 
   <div class="dyn-section">
-    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">DINAMIKA TIM: Driver Dynamics pada {{ ucfirst($top1) }} (driver dominan tim)</div>
+    <div class="section-navy-header" style="border-radius:8px 8px 0 0;">DINAMIKA TIM: Driver Dynamics pada <?php echo e(ucfirst($top1)); ?> (driver dominan tim)</div>
     <div class="section-body">
-      <p style="font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.6;">Sebuah tim bisa menunjukkan lima kondisi berbeda tergantung tekanan yang sedang dihadapi, mulai dari versi paling sehat sampai versi paling berlebihan. Berikut bagaimana {{ ucfirst($top1) }}, driver dominan tim ini, biasanya terekspresi secara kolektif.</p>
+      <p style="font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.6;">Sebuah tim bisa menunjukkan lima kondisi berbeda tergantung tekanan yang sedang dihadapi, mulai dari versi paling sehat sampai versi paling berlebihan. Berikut bagaimana <?php echo e(ucfirst($top1)); ?>, driver dominan tim ini, biasanya terekspresi secara kolektif.</p>
       <div class="dyn-cards">
         <div class="dyn-card healthy">
           <h4>1 HEALTHY</h4>
-          <div class="desc">{{ config('imt_team.drivers.'.$top1.'.healthy.desc') }}</div>
+          <div class="desc"><?php echo e(config('imt_team.drivers.'.$top1.'.healthy.desc')); ?></div>
           <ul>
-            @foreach(config('imt_team.drivers.'.$top1.'.healthy.points') as $pt)
-            <li>{{ $pt }}</li>
-            @endforeach
+            <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.healthy.points'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($pt); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
         <div class="dyn-card activated">
           <h4>2 ACTIVATED</h4>
-          <div class="trigger">{{ config('imt_team.drivers.'.$top1.'.activated.trigger') }}</div>
+          <div class="trigger"><?php echo e(config('imt_team.drivers.'.$top1.'.activated.trigger')); ?></div>
           <ul>
-            @foreach(config('imt_team.drivers.'.$top1.'.activated.points') as $pt)
-            <li>{{ $pt }}</li>
-            @endforeach
+            <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.activated.points'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($pt); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
         <div class="dyn-card stress">
           <h4>3 STRESS</h4>
-          <div class="desc">{{ config('imt_team.drivers.'.$top1.'.stress.desc') }}</div>
+          <div class="desc"><?php echo e(config('imt_team.drivers.'.$top1.'.stress.desc')); ?></div>
           <ul>
-            @foreach(config('imt_team.drivers.'.$top1.'.stress.points') as $pt)
-            <li>{{ $pt }}</li>
-            @endforeach
+            <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.stress.points'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($pt); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
         <div class="dyn-card shadow">
           <h4>4 SHADOW</h4>
-          <div class="desc">{{ config('imt_team.drivers.'.$top1.'.shadow.desc') }}</div>
+          <div class="desc"><?php echo e(config('imt_team.drivers.'.$top1.'.shadow.desc')); ?></div>
           <ul>
-            @foreach(config('imt_team.drivers.'.$top1.'.shadow.points') as $pt)
-            <li>{{ $pt }}</li>
-            @endforeach
+            <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.shadow.points'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($pt); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
         <div class="dyn-card growth">
           <h4>5 GROWTH</h4>
-          <div class="desc">{{ config('imt_team.drivers.'.$top1.'.growth.desc') }}</div>
+          <div class="desc"><?php echo e(config('imt_team.drivers.'.$top1.'.growth.desc')); ?></div>
           <ul>
-            @foreach(config('imt_team.drivers.'.$top1.'.growth.points') as $pt)
-            <li>{{ $pt }}</li>
-            @endforeach
+            <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.growth.points'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($pt); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
       </div>
       
       <div class="challenge-box">
         <div class="ctag">CORE DEVELOPMENT CHALLENGE</div>
-        <h4>{{ config('imt_team.drivers.'.$top1.'.challenge.title') }}</h4>
-        <p class="lesson">{{ config('imt_team.drivers.'.$top1.'.challenge.lesson') }}</p>
+        <h4><?php echo e(config('imt_team.drivers.'.$top1.'.challenge.title')); ?></h4>
+        <p class="lesson"><?php echo e(config('imt_team.drivers.'.$top1.'.challenge.lesson')); ?></p>
       </div>
     </div>
   </div>
@@ -358,27 +358,27 @@
   <div class="path-section">
     <div class="section-navy-header" style="border-radius:8px 8px 0 0;">TEAM DEVELOPMENT PATH</div>
     <div class="section-body">
-      @php
+      <?php
           $dqStage = 'Unaware'; $dqStageIndex = 0;
           if ($avgDq >= 20) { $dqStage = 'Aware'; $dqStageIndex = 1; }
           if ($avgDq >= 40) { $dqStage = 'Understanding'; $dqStageIndex = 2; }
           if ($avgDq >= 60) { $dqStage = 'Managing'; $dqStageIndex = 3; }
           if ($avgDq >= 80) { $dqStage = 'Transforming'; $dqStageIndex = 4; }
-      @endphp
-      <p style="font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.6;">DQ tim rata-rata berada di {{ $avgDq }}%, masuk tahap <b style="color:var(--navy);">{{ $dqStage }}</b>. Tim berada pada fase ini terkait kemampuan kolektif mengenali dan mengelola dorongannya.</p>
+      ?>
+      <p style="font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.6;">DQ tim rata-rata berada di <?php echo e($avgDq); ?>%, masuk tahap <b style="color:var(--navy);"><?php echo e($dqStage); ?></b>. Tim berada pada fase ini terkait kemampuan kolektif mengenali dan mengelola dorongannya.</p>
       
       <div class="stage-gauge">
         <div class="stage-bar-track">
-          <div class="stage-bar-fill" style="width:{{ $avgDq }}%;"></div>
-          <div class="stage-pin" style="left:{{ $avgDq }}%;">DQ Tim {{ $avgDq }}%</div>
+          <div class="stage-bar-fill" style="width:<?php echo e($avgDq); ?>%;"></div>
+          <div class="stage-pin" style="left:<?php echo e($avgDq); ?>%;">DQ Tim <?php echo e($avgDq); ?>%</div>
         </div>
         
         <div class="stage-points">
-          <div class="stage-point {{ $dqStageIndex >= 0 ? ($dqStageIndex == 0 ? 'current' : 'done') : '' }}"><div class="dot">①</div><div class="lbl">Unaware</div></div>
-          <div class="stage-point {{ $dqStageIndex >= 1 ? ($dqStageIndex == 1 ? 'current' : 'done') : '' }}"><div class="dot">②</div><div class="lbl">Aware</div></div>
-          <div class="stage-point {{ $dqStageIndex >= 2 ? ($dqStageIndex == 2 ? 'current' : 'done') : '' }}"><div class="dot">③</div><div class="lbl">Understanding</div></div>
-          <div class="stage-point {{ $dqStageIndex >= 3 ? ($dqStageIndex == 3 ? 'current' : 'done') : '' }}"><div class="dot">④</div><div class="lbl">Managing</div></div>
-          <div class="stage-point {{ $dqStageIndex >= 4 ? ($dqStageIndex == 4 ? 'current' : 'done') : '' }}"><div class="dot">⑤</div><div class="lbl">Transforming</div></div>
+          <div class="stage-point <?php echo e($dqStageIndex >= 0 ? ($dqStageIndex == 0 ? 'current' : 'done') : ''); ?>"><div class="dot">①</div><div class="lbl">Unaware</div></div>
+          <div class="stage-point <?php echo e($dqStageIndex >= 1 ? ($dqStageIndex == 1 ? 'current' : 'done') : ''); ?>"><div class="dot">②</div><div class="lbl">Aware</div></div>
+          <div class="stage-point <?php echo e($dqStageIndex >= 2 ? ($dqStageIndex == 2 ? 'current' : 'done') : ''); ?>"><div class="dot">③</div><div class="lbl">Understanding</div></div>
+          <div class="stage-point <?php echo e($dqStageIndex >= 3 ? ($dqStageIndex == 3 ? 'current' : 'done') : ''); ?>"><div class="dot">④</div><div class="lbl">Managing</div></div>
+          <div class="stage-point <?php echo e($dqStageIndex >= 4 ? ($dqStageIndex == 4 ? 'current' : 'done') : ''); ?>"><div class="dot">⑤</div><div class="lbl">Transforming</div></div>
         </div>
       </div>
       
@@ -389,17 +389,17 @@
     <div>
       <div class="section-navy-header">PROFIL PENUH 5 DRIVER TIM</div>
       <div class="section-body" style="padding:0 20px;">
-        @php
+        <?php
             $orderedDrivers = ['security', 'significance', 'connection', 'growth', 'contribution'];
-        @endphp
-        @foreach($orderedDrivers as $d)
+        ?>
+        <?php $__currentLoopData = $orderedDrivers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="driver-row">
-          <div class="driver-icon" style="background:{{ config('imt_team.drivers.'.$d.'.color') }};">{{ config('imt_team.drivers.'.$d.'.icon') }}</div>
-          <div><span class="driver-score" style="color:{{ config('imt_team.drivers.'.$d.'.color') }};">{{ $avgScores[$d] }}</span><span class="driver-name">{{ config('imt_team.drivers.'.$d.'.name') }}</span>
-            <div class="driver-desc">{{ config('imt_team.drivers.'.$d.'.team_desc') }}</div>
+          <div class="driver-icon" style="background:<?php echo e(config('imt_team.drivers.'.$d.'.color')); ?>;"><?php echo e(config('imt_team.drivers.'.$d.'.icon')); ?></div>
+          <div><span class="driver-score" style="color:<?php echo e(config('imt_team.drivers.'.$d.'.color')); ?>;"><?php echo e($avgScores[$d]); ?></span><span class="driver-name"><?php echo e(config('imt_team.drivers.'.$d.'.name')); ?></span>
+            <div class="driver-desc"><?php echo e(config('imt_team.drivers.'.$d.'.team_desc')); ?></div>
           </div>
         </div>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </div>
     </div>
     
@@ -407,28 +407,28 @@
       <div class="section-navy-header">KEKUATAN TIM DALAM TINDAKAN</div>
       <div class="section-body">
         <ul class="check-list">
-          @foreach(config('imt_team.drivers.'.$top1.'.strengths_action') as $item)
-          <li>{{ $item }}</li>
-          @endforeach
+          <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.strengths_action'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($item); ?></li>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
         <h4 style="color:var(--navy); font-size:12.5px; margin:14px 0 6px;">PELUANG UNTUK BERTUMBUH</h4>
         <ul class="check-list growth">
-          @foreach(config('imt_team.drivers.'.$top1.'.growth_opportunities') as $item)
-          <li>{{ $item }}</li>
-          @endforeach
+          <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.growth_opportunities'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($item); ?></li>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
       </div>
       <div class="action-box" style="margin-top:16px;">
         <h4>LANGKAH PRAKTIS UNTUK TIM</h4>
         <ul class="check-list">
-          @foreach(config('imt_team.drivers.'.$top1.'.practical_steps') as $item)
-          <li>{{ $item }}</li>
-          @endforeach
+          <?php $__currentLoopData = config('imt_team.drivers.'.$top1.'.practical_steps'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($item); ?></li>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
       </div>
       <div class="energy-box">
         <h4>ENERGI TIM PALING TINGGI KETIKA...</h4>
-        <p>{{ config('imt_team.drivers.'.$top1.'.high_energy') }}</p>
+        <p><?php echo e(config('imt_team.drivers.'.$top1.'.high_energy')); ?></p>
       </div>
     </div>
   </div>
@@ -436,28 +436,28 @@
   <div class="training-section">
     <div class="section-navy-header" style="border-radius:8px 8px 0 0;">5 REKOMENDASI PELATIHAN UNTUK TIM</div>
     <div class="section-body">
-      <p style="font-size:12.5px; color:var(--muted); margin:0 0 4px; line-height:1.6;">Memakai kategori program dari Motivator Bali (motivatorbali.com), dipilih dan diurutkan sesuai hasil tes {{ $totalParticipants }} karyawan di atas.</p>
-      @foreach($trainingRecommendations as $index => $rec)
+      <p style="font-size:12.5px; color:var(--muted); margin:0 0 4px; line-height:1.6;">Memakai kategori program dari Motivator Bali (motivatorbali.com), dipilih dan diurutkan sesuai hasil tes <?php echo e($totalParticipants); ?> karyawan di atas.</p>
+      <?php $__currentLoopData = $trainingRecommendations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $rec): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="training-item">
-        <div class="training-num">{{ $index + 1 }}</div>
+        <div class="training-num"><?php echo e($index + 1); ?></div>
         <div>
-          <div class="cat">{{ $rec['cat'] }}</div>
-          <h5>{{ $rec['title'] }}</h5>
-          <p>{{ $rec['desc'] }}</p>
-          <div class="basis">{{ $rec['basis'] }}</div>
+          <div class="cat"><?php echo e($rec['cat']); ?></div>
+          <h5><?php echo e($rec['title']); ?></h5>
+          <p><?php echo e($rec['desc']); ?></p>
+          <div class="basis"><?php echo e($rec['basis']); ?></div>
         </div>
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
   </div>
 
   <div class="validity-note">
     <h4>Catatan Kualitas Data</h4>
-    Dari {{ $totalParticipants }} peserta yang mengikuti tes, {{ $validity['cleanCount'] }} orang ({{ $validity['cleanPercentage'] }}%) menunjukkan pola jawaban yang konsisten dan dapat diandalkan. {{ $validity['flaggedCount'] }} orang ({{ $validity['flaggedPercentage'] }}%) menunjukkan indikasi jawaban kurang cermat (misalnya terlalu cepat menjawab), dan sebaiknya diminta mengisi ulang sebelum hasil individunya dipakai untuk keputusan personal. Skor tim di laporan ini tetap dihitung dari seluruh {{ $totalParticipants }} responden supaya gambaran umum tetap representatif, tapi {{ $validity['flaggedCount'] }} responden tersebut sebaiknya ditindaklanjuti secara terpisah.
+    Dari <?php echo e($totalParticipants); ?> peserta yang mengikuti tes, <?php echo e($validity['cleanCount']); ?> orang (<?php echo e($validity['cleanPercentage']); ?>%) menunjukkan pola jawaban yang konsisten dan dapat diandalkan. <?php echo e($validity['flaggedCount']); ?> orang (<?php echo e($validity['flaggedPercentage']); ?>%) menunjukkan indikasi jawaban kurang cermat (misalnya terlalu cepat menjawab), dan sebaiknya diminta mengisi ulang sebelum hasil individunya dipakai untuk keputusan personal. Skor tim di laporan ini tetap dihitung dari seluruh <?php echo e($totalParticipants); ?> responden supaya gambaran umum tetap representatif, tapi <?php echo e($validity['flaggedCount']); ?> responden tersebut sebaiknya ditindaklanjuti secara terpisah.
   </div>
 
   <div class="foot">
-    <div class="flogo" style="display:flex; align-items:center; gap:6px;"><img src="{{ asset('assets/img/logo-icon.png') }}" alt="IMT" style="height:16px;"> IMT</div>
+    <div class="flogo" style="display:flex; align-items:center; gap:6px;"><img src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT" style="height:16px;"> IMT</div>
     <div class="fitem"><b>BERBASIS SAINS</b><span>Dibangun berdasarkan penelitian psikometri modern dan kerangka Driver Intelligence (DI), diagregasi dari data individu sungguhan.</span></div>
     <div class="fitem"><b>AKURAT &amp; TERPERCAYA</b><span>Model psikometri dengan standar yang tinggi, transparan soal kualitas data di setiap laporan.</span></div>
     <div class="fitem"><b>WAWASAN YANG DAPAT DITINDAKLANJUTI</b><span>Panduan praktis untuk pengembangan tim, bukan cuma angka.</span></div>
@@ -466,3 +466,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\Users\CSO KUTA 2\Documents\web\IMT\resources\views/admin/groups/team-report.blade.php ENDPATH**/ ?>

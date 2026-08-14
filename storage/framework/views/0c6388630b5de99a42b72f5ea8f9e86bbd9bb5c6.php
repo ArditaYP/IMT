@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asesmen Selesai - IMT Discovery</title>
-<link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
-<link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
+<link rel="apple-touch-icon" href="<?php echo e(asset('assets/img/apple-touch-icon.png')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
@@ -17,9 +17,9 @@
                 </svg>
             </div>
         </div>
-        <h2 class="text-2xl font-bold text-slate-800 mb-3">Terima Kasih, {{ $assessment->name }}!</h2>
+        <h2 class="text-2xl font-bold text-slate-800 mb-3">Terima Kasih, <?php echo e($assessment->name); ?>!</h2>
         <p class="text-slate-600 mb-6 text-sm leading-relaxed">
-            Hasil asesmen Anda telah berhasil disimpan dan dikirimkan secara aman ke Admin grup Anda (<strong>{{ $group->name }}</strong>).
+            Hasil asesmen Anda telah berhasil disimpan dan dikirimkan secara aman ke Admin grup Anda (<strong><?php echo e($group->name); ?></strong>).
         </p>
         
         <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mb-8">
@@ -29,9 +29,10 @@
             </p>
         </div>
 
-        <a href="{{ route('home') }}" class="block w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-6 rounded-xl transition duration-200">
+        <a href="<?php echo e(route('home')); ?>" class="block w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-6 rounded-xl transition duration-200">
             Kembali ke Beranda
         </a>
     </div>
 </body>
 </html>
+<?php /**PATH C:\Users\CSO KUTA 2\Documents\web\IMT\resources\views/assessment/thankyou.blade.php ENDPATH**/ ?>

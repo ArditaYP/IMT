@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IMT Discovery™ — Pilih Jalur Tes Anda</title>
+<title>IMT Discovery — Pilih Jalur Tes Anda</title>
 <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
 <link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png') }}">
 <link rel="stylesheet" href="{{ asset('assets/style.css') }}">

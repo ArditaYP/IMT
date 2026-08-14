@@ -12,9 +12,11 @@ class Group extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'industry',
         'code',
         'quota',
         'report_visibility',
+        'client_can_view_reports',
         'is_active',
         'start_time',
         'end_time',
@@ -22,6 +24,7 @@ class Group extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'client_can_view_reports' => 'boolean',
         'start_time' => 'datetime',
         'end_time' => 'datetime',
     ];

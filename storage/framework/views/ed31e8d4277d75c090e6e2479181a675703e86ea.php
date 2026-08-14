@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IMT Discovery™ — Temukan 5 Human Drivers & Motivasi Sejati Anda</title>
+<title>IMT Discovery — Temukan 5 Human Drivers & Motivasi Sejati Anda</title>
 <meta name="description" content="IMT Discovery adalah tes psikometri yang mengungkap 5 Human Drivers, arketipe, dan skor DQ (Driver Quotient) — kecerdasan mengelola motivasi diri — dengan laporan interpretasi otomatis dalam hitungan menit. Untuk individu & tim korporasi.">
 <meta name="keywords" content="tes kepribadian, tes motivasi, IMT Discovery, DQ Driver Quotient, Driver Intelligence, psikometri, assessment korporasi, tes karyawan">
 <link rel="canonical" href="https://imtdiscovery.id/">
-<meta property="og:title" content="IMT Discovery™ — Temukan Apa yang Benar-Benar Menggerakkan Anda">
+<meta property="og:title" content="IMT Discovery — Temukan Apa yang Benar-Benar Menggerakkan Anda">
 <meta property="og:description" content="Tes psikometri 5 Human Drivers + skor DQ (Driver Quotient). Laporan interpretasi otomatis, personal & korporasi.">
 <meta property="og:type" content="website">
 <script type="application/ld+json">
@@ -51,9 +51,38 @@
       <a href="#faq">FAQ</a>
       <a href="team.html">Untuk Tim/Korporasi</a>
     </div>
-    <div class="nav-cta">
-      <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-ghost btn-sm">Masuk</a>
-      <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary btn-sm">Mulai Tes</a>
+    <div class="nav-cta" style="display: flex; align-items: center; gap: 12px;">
+      <?php if(auth()->guard()->check()): ?>
+        <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary">Mulai Tes</a>
+        
+        <style>
+          .user-dropdown-btn { display: flex; align-items: center; gap: 6px; padding: 10px 20px; font-size: 15px; border-radius: 999px; }
+          .user-dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; background: #fff; border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-lg); min-width: 200px; z-index: 50; padding: 8px 0; overflow: hidden; }
+          .user-dropdown-item { display: block; padding: 12px 20px; font-size: 15px; color: var(--navy); font-weight: 500; text-decoration: none; text-align: left; background: none; border: none; width: 100%; cursor: pointer; transition: background 0.15s ease, color 0.15s ease; }
+          .user-dropdown-item:hover { background: #f4f6fb; color: var(--blue); }
+          .user-dropdown-item.danger { color: #ef4444; }
+          .user-dropdown-item.danger:hover { background: #fef2f2; color: #dc2626; }
+        </style>
+
+        <div class="dropdown" style="position: relative;">
+          <button onclick="toggleDropdown()" class="btn btn-ghost user-dropdown-btn">
+            <?php echo e(strtok(auth()->user()->name, ' ')); ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="userDropdown" class="user-dropdown-menu">
+            <a href="<?php echo e(route('dashboard')); ?>" class="user-dropdown-item" style="border-bottom: 1px solid #f0f2f8;">Dashboard</a>
+            <a href="<?php echo e(route('profile.edit')); ?>" class="user-dropdown-item" style="border-bottom: 1px solid #f0f2f8;">Profil Saya</a>
+            <form method="POST" action="<?php echo e(route('logout')); ?>" style="margin: 0;">
+                <?php echo csrf_field(); ?>
+                <button type="submit" class="user-dropdown-item danger">Keluar</button>
+            </form>
+          </div>
+        </div>
+      <?php else: ?>
+        <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-ghost">Masuk</a>
+        <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary">Mulai Tes</a>
+      <?php endif; ?>
     </div>
   </div>
 </nav>
@@ -62,7 +91,7 @@
   <div class="container">
     <div class="eyebrow">✦ SETELAH IQ DAN EQ, KENALI DQ ANDA</div>
     <h1>Temukan apa yang <span>benar-benar</span><br>menggerakkan hidup Anda</h1>
-    <p class="lead">IMT Discovery™ memetakan 5 Human Drivers dan arketipe motivasi Anda melalui pendekatan psikometri modern — lengkap dengan laporan interpretasi personal yang otomatis dan langsung dapat digunakan.</p>
+    <p class="lead">IMT Discovery memetakan 5 Human Drivers dan arketipe motivasi Anda melalui pendekatan psikometri modern — lengkap dengan laporan interpretasi personal yang otomatis dan langsung dapat digunakan.</p>
     <div class="hero-ctas">
       <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary">Mulai Tes Sekarang</a>
       <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-dark">Tes untuk Tim/Korporasi</a>
@@ -80,7 +109,7 @@
   <div class="container">
     <div class="section-head">
       <div class="kicker">Kerangka IMT</div>
-      <h2>5 Human Drivers™ yang membentuk setiap keputusan Anda</h2>
+      <h2>5 Human Drivers yang membentuk setiap keputusan Anda</h2>
       <p>Setiap orang digerakkan oleh kombinasi unik dari lima kebutuhan psikologis inti. IMT Discovery mengukur kelimanya dan menerjemahkannya menjadi arketipe motivasi Anda.</p>
     </div>
     <div class="grid grid-5" id="driver-grid"></div>
@@ -297,7 +326,7 @@
       <div><h4>Legal</h4><a href="#">Kebijakan Privasi</a><a href="#">Syarat & Ketentuan</a></div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 IMT Discovery™. Seluruh hak cipta dilindungi.</span>
+      <span>© 2026 IMT Discovery. Seluruh hak cipta dilindungi.</span>
       <span>Dibangun dengan prinsip psikometri & neuroscience UX.</span>
     </div>
   </div>
@@ -314,6 +343,20 @@
       <p>${d.pitch}</p>
     </div>`;
   });
+
+  function toggleDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.closest('.dropdown')) {
+      const dropdown = document.getElementById('userDropdown');
+      if (dropdown && dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+      }
+    }
+  }
 </script>
 </body>
 </html>

@@ -92,6 +92,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'industry' => 'nullable|string|max:255',
             'quota' => 'required|integer|min:1',
             'report_visibility' => 'required|in:admin_only,individual',
             'start_time' => 'nullable|date',
@@ -99,8 +100,8 @@ class AdminController extends Controller
             'user_id' => 'nullable|exists:users,id',
         ]);
 
-        // Generate unique code (e.g. GRUP-XYZ123)
-        $code = 'GRUP-' . strtoupper(substr(uniqid(), -6));
+        // Generate unique code (e.g. XYZ123)
+        $code = strtoupper(substr(uniqid(), -6));
         $validated['code'] = $code;
         $validated['is_active'] = true;
 
@@ -120,18 +121,21 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'industry' => 'nullable|string|max:255',
             'quota' => 'required|integer|min:1',
             'report_visibility' => 'required|in:admin_only,individual',
             'start_time' => 'nullable|date',
             'end_time' => 'nullable|date|after_or_equal:start_time',
             'user_id' => 'nullable|exists:users,id',
             'is_active' => 'boolean',
+            'client_can_view_reports' => 'boolean',
         ]);
 
         $group = \App\Models\Group::findOrFail($id);
         
         // Checkbox values might not be sent if unchecked
         $validated['is_active'] = $request->has('is_active');
+        $validated['client_can_view_reports'] = $request->has('client_can_view_reports');
         
         $group->update($validated);
 
@@ -235,17 +239,23 @@ class AdminController extends Controller
                 'sub_drivers.id',
                 'sub_drivers.name',
                 'drivers.name as driver_name',
-                \Illuminate\Support\Facades\DB::raw("AVG(CASE WHEN questions.type = 'reverse core' THEN 8 - assessment_answers.score ELSE assessment_answers.score END) as avg_score")
+                \Illuminate\Support\Facades\DB::raw("AVG(CASE WHEN questions.type = 'reverse core' THEN 8 - assessment_answers.score ELSE assessment_answers.score END) as avg_score"),
+                \Illuminate\Support\Facades\DB::raw("MIN(CASE WHEN questions.type = 'reverse core' THEN 8 - assessment_answers.score ELSE assessment_answers.score END) as min_score"),
+                \Illuminate\Support\Facades\DB::raw("MAX(CASE WHEN questions.type = 'reverse core' THEN 8 - assessment_answers.score ELSE assessment_answers.score END) as max_score")
             )
             ->groupBy('sub_drivers.id', 'sub_drivers.name', 'drivers.name')
             ->get();
 
         $subComposites = $subDriverStats->map(function($stat) {
             $normalized = (($stat->avg_score - 1) / 6) * 100;
+            $minNorm = (($stat->min_score - 1) / 6) * 100;
+            $maxNorm = (($stat->max_score - 1) / 6) * 100;
             return [
                 'name' => $stat->name,
                 'driver' => strtolower($stat->driver_name),
-                'score' => round($normalized)
+                'score' => round($normalized),
+                'min' => round(max(0, $minNorm)),
+                'max' => round(min(100, $maxNorm))
             ];
         })->sortByDesc('score')->values();
 
@@ -258,9 +268,61 @@ class AdminController extends Controller
             $avgDurationFormatted = floor($avgDurationSeconds / 60) . 'm ' . round($avgDurationSeconds % 60) . 's';
         }
 
+        // 5. Validity Clean Rate
+        $flaggedCount = $assessments->where('duration_seconds', '<', 150)->count(); // Proxy < 2.5 mins
+        $cleanCount = $totalParticipants - $flaggedCount;
+        $cleanPercentage = $totalParticipants > 0 ? round(($cleanCount / $totalParticipants) * 100) : 0;
+        $flaggedPercentage = 100 - $cleanPercentage;
+        
+        $validity = [
+            'cleanCount' => $cleanCount,
+            'cleanPercentage' => $cleanPercentage,
+            'flaggedCount' => $flaggedCount,
+            'flaggedPercentage' => $flaggedPercentage,
+        ];
+
+        // 6. Training Recommendations
+        $lowestDriver = collect($avgScores)->sort()->keys()->first();
+        $lowestDriverScore = $avgScores[$lowestDriver];
+        $lowestDriverName = ucfirst($lowestDriver);
+
+        $trainingRecommendations = [
+            [
+                'cat' => 'Assessment & Coaching',
+                'title' => 'Uncovering Hidden Barriers: Assessment & Coaching for Team Stability',
+                'desc' => 'Menggali lebih dalam akar dari skor ' . $lowestDriverName . ' yang rendah lewat pendampingan personal, sebelum jadi masalah operasional yang lebih besar.',
+                'basis' => 'Berdasarkan: ' . $lowestDriverName . ' driver paling rendah di tim (' . $lowestDriverScore . '%)'
+            ],
+            [
+                'cat' => 'NLP Training',
+                'title' => 'Managing Mental & Emotion Using NLP and Inner Motivation',
+                'desc' => 'Melatih tim mengubah pola pikir saat menghadapi tekanan dan ketidakpastian, supaya lebih konsisten dan tidak reaktif.',
+                'basis' => 'Berdasarkan: Area pengembangan dari DQ Tim (Regulation ' . $diValues['regulation'] . '%)'
+            ],
+            [
+                'cat' => 'Leadership Development',
+                'title' => 'Leading with Confidence: Strategic Decision-Making Under Pressure',
+                'desc' => 'Melatih para pemimpin tim mengambil keputusan dengan lebih percaya diri dan menjaga stabilitas moral.',
+                'basis' => 'Berdasarkan: Area perbaikan sub-composite terkait kepemimpinan'
+            ],
+            [
+                'cat' => 'Team Alignment Experience',
+                'title' => 'Building Trust That Lasts: Team Alignment & Commitment Experience',
+                'desc' => 'Memperkuat rasa saling percaya dan konsistensi antar anggota tim, supaya komitmen yang diucapkan benar-benar dijalankan.',
+                'basis' => 'Berdasarkan: Dinamika tim pada aspek Connection (' . $avgScores['connection'] . '%)'
+            ],
+            [
+                'cat' => 'Outbound & Team Building',
+                'title' => 'Sustaining Momentum: Outbound & Team Building for Focused Growth',
+                'desc' => 'Menjaga kekompakan dan ritme kerja yang ada, sambil melatih eksekusi yang lebih terstruktur.',
+                'basis' => 'Berdasarkan: ' . ucfirst($top1) . ' sebagai driver dominan tim (' . $avgScores[$top1] . '%)'
+            ]
+        ];
+
         return view('admin.groups.team-report', compact(
             'group', 'totalParticipants', 'avgScores', 'driverStats', 
-            'archetype', 'avgDq', 'diValues', 'top5SubComposites', 'bottom5SubComposites', 'top1', 'avgDurationFormatted'
+            'archetype', 'avgDq', 'diValues', 'top5SubComposites', 'bottom5SubComposites', 'top1', 'avgDurationFormatted',
+            'validity', 'trainingRecommendations'
         ));
     }
 

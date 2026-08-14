@@ -679,6 +679,7 @@ class ComposerStaticInitd62e80e86785afd991c45a323bb7c66b
         'Database\\Seeders\\QuestionSeeder' => __DIR__ . '/../..' . '/database/seeders/QuestionSeeder.php',
         'Database\\Seeders\\ReverseCoreQuestionsSeeder' => __DIR__ . '/../..' . '/database/seeders/ReverseCoreQuestionsSeeder.php',
         'Database\\Seeders\\UserAssessmentSeeder' => __DIR__ . '/../..' . '/database/seeders/UserAssessmentSeeder.php',
+        'Database\\Seeders\\ValidityQuestionsSeeder' => __DIR__ . '/../..' . '/database/seeders/ValidityQuestionsSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

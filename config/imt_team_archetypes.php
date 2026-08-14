@@ -3,7 +3,7 @@
 return [
     'archetypes' => [
         'security_significance' => [
-            'name' => 'The Reliable Executor™',
+            'name' => 'The Reliable Executor',
             'desire' => 'Tim ini ingin menjadi organisasi yang diakui atas keandalannya dan kemampuannya menyelesaikan pekerjaan dengan standar tinggi.',
             'fear' => 'Membuat kesalahan fatal yang merusak reputasi, atau dianggap sebagai tim yang tidak bisa diandalkan.',
             'strengths' => 'Tim ini sangat terstruktur, memiliki standar kualitas yang tinggi, dan hampir tidak pernah gagal memenuhi janji operasional.',
@@ -11,7 +11,7 @@ return [
             'keyQuestion' => 'Apakah tim ini menjaga kualitas karena komitmen pada hasil terbaik, atau karena takut dikritik jika terjadi kesalahan kecil?',
         ],
         'security_connection' => [
-            'name' => 'The Loyal Guardian™',
+            'name' => 'The Loyal Guardian',
             'desire' => 'Tim ini ingin membangun lingkungan kerja yang stabil, harmonis, dan saling percaya satu sama lain.',
             'fear' => 'Perpecahan internal atau pergeseran kepemimpinan yang merusak rasa aman dan kedekatan antar anggota.',
             'strengths' => 'Tim memiliki loyalitas tinggi, saling mendukung di masa krisis, dan mempertahankan budaya kerja yang hangat dan aman secara psikologis.',
@@ -19,7 +19,7 @@ return [
             'keyQuestion' => 'Apakah tim ini menjaga keharmonisan karena kedekatan yang sehat, atau karena menghindari konflik yang sebenarnya perlu dibahas?',
         ],
         'security_growth' => [
-            'name' => 'The Pragmatic Builder™',
+            'name' => 'The Pragmatic Builder',
             'desire' => 'Tim ini ingin terus berkembang dan berinovasi, tapi dengan fondasi sistem dan proses yang sangat kuat serta terukur.',
             'fear' => 'Kehilangan kendali operasional akibat perubahan yang terlalu cepat atau inovasi yang tidak matang.',
             'strengths' => 'Tim luar biasa dalam mengeksekusi inovasi secara sistematis; mereka tidak hanya punya ide, tapi tahu bagaimana menstandarisasi ide tersebut.',
@@ -27,7 +27,7 @@ return [
             'keyQuestion' => 'Apakah proses ketat yang dibangun tim ini bertujuan memuluskan jalan, atau diam-diam digunakan sebagai alasan menunda inovasi?',
         ],
         'security_contribution' => [
-            'name' => 'The Responsible Steward™',
+            'name' => 'The Responsible Steward',
             'desire' => 'Tim ini ingin membangun organisasi yang stabil agar dapat secara konsisten memberi manfaat bagi klien, rekan kerja, dan masyarakat.',
             'fear' => 'Gagal memenuhi tanggung jawab dan mengecewakan pihak-pihak yang bergantung pada tim ini.',
             'strengths' => 'Tim ini luar biasa andal, selalu menepati janji komitmen, dan bekerja demi dampak jangka panjang tanpa banyak pamer.',
@@ -35,7 +35,7 @@ return [
             'keyQuestion' => 'Apakah tim ini menjaga semua tanggung jawab karena memang sehat, atau karena merasa semuanya akan runtuh jika bukan tim ini yang mengurusnya?',
         ],
         'significance_connection' => [
-            'name' => 'The Influential Connector™',
+            'name' => 'The Influential Connector',
             'desire' => 'Tim ini ingin menjadi kelompok yang dihargai, dipercaya, dan memberi pengaruh positif secara luas di dalam maupun luar perusahaan.',
             'fear' => 'Dianggap tidak relevan, tertinggal, atau kehilangan jaringan kolaborasi yang selama ini menjadi sumber kekuatan tim.',
             'strengths' => 'Tim sangat pandai membaca dinamika organisasi, membangun kolaborasi yang tulus (bukan transaksional), dan mahir mengomunikasikan visi dengan kuat.',
@@ -43,7 +43,7 @@ return [
             'keyQuestion' => 'Apakah tim ini berkolaborasi karena benar-benar sejalan dengan visi, atau karena butuh validasi dan pengakuan dari pihak eksternal?',
         ],
         'significance_growth' => [
-            'name' => 'The Ambitious Innovator™',
+            'name' => 'The Ambitious Innovator',
             'desire' => 'Tim ini ingin terus berinovasi dan mencapai target-target luar biasa yang membuat mereka menonjol sebagai tim papan atas.',
             'fear' => 'Menjadi tim yang biasa-biasa saja (medioker) atau gagal mengoptimalkan potensi besar yang mereka miliki.',
             'strengths' => 'Tim sangat lincah belajar hal baru, memiliki visi progresif, dan secara kolektif mendorong batas standar menjadi semakin tinggi.',
@@ -51,7 +51,7 @@ return [
             'keyQuestion' => 'Apakah tim ini terus mengejar inovasi karena benar-benar ingin bertumbuh, atau karena takut tertinggal dan kalah pamor dari kompetitor?',
         ],
         'significance_contribution' => [
-            'name' => 'The Purpose-Driven Achiever™',
+            'name' => 'The Purpose-Driven Achiever',
             'desire' => 'Tim ini ingin mencapai sesuatu yang monumental sekaligus memberikan dampak nyata dan besar bagi kehidupan banyak orang.',
             'fear' => 'Mencapai target finansial/bisnis tapi terasa hampa karena tidak membawa perubahan yang bermakna bagi lingkungan sekitar.',
             'strengths' => 'Tim bergerak dengan visi yang luar biasa jelas, menginspirasi pihak lain lewat hasil kerja nyata yang bukan sekadar angka atau teori.',
@@ -59,7 +59,7 @@ return [
             'keyQuestion' => 'Apakah tim ini melakukan proyek besar demi tujuan sejatinya, atau demi dilihat sebagai tim pahlawan yang berdampak?',
         ],
         'connection_growth' => [
-            'name' => 'The Growth Catalyst™',
+            'name' => 'The Growth Catalyst',
             'desire' => 'Tim ini percaya bahwa pertumbuhan dan pembelajaran terbaik selalu terjadi bersama-sama, bukan sendiri-sendiri.',
             'fear' => 'Terjebak dalam rutinitas kerja yang stagnan atau kehilangan semangat belajar bersama saat tekanan operasional meningkat.',
             'strengths' => 'Tim secara alami membangun lingkungan kerja yang saling mendorong, menikmati eksplorasi bersama, dan memfasilitasi orang lain untuk menyadari potensinya.',
@@ -67,7 +67,7 @@ return [
             'keyQuestion' => 'Apakah tim ini bertumbuh karena memang sudah saatnya, atau sekadar karena tidak tahan berdiam diri dalam stabilitas?',
         ],
         'connection_contribution' => [
-            'name' => 'The Compassionate Builder™',
+            'name' => 'The Compassionate Builder',
             'desire' => 'Tim ini ingin membangun keharmonisan yang mendalam demi menciptakan produk, layanan, atau dukungan yang membuat hidup orang lain lebih baik.',
             'fear' => 'Tidak mampu memberi dukungan saat situasi krisis, atau terjebak dalam pekerjaan yang terasa dangkal dan transaksional murni.',
             'strengths' => 'Tim ini ibarat jangkar empati di organisasi. Mereka memberi dukungan tulus, menjaga hubungan jangka panjang, dan sangat bisa diandalkan secara emosional.',
@@ -75,7 +75,7 @@ return [
             'keyQuestion' => 'Apakah tim ini selalu siap membantu karena kepedulian yang sehat, atau karena merasa bertanggung jawab atas kesuksesan semua orang?',
         ],
         'growth_contribution' => [
-            'name' => 'The Transformational Builder™',
+            'name' => 'The Transformational Builder',
             'desire' => 'Tim ini ingin terus berinovasi dan menggunakan pertumbuhan kompetensinya untuk menciptakan perubahan sistemik yang berarti bagi orang lain.',
             'fear' => 'Berhenti belajar dan kehilangan kapasitas untuk menciptakan terobosan atau nilai guna bagi masyarakat.',
             'strengths' => 'Tim berpikir jauh melampaui tren saat ini, cepat menerapkan wawasan baru menjadi solusi praktis, dan punya energi menular untuk mengubah status quo.',

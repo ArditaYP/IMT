@@ -13,7 +13,7 @@
  *   secara realistis jarang benar-benar 100% berlaku pada siapa pun. Skor
  *   sangat tinggi berulang pada item ini mengindikasikan social-desirability
  *   bias (menjawab yang "terdengar baik", bukan yang jujur).
- * Kedua jenis ini TIDAK ikut dihitung ke skor 5 Human Drivers™ (hanya "core"
+ * Kedua jenis ini TIDAK ikut dihitung ke skor 5 Human Drivers (hanya "core"
  * yang dihitung), karena keduanya murni lapisan validitas.
  */
 let IMT_QUESTIONS = [
@@ -230,29 +230,29 @@ const IMT_GROWTH_ACTIONS = {
 
 const IMT_ARCHETYPES = {
   security: {
-    name: "The Guardian™", icon: "🛡️",
+    name: "The Guardian", icon: "🛡️",
     desc: "Anda adalah penjaga stabilitas, orang yang diandalkan saat semua orang butuh kepastian. Anda membangun fondasi yang kokoh sebelum mengambil langkah besar, dan menjadi jangkar yang menenangkan bagi tim atau keluarga Anda."
   },
   significance: {
-    name: "The Achiever™", icon: "🏆",
+    name: "The Achiever", icon: "🏆",
     desc: "Anda adalah pengejar keunggulan yang didorong oleh standar tinggi dan hasrat untuk menghasilkan karya terbaik. Anda menetapkan tolok ukur, mendorong diri sendiri lebih jauh, dan ingin dikenal karena kualitas nyata yang Anda ciptakan."
   },
   connection: {
-    name: "The Connector™", icon: "💛",
+    name: "The Connector", icon: "💛",
     desc: "Anda adalah penghubung, orang yang membuat orang lain merasa dilihat dan dipahami. Anda membangun kepercayaan dengan cepat dan sering menjadi perekat yang menyatukan tim atau komunitas."
   },
   growth: {
-    name: "The Explorer™", icon: "🧭",
+    name: "The Explorer", icon: "🧭",
     desc: "Anda adalah penjelajah yang selalu mencari wawasan, pengalaman, dan cara baru untuk berkembang. Anda merasa hidup paling saat menghadapi tantangan yang mendorong Anda keluar dari zona nyaman."
   },
   contribution: {
-    name: "The Contributor™", icon: "🤝",
+    name: "The Contributor", icon: "🤝",
     desc: "Anda adalah pemberi dampak, seseorang yang mengukur keberhasilan dari manfaat nyata bagi orang lain. Pengakuan pribadi bukan prioritas utama Anda; Anda lebih memilih membiarkan dampak Anda berbicara."
   },
 };
 
 /* ============================================================
-   Driver Synergy Matrix™: 10 kombinasi 2 driver teratas.
+   Driver Synergy Matrix: 10 kombinasi 2 driver teratas.
    Sumber: Assessment/Drivers Synergy Matrix (10 dokumen resmi).
    Ditulis ulang dengan suara sendiri (bukan kutipan KB) mengikuti
    skill imt-warm-reporting; nama arketipe & konsep inti tetap
@@ -268,7 +268,7 @@ const IMT_ARCHETYPES = {
    ============================================================ */
 const IMT_SYNERGY_MATRIX = {
   security_significance: {
-    name: "The Strategic Achiever™",
+    name: "The Strategic Achiever",
     desire: "Anda ingin membangun kehidupan yang aman sekaligus dihormati karena hasil nyata yang Anda capai.",
     fear: "Kehilangan stabilitas yang sudah susah payah Anda bangun, atau dianggap tidak kompeten setelah berusaha sekeras itu.",
     strengths: "Anda berpikir strategis, bisa diandalkan dalam jangka panjang, dan membangun kredibilitas lewat konsistensi, bukan lewat drama.",
@@ -276,7 +276,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda mengejar ini karena benar-benar penting bagi Anda, atau karena takut terlihat gagal di mata orang lain?",
   },
   security_connection: {
-    name: "The Trusted Builder™",
+    name: "The Trusted Builder",
     desire: "Anda ingin membangun kehidupan yang aman bersama orang-orang yang benar-benar bisa Anda percaya.",
     fear: "Kehilangan rasa aman itu sendiri, entah lewat ditinggalkan, dikhianati, atau kehilangan orang yang penting bagi Anda.",
     strengths: "Loyalitas Anda jarang goyah. Anda sering jadi sosok paling bisa diandalkan di lingkaran terdekat, dan pandai membangun kepercayaan pelan-pelan tapi kokoh.",
@@ -284,7 +284,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda menjaga hubungan ini karena memang sehat, atau karena takut kehilangan rasa aman yang sudah Anda bangun?",
   },
   security_growth: {
-    name: "The Strategic Explorer™",
+    name: "The Strategic Explorer",
     desire: "Anda ingin terus berkembang tanpa harus mengorbankan stabilitas yang sudah susah payah Anda bangun.",
     fear: "Terjebak stagnan di satu tempat, atau sebaliknya, mengambil langkah terlalu berisiko yang merusak semua yang sudah Anda miliki.",
     strengths: "Anda belajar dengan cara yang terukur, tidak asal lompat, dan selalu mempersiapkan diri sebelum benar-benar mengambil peluang baru.",
@@ -292,7 +292,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda sedang benar-benar mempersiapkan diri, atau sedang menunda karena belum merasa cukup aman untuk mulai?",
   },
   security_contribution: {
-    name: "The Purposeful Guardian™",
+    name: "The Purposeful Guardian",
     desire: "Anda ingin membangun sesuatu yang aman, bernilai, dan benar-benar bermanfaat bagi banyak orang.",
     fear: "Apa yang sudah Anda bangun ternyata tidak memberi manfaat berarti, atau hilang begitu saja tanpa membekas.",
     strengths: "Anda bertanggung jawab dalam jangka panjang, menjaga sesuatu tetap berjalan dengan konsisten, dan jadi sosok yang diandalkan saat orang lain butuh kepastian.",
@@ -300,7 +300,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda menjaga ini karena tanggung jawab yang sehat, atau karena merasa semuanya akan runtuh tanpa Anda?",
   },
   significance_connection: {
-    name: "The Influential Connector™",
+    name: "The Influential Connector",
     desire: "Anda ingin menjadi sosok yang dihargai, dipercaya, dan memberi pengaruh positif bagi orang-orang di sekitar Anda.",
     fear: "Dianggap tidak penting, atau kehilangan hubungan dengan orang-orang yang selama ini jadi tempat Anda bersandar.",
     strengths: "Anda pandai membaca dinamika sosial, membangun jaringan yang terasa tulus, bukan sekadar transaksional, dan cara bicara Anda cenderung menggerakkan orang lain.",
@@ -308,7 +308,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda melakukan ini karena benar-benar peduli, atau karena butuh diakui oleh orang-orang di sekitar Anda?",
   },
   significance_growth: {
-    name: "The Ambitious Innovator™",
+    name: "The Ambitious Innovator",
     desire: "Anda ingin terus berkembang dan mencapai sesuatu yang membuat hidup Anda terasa bermakna sekaligus membanggakan.",
     fear: "Menjadi biasa-biasa saja, atau gagal mencapai potensi terbaik yang sebenarnya Anda miliki.",
     strengths: "Anda gesit mempelajari hal baru, punya visi jauh ke depan, dan terus mendorong diri sendiri naik ke level berikutnya.",
@@ -316,7 +316,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda mengejar ini karena benar-benar ingin bertumbuh, atau karena takut tertinggal dari orang lain?",
   },
   significance_contribution: {
-    name: "The Purpose-Driven Achiever™",
+    name: "The Purpose-Driven Achiever",
     desire: "Anda ingin mencapai sesuatu yang besar sekaligus memberi dampak nyata bagi kehidupan orang lain.",
     fear: "Sukses tapi terasa hampa, atau punya potensi besar yang tidak pernah benar-benar Anda pakai untuk sesuatu yang berarti.",
     strengths: "Anda memimpin dengan visi yang jelas, mendorong pencapaian yang punya makna, dan menginspirasi lewat hasil nyata, bukan sekadar kata-kata.",
@@ -324,7 +324,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda melakukan ini demi dampaknya, atau demi diakui sudah berdampak?",
   },
   connection_growth: {
-    name: "The Growth Catalyst™",
+    name: "The Growth Catalyst",
     desire: "Anda percaya pertumbuhan terbaik terjadi bersama orang lain, bukan sendirian.",
     fear: "Terjebak dalam hubungan yang stagnan, atau kehilangan kesempatan bertumbuh bersama orang-orang yang berarti bagi Anda.",
     strengths: "Anda secara alami membantu orang lain melihat potensi mereka sendiri, belajar lewat percakapan dan kolaborasi, dan membangun lingkungan yang saling mendorong maju.",
@@ -332,7 +332,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda mendorong orang ini bertumbuh karena mereka memang siap, atau karena Anda yang ingin mereka berubah?",
   },
   connection_contribution: {
-    name: "The Compassionate Builder™",
+    name: "The Compassionate Builder",
     desire: "Anda ingin membangun hubungan yang benar-benar membuat hidup orang lain menjadi lebih baik.",
     fear: "Tidak bisa membantu saat dibutuhkan, atau menjalani hubungan yang terasa dangkal tanpa dampak nyata.",
     strengths: "Anda memberi dukungan dengan tulus, menjaga hubungan dalam jangka panjang, dan hadir sebagai sosok yang bisa diandalkan saat orang lain kesulitan.",
@@ -340,7 +340,7 @@ const IMT_SYNERGY_MATRIX = {
     keyQuestion: "Apakah Anda membantu karena kepedulian yang sehat, atau karena merasa bertanggung jawab atas kebahagiaan semua orang?",
   },
   growth_contribution: {
-    name: "The Transformational Builder™",
+    name: "The Transformational Builder",
     desire: "Anda ingin terus berkembang dan memakai pertumbuhan itu untuk menciptakan perubahan yang berarti bagi orang lain.",
     fear: "Berhenti berkembang, atau punya potensi besar yang tidak pernah Anda pakai untuk sesuatu yang bernilai.",
     strengths: "Anda berpikir jauh ke depan, cepat menerapkan apa yang baru Anda pelajari, dan mendorong orang lain untuk ikut bertumbuh bersama Anda.",
@@ -365,7 +365,7 @@ function imtSynergyFor(driverA, driverB) {
 }
 
 /* ============================================================
-   Development Path™ per driver, dari dokumen "Development Path"
+   Development Path per driver, dari dokumen "Development Path"
    resmi (5 dokumen per driver). Melengkapi IMT_DEV_STAGES (5 tahap
    universal berbasis skor DQ) dengan sesuatu yang spesifik untuk
    driver dominan peserta: rumus pertumbuhan, prioritas pengembangan,
@@ -375,7 +375,7 @@ function imtSynergyFor(driverA, driverB) {
 const IMT_DEV_PATH = {
   security: {
     purpose: "Mengembangkan Security bukan berarti menjadi lebih hati-hati atau lebih waspada. Tujuannya adalah membangun rasa aman dari dalam diri Anda sendiri, supaya Anda tetap tenang menghadapi perubahan tanpa harus mengendalikan semuanya.",
-    formula: { parts: ["Stability", "Self-Trust", "Adaptive Courage"], result: "Adaptive Security™" },
+    formula: { parts: ["Stability", "Self-Trust", "Adaptive Courage"], result: "Adaptive Security" },
     priorities: ["Adaptive Confidence", "Healthy Risk Taking", "Emotional Flexibility", "Decision Courage", "Self-Trust"],
     question: "Apakah rasa aman yang sedang Anda bangun ini benar-benar menguatkan Anda, atau justru mulai menahan Anda untuk bergerak?",
     challenge: "Minggu ini, coba ambil satu keputusan kecil tanpa menyusun rencana cadangan lebih dulu. Rasakan bagaimana rasanya bertindak dengan sedikit lebih banyak ruang untuk ketidakpastian.",
@@ -387,7 +387,7 @@ const IMT_DEV_PATH = {
   },
   significance: {
     purpose: "Mengembangkan Significance bukan berarti menjadi kurang ambisius. Tujuannya adalah membangun rasa berharga dari dalam diri, sehingga pencapaian Anda lahir dari keinginan tulus, bukan dari kebutuhan untuk dibuktikan ke orang lain.",
-    formula: { parts: ["Self-Worth", "Authentic Confidence", "Purpose-Driven Achievement"], result: "Authentic Significance™" },
+    formula: { parts: ["Self-Worth", "Authentic Confidence", "Purpose-Driven Achievement"], result: "Authentic Significance" },
     priorities: ["Internal Self-Worth", "Authentic Confidence", "Purpose-Driven Achievement", "Healthy Humility", "Self-Acceptance"],
     question: "Apakah Anda mengejar pencapaian ini karena benar-benar ingin, atau karena takut dianggap kurang berhasil?",
     challenge: "Minggu ini, coba akui satu pencapaian kecil ke diri sendiri tanpa menunggu orang lain memujinya lebih dulu.",
@@ -399,7 +399,7 @@ const IMT_DEV_PATH = {
   },
   connection: {
     purpose: "Mengembangkan Connection bukan berarti harus punya lebih banyak teman atau disukai semua orang. Tujuannya adalah membangun hubungan yang jujur dan bermakna, tanpa kehilangan diri sendiri di dalamnya.",
-    formula: { parts: ["Self-Connection", "Healthy Boundaries", "Authentic Communication"], result: "Authentic Connection™" },
+    formula: { parts: ["Self-Connection", "Healthy Boundaries", "Authentic Communication"], result: "Authentic Connection" },
     priorities: ["Authentic Relationships", "Healthy Boundaries", "Emotional Independence", "Courageous Communication", "Self-Connection"],
     question: "Ketika Anda merasa dekat dengan seseorang, apakah itu karena Anda benar-benar jadi diri sendiri di situ, atau karena Anda berusaha keras supaya disukai?",
     challenge: "Minggu ini, coba sampaikan satu pendapat yang berbeda dari orang lain, meski itu berisiko sedikit menegangkan suasana.",
@@ -411,7 +411,7 @@ const IMT_DEV_PATH = {
   },
   growth: {
     purpose: "Mengembangkan Growth bukan berarti harus terus belajar tanpa henti atau mengejar setiap peluang baru. Tujuannya adalah bertumbuh dengan arah yang jelas, supaya kemajuan Anda benar-benar terasa, bukan sekadar terasa sibuk.",
-    formula: { parts: ["Curiosity", "Focused Development", "Purposeful Learning"], result: "Purposeful Growth™" },
+    formula: { parts: ["Curiosity", "Focused Development", "Purposeful Learning"], result: "Purposeful Growth" },
     priorities: ["Purposeful Growth", "Sustainable Learning", "Focused Development", "Contentment Awareness", "Wise Exploration"],
     question: "Ketika Anda mengejar sesuatu yang baru, apakah itu karena benar-benar ingin mendalaminya, atau karena bosan dengan yang lama?",
     challenge: "Minggu ini, coba selesaikan satu hal yang sudah Anda mulai sebelum beralih ke hal baru yang menarik perhatian Anda.",
@@ -423,7 +423,7 @@ const IMT_DEV_PATH = {
   },
   contribution: {
     purpose: "Mengembangkan Contribution bukan berarti harus memberi lebih banyak atau mengorbankan diri lebih jauh. Tujuannya adalah menciptakan dampak yang benar-benar berkelanjutan, tanpa kehilangan keseimbangan hidup Anda sendiri.",
-    formula: { parts: ["Purpose", "Healthy Responsibility", "Sustainable Service"], result: "Sustainable Contribution™" },
+    formula: { parts: ["Purpose", "Healthy Responsibility", "Sustainable Service"], result: "Sustainable Contribution" },
     priorities: ["Sustainable Contribution", "Healthy Responsibility", "Empowerment Mindset", "Balanced Purpose", "Self-Care Awareness"],
     question: "Apakah Anda membantu kali ini karena punya ruang untuk itu, atau karena merasa bersalah kalau menolak?",
     challenge: "Minggu ini, coba tolak satu permintaan bantuan yang sebenarnya di luar kapasitas Anda, dan perhatikan bagaimana rasanya.",
@@ -436,7 +436,7 @@ const IMT_DEV_PATH = {
 };
 
 /* ============================================================
-   Sub Composite™: 25 kualitas di balik 5 Driver (5 per driver) dari
+   Sub Composite: 25 kualitas di balik 5 Driver (5 per driver) dari
    dokumen "IMT Gold Standard Sub Composite" & "Sub Composite-Micro"
    (Behavioral Indicators). Di KB resmi, tiap sub composite idealnya
    punya asesmen 10-soal sendiri (250 soal total), terlalu panjang
@@ -619,28 +619,28 @@ function imtArchetype(scores) {
 }
 
 /* ============================================================
-   BAB 5: The Five Dimensions of Driver Intelligence™ (DI)
+   BAB 5: The Five Dimensions of Driver Intelligence (DI)
    Sumber: Theoretical Foundation V1, Bab 5.4
    ============================================================ */
 const IMT_DI_DIMENSIONS = [
   {
-    key: "awareness", label: "AWARENESS", name: "Driver Awareness™",
+    key: "awareness", label: "AWARENESS", name: "Driver Awareness",
     desc: "Titik awal dari segalanya, menyadari driver mana yang paling sering mengambil alih pikiran dan tindakan Anda.",
   },
   {
-    key: "insight", label: "INSIGHT", name: "Driver Insight™",
+    key: "insight", label: "INSIGHT", name: "Driver Insight",
     desc: "Menghubungkan titik antara apa yang Anda rasakan, pikirkan, dan akhirnya putuskan.",
   },
   {
-    key: "regulation", label: "REGULATION", name: "Driver Regulation™",
+    key: "regulation", label: "REGULATION", name: "Driver Regulation",
     desc: "Menjaga driver Anda tetap bekerja untuk Anda, bukan malah mengambil alih saat tekanan datang.",
   },
   {
-    key: "development", label: "DEVELOPMENT", name: "Driver Development™",
+    key: "development", label: "DEVELOPMENT", name: "Driver Development",
     desc: "Mengubah kesadaran menjadi kebiasaan yang sengaja dibangun, bukan dibiarkan berjalan begitu saja.",
   },
   {
-    key: "transformation", label: "TRANSFORMATION", name: "Driver Transformation™",
+    key: "transformation", label: "TRANSFORMATION", name: "Driver Transformation",
     desc: "Titik di mana driver bukan lagi sekadar dorongan, tapi alat yang benar-benar Anda kendalikan.",
   },
 ];
@@ -698,7 +698,7 @@ function imtDiInterpret(key, score, driverName) {
 }
 
 /* ============================================================
-   BAB 6: Driver Dynamics™ (Healthy / Activated / Stress / Shadow /
+   BAB 6: Driver Dynamics (Healthy / Activated / Stress / Shadow /
    Growth State + Core Development Challenge)
    Sumber: dokumen resmi "Driver Dynamix" (5 dokumen per driver).
    Ditulis ulang dengan suara sendiri ("Anda", bukan "Mereka") dan
@@ -894,19 +894,19 @@ const IMT_DRIVER_DYNAMICS = {
 };
 
 /* ============================================================
-   BAB 7: Driver Development Path™ (5 tahap)
+   BAB 7: Driver Development Path (5 tahap)
    Sumber: Theoretical Foundation V1, Bab 7.5
    ============================================================ */
 const IMT_DEV_STAGES = [
-  { key: "unaware", min: 0, max: 20, name: "Unaware™", icon: "①", focus: "Membangun kesadaran.",
+  { key: "unaware", min: 0, max: 20, name: "Unaware", icon: "①", focus: "Membangun kesadaran.",
     meaning: "Driver Anda bekerja di balik layar tanpa banyak Anda sadari. Ia memengaruhi pilihan Anda, tapi Anda jarang berhenti untuk mengenalinya secara langsung." },
-  { key: "aware", min: 21, max: 40, name: "Aware™", icon: "②", focus: "Meningkatkan pemahaman diri.",
+  { key: "aware", min: 21, max: 40, name: "Aware", icon: "②", focus: "Meningkatkan pemahaman diri.",
     meaning: "Anda mulai bisa menangkap kapan driver ini muncul, meski belum selalu paham kenapa ia muncul justru di momen-momen tertentu." },
-  { key: "understanding", min: 41, max: 60, name: "Understanding™", icon: "③", focus: "Menghubungkan Driver dengan kehidupan nyata.",
+  { key: "understanding", min: 41, max: 60, name: "Understanding", icon: "③", focus: "Menghubungkan Driver dengan kehidupan nyata.",
     meaning: "Anda sudah bisa menghubungkan titik-titiknya, melihat bagaimana driver ini ikut membentuk keputusan, hubungan, dan reaksi Anda sehari-hari." },
-  { key: "managing", min: 61, max: 80, name: "Managing™", icon: "④", focus: "Regulasi dan pengelolaan Driver.",
+  { key: "managing", min: 61, max: 80, name: "Managing", icon: "④", focus: "Regulasi dan pengelolaan Driver.",
     meaning: "Anda mulai bisa mengelola driver ini dengan sengaja, memilih kapan mengikutinya dan kapan menahannya, bukan sekadar bereaksi begitu saja." },
-  { key: "transforming", min: 81, max: 100, name: "Transforming™", icon: "⑤", focus: "Transformasi dan aktualisasi potensi.",
+  { key: "transforming", min: 81, max: 100, name: "Transforming", icon: "⑤", focus: "Transformasi dan aktualisasi potensi.",
     meaning: "Driver ini sudah menjadi kekuatan yang Anda pakai secara sadar untuk membangun hidup yang Anda inginkan, bukan lagi sesuatu yang diam-diam mengendalikan Anda." },
 ];
 
@@ -915,7 +915,7 @@ function imtStageFor(score) {
 }
 
 /* ============================================================
-   Validity / Consistency Check™
+   Validity / Consistency Check
    Menggabungkan empat lapisan deteksi:
    1) Item-level per-driver: 5 pasang Consistency (parafrase soal
       inti) + 5 item Authenticity, tersembunyi di antara 50 soal.
@@ -950,6 +950,36 @@ function imtValidity(answers, meta = {}) {
   const inconsistentDrivers = consistencyResults.filter(r => r.flagged && r.type === "consistency").map(r => r.driver);
   const moduleInconsistent = consistencyResults.some(r => r.flagged && r.type === "module_consistency");
 
+  // --- Lapisan 2.5: Konsistensi antara Core dan Reverse Core per Sub-Composite ---
+  const coreBySub = {};
+  const revBySub = {};
+  IMT_QUESTIONS.forEach(q => {
+    if (!q.subComposite || !answers[q.id]) return;
+    const val = Number(answers[q.id]);
+    if (isNaN(val)) return;
+
+    if (q.type === 'core') {
+      if (!coreBySub[q.subComposite]) coreBySub[q.subComposite] = [];
+      coreBySub[q.subComposite].push(val);
+    } else if (q.type === 'reverse core') {
+      if (!revBySub[q.subComposite]) revBySub[q.subComposite] = [];
+      revBySub[q.subComposite].push(8 - val);
+    }
+  });
+
+  const inconsistentSubComposites = [];
+  Object.keys(revBySub).forEach(sub => {
+    if (coreBySub[sub] && coreBySub[sub].length > 0 && revBySub[sub].length > 0) {
+      const avgCore = coreBySub[sub].reduce((a, b) => a + b, 0) / coreBySub[sub].length;
+      const avgRev = revBySub[sub].reduce((a, b) => a + b, 0) / revBySub[sub].length;
+      if (Math.abs(avgCore - avgRev) >= 3) {
+        const q = IMT_QUESTIONS.find(q => q.subComposite === sub);
+        const driverName = (q && q.driver && IMT_DRIVERS[q.driver]) ? IMT_DRIVERS[q.driver].name : (q ? q.driver : '');
+        inconsistentSubComposites.push(`${sub} (${driverName})`);
+      }
+    }
+  });
+
   // --- Lapisan 1+2: semua item authenticity (per-driver + modul) ---
   const authenticityItems = IMT_QUESTIONS.filter(q => q.type === "authenticity" || q.type === "module_authenticity");
   const authenticityFlags = authenticityItems.filter(q => Number(answers[q.id]) >= 6).length;
@@ -975,6 +1005,9 @@ function imtValidity(answers, meta = {}) {
   if (inconsistentDrivers.length > 0) {
     const names = [...new Set(inconsistentDrivers)].map(d => IMT_DRIVERS[d].name).join(", ");
     reasons.push(`Jawaban tidak konsisten terdeteksi antara soal inti dan soal parafrasenya pada driver: ${names}.`);
+  }
+  if (inconsistentSubComposites.length > 0) {
+    reasons.push(`Jawaban tidak konsisten terdeteksi antara soal Normal dan Reverse pada ${inconsistentSubComposites.length} Sub Composite: ${inconsistentSubComposites.join(', ')}.`);
   }
   if (moduleInconsistent) reasons.push("Jawaban tidak konsisten terdeteksi pada modul validitas tambahan di akhir tes.");
   if (authenticityRatio >= 0.5) {

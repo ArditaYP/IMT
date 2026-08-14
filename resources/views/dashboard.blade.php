@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard Saya — IMT Discovery™</title>
+<title>Dashboard Saya — IMT Discovery</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
 <link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png') }}">
@@ -63,7 +63,7 @@
 
   document.getElementById('uname').textContent = profile ? profile.name : 'Peserta';
   document.getElementById('statTests').textContent = scores ? 1 : 0;
-  document.getElementById('statArch').textContent = archKey ? IMT_ARCHETYPES[archKey].name.replace('The ','').replace('™','') : '-';
+  document.getElementById('statArch').textContent = archKey ? IMT_ARCHETYPES[archKey].name.replace('The ','').replace('','') : '-';
   document.getElementById('statTop').textContent = archKey ? IMT_DRIVERS[archKey].name : '-';
 
   const tbody = document.querySelector('#historyTable tbody');

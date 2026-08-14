@@ -157,6 +157,7 @@ return array(
     'Database\\Seeders\\QuestionSeeder' => $baseDir . '/database/seeders/QuestionSeeder.php',
     'Database\\Seeders\\ReverseCoreQuestionsSeeder' => $baseDir . '/database/seeders/ReverseCoreQuestionsSeeder.php',
     'Database\\Seeders\\UserAssessmentSeeder' => $baseDir . '/database/seeders/UserAssessmentSeeder.php',
+    'Database\\Seeders\\ValidityQuestionsSeeder' => $baseDir . '/database/seeders/ValidityQuestionsSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Exception\\PropertyException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

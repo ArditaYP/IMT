@@ -59,7 +59,26 @@ return [
             'challenge' => [
                 'title' => 'Belajar Menavigasi Ketidakpastian Tanpa Kehilangan Kendali',
                 'lesson' => 'Inti tantangan tim ini bukan menghilangkan semua risiko, tapi belajar bahwa kemampuan beradaptasi adalah bentuk keamanan (security) yang paling kokoh di era yang cepat berubah.'
-            ]
+            ],
+            'strengths_action' => [
+                'Tim sangat andal memastikan kualitas kerja terjaga tanpa ada langkah yang terlewat.',
+                'Rencana disusun dengan detail sehingga risiko kesalahan operasional sangat kecil.',
+                'Tim mampu menciptakan lingkungan kerja yang stabil dan dapat diprediksi.',
+                'Keputusan didasarkan pada data dan preseden masa lalu, bukan sekadar insting.'
+            ],
+            'growth_opportunities' => [
+                'Tim sering kehilangan momentum awal (first-mover advantage) karena terlalu lama menganalisis risiko.',
+                'Perubahan sistem mendadak cenderung memicu resistensi kolektif sebelum dicoba.',
+                'Inovasi radikal jarang muncul secara alami dari dalam tim tanpa dorongan eksternal.',
+                'Tim berisiko kekurangan keseimbangan jika tidak ada sosok yang berani mendobrak rutinitas secara proaktif.'
+            ],
+            'practical_steps' => [
+                'Tetapkan \'batas waktu analisis\' dalam setiap pengambilan keputusan agar tim tidak terjebak dalam perfectionism.',
+                'Ciptakan ruang eksperimen aman berskala kecil untuk melatih otot adaptasi tim tanpa mengancam sistem utama.',
+                'Gunakan kerangka \'skenario terburuk vs kemungkinan terbaik\' untuk meredam kecemasan berlebihan terhadap hal baru.',
+                'Fasilitasi sesi evaluasi rutin untuk menghapus aturan atau proses usang yang memperlambat kinerja.'
+            ],
+            'high_energy' => 'Tim ini berada di titik energi tertinggi ketika mereka tahu persis apa yang diharapkan dari mereka dan memiliki sistem solid untuk mengeksekusinya tanpa kejutan tak terduga.'
         ],
         
         'significance' => [
@@ -119,7 +138,26 @@ return [
             'challenge' => [
                 'title' => 'Mendefinisikan Ulang Makna Kesuksesan Sejati',
                 'lesson' => 'Inti tantangan tim ini bukan bekerja lebih keras, tapi melepaskan ketergantungan pada validasi eksternal dan menemukan kebanggaan murni dari kualitas proses itu sendiri.'
-            ]
+            ],
+            'strengths_action' => [
+                'Tim bekerja dengan standar yang sangat tinggi dan tidak mudah puas dengan hasil standar.',
+                'Target dan sasaran bisnis selalu dikejar dengan dedikasi dan intensitas tinggi.',
+                'Tim mampu tampil prima dan memberikan hasil impresif di bawah tekanan tenggat waktu.',
+                'Ada dorongan alami untuk selalu menjadi yang terbaik di bidang atau industrinya.'
+            ],
+            'growth_opportunities' => [
+                'Tim rentan mengorbankan kualitas kolaborasi demi menonjolkan prestasi individu atau kelompok.',
+                'Budaya kerja bisa terasa terlalu kompetitif dan menyebabkan stres kronis (burnout) kolektif.',
+                'Tim sering meremehkan proyek atau pekerjaan administratif yang dianggap tidak membawa prestise.',
+                'Kegagalan kolektif cenderung direspons dengan saling menyalahkan (blame game) alih-alih evaluasi objektif.'
+            ],
+            'practical_steps' => [
+                'Seimbangkan KPI berbasis hasil dengan metrik yang mengukur kualitas kerja sama tim.',
+                'Rayakan keberhasilan tim sebagai satu kesatuan, bukan hanya memberi panggung pada individu (star performer).',
+                'Bangun budaya apresiasi silang antar departemen untuk mengurangi ego sektoral.',
+                'Latih tim untuk merespons kegagalan sebagai pelajaran sistemik, bukan ajang mencari siapa yang salah.'
+            ],
+            'high_energy' => 'Tim ini berada di titik energi tertinggi ketika mereka dihadapkan pada tantangan besar yang visibilitasnya tinggi dan menjanjikan kebanggaan kolektif saat berhasil ditaklukkan.'
         ],
 
         'connection' => [
@@ -179,7 +217,26 @@ return [
             'challenge' => [
                 'title' => 'Berani Membangun Kedekatan Melalui Kejujuran',
                 'lesson' => 'Inti tantangan tim ini bukan mencari teman, tapi belajar bahwa kepercayaan (trust) sejati hanya bisa dibangun ketika tim berani berkonfrontasi demi kebaikan bersama.'
-            ]
+            ],
+            'strengths_action' => [
+                'Tim memiliki loyalitas tinggi dan saling menjaga di saat-saat krisis secara kolektif.',
+                'Komunikasi sehari-hari berjalan hangat, membangun lingkungan kerja (psychological safety) yang nyaman.',
+                'Kolaborasi silang fungsi dapat bekerja sama secara alami tanpa banyak gesekan ego.',
+                'Tim sangat peduli pada kesejahteraan (well-being) sesama kolega melebihi target transaksional.'
+            ],
+            'growth_opportunities' => [
+                'Tim sering lambat mengambil keputusan sulit karena takut merusak harmoni antar kolega.',
+                'Masalah kinerja (underperformance) kerap dibiarkan berlarut-larut demi menjaga perasaan.',
+                'Ide-ide radikal sering kali diredam jika berpotensi memicu perdebatan atau ketegangan.',
+                'Tim berisiko menghabiskan terlalu banyak waktu untuk membangun konsensus daripada mengeksekusi.'
+            ],
+            'practical_steps' => [
+                'Latih tim untuk memisahkan antara kritik terhadap pekerjaan (profesional) dengan serangan pribadi.',
+                'Gunakan teknik diskusi terstruktur untuk memastikan keputusan diambil berdasarkan objektivitas, bukan sekadar kompromi damai.',
+                'Tetapkan ekspektasi kinerja yang jelas dan transparan untuk menghindari bias pertemanan.',
+                'Berikan ruang bagi konflik yang konstruktif (healthy friction) sebagai cara untuk bertumbuh, bukan sesuatu yang harus dihindari.'
+            ],
+            'high_energy' => 'Tim ini berada di titik energi tertinggi ketika mereka sedang menyelesaikan masalah sulit secara bersama-sama dalam lingkungan yang penuh rasa saling percaya dan kekeluargaan.'
         ],
 
         'growth' => [
@@ -239,7 +296,26 @@ return [
             'challenge' => [
                 'title' => 'Belajar Menikmati Proses Bertumbuh Bersama',
                 'lesson' => 'Inti tantangan tim ini bukan bergerak lebih cepat, tapi belajar menghargai kemajuan yang sudah dicapai sejauh ini sebelum melompat ke hal berikutnya.'
-            ]
+            ],
+            'strengths_action' => [
+                'Tim cepat mempelajari hal baru dan menerapkannya tanpa banyak drama.',
+                'Kolaborasi antar anggota tim berjalan alami untuk mencari solusi, bukan dipaksakan lewat aturan.',
+                'Tim cukup nyaman menghadapi perubahan mendadak dibanding kebanyakan organisasi.',
+                'Ada budaya saling mendorong untuk terus berkembang, bukan saling menjatuhkan.'
+            ],
+            'growth_opportunities' => [
+                'Proses kerja dan dokumentasi masih sering jadi renungan belakangan, bukan fondasi di awal.',
+                'Tim cenderung kurang siap saat menghadapi kegagalan operasional atau tekanan rutinitas berkepanjangan.',
+                'Konsistensi antara komitmen inovasi yang diucapkan dan eksekusi yang benar-benar dijalankan masih perlu diperkuat.',
+                'Tim berisiko kekurangan keseimbangan jika tidak ada sosok yang menjaga stabilitas dan manajemen risiko secara proaktif.'
+            ],
+            'practical_steps' => [
+                'Pertimbangkan menunjuk atau merekrut peran yang secara eksplisit bertanggung jawab menjaga proses, dokumentasi, dan manajemen risiko.',
+                'Bangun ritual sederhana (checklist penutupan proyek, review mingguan) supaya kekuatan eksplorasi tim tidak mengorbankan keandalan.',
+                'Latih tim mengelola energi saat progres terasa lambat, karena dorongan Growth rentan membuat tim gelisah sebelum pekerjaan lama selesai.',
+                'Pertahankan dan perkuat budaya kolaborasi terbuka yang sudah jadi kekuatan alami tim ini.'
+            ],
+            'high_energy' => 'Tim ini berada di titik energi tertinggi ketika diberi ruang bereksplorasi dan bekerja bersama orang lain, bukan saat dikunci dalam proses yang kaku dan bekerja sendiri-sendiri.'
         ],
 
         'contribution' => [
@@ -299,7 +375,26 @@ return [
             'challenge' => [
                 'title' => 'Menetapkan Batas Sehat dalam Berkarya',
                 'lesson' => 'Inti tantangan tim ini bukan mencari siapa lagi yang harus diselamatkan, tapi memastikan piala kalian sendiri terisi penuh sebelum menuangkannya untuk orang lain.'
-            ]
+            ],
+            'strengths_action' => [
+                'Tim sangat berdedikasi saat pekerjaan mereka memberikan manfaat nyata bagi banyak pihak di luar tim.',
+                'Budaya berbagi ilmu dan saling membantu berjalan secara proaktif, bahkan tanpa diminta oleh atasan.',
+                'Tim mampu melihat gambaran besar (bigger picture) dan menempatkan kepentingan bersama di atas ego kelompok.',
+                'Resiliensi kolektif sangat kuat ketika mereka dihadapkan pada krisis yang membutuhkan bantuan mereka.'
+            ],
+            'growth_opportunities' => [
+                'Tim sering kelebihan beban (overworked) karena sulit menolak permintaan bantuan dari fungsi atau pihak lain.',
+                'Prioritas internal dan KPI dasar sering kali terabaikan demi menolong pihak lain (over-functioning).',
+                'Tim bisa merasa sangat terkuras (compassion fatigue) jika usaha tulus mereka dianggap remeh atau tidak membuahkan hasil.',
+                'Terkadang tim mengambil alih tanggung jawab operasional pihak lain sehingga pihak tersebut tidak belajar mandiri.'
+            ],
+            'practical_steps' => [
+                'Bantu tim menetapkan batasan yang sehat (boundaries) agar mereka tidak kehabisan energi melayani hal di luar prioritas utama.',
+                'Latih tim untuk memberdayakan (empower) orang lain daripada sekadar memberikan solusi instan atau mengambil alih pekerjaan.',
+                'Pastikan rutinitas evaluasi memantau kesejahteraan energi tim agar tidak terjadi burnout kolektif akibat menolong terus-menerus.',
+                'Hubungkan kembali pencapaian administratif sehari-hari dengan dampak besar (purpose) agar tim tetap termotivasi meski mengerjakan hal rutin.'
+            ],
+            'high_energy' => 'Tim ini berada di titik energi tertinggi ketika mereka melihat langsung bahwa jerih payah kolektif mereka berhasil meringankan beban atau mengubah keadaan pihak lain menjadi lebih baik.'
         ],
     ]
 ];
