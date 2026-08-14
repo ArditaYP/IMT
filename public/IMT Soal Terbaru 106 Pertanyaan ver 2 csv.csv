@@ -1,0 +1,107 @@
+ID Soal,Driver,Sub Composite,Jenis,Pertanyaan
+1,Security,Stability,Normal,Saya biasanya menyusun jadwal harian meski tidak ada yang mengharuskan saya melakukannya.
+2,Security,Stability,Reverse,Saya lebih nyaman menjalani hari tanpa jadwal yang ditentukan sebelumnya.
+3,Security,Certainty,Normal,Saya biasanya mencari beberapa opsi cadangan sebelum memutuskan sesuatu yang penting.
+4,Security,Certainty,Reverse,"Saya sering mengambil keputusan penting hanya dengan informasi seadanya, tanpa banyak pertimbangan tambahan."
+5,Security,Trustworthiness,Normal,"Kalau saya bilang akan mengerjakan sesuatu pada waktu tertentu, saya berusaha keras memenuhinya walau situasi berubah."
+6,Security,Trustworthiness,Reverse,Saya cukup sering menunda hal yang sudah saya janjikan kalau muncul hal lain yang lebih mendesak.
+7,Security,Authenticity,Normal,Saya tetap menyampaikan pendapat saya walau tahu itu berbeda dari kebanyakan orang di ruangan itu.
+8,Security,Authenticity,Reverse,Saya cenderung menyesuaikan sikap saya supaya lebih mudah diterima oleh orang-orang di sekitar saya.
+9,Security,Resilience,Normal,"Setelah mengalami kegagalan, saya butuh waktu singkat untuk kembali fokus ke aktivitas berikutnya."
+10,Security,Resilience,Reverse,Saya butuh waktu cukup lama untuk kembali bersemangat setelah menghadapi sesuatu yang mengecewakan.
+11,Significance,Recognition,Normal,Saya tetap mengerjakan sesuatu dengan sebaik mungkin walau tidak ada yang akan menyadarinya.
+12,Significance,Recognition,Reverse,Saya cenderung mengurangi usaha saya kalau tahu hasilnya tidak akan diperhatikan orang lain.
+13,Significance,Achievement,Normal,Saya biasanya punya target konkret yang saya kejar dalam beberapa bulan ke depan.
+14,Significance,Achievement,Reverse,"Saya jarang menetapkan target khusus, saya lebih mengikuti apa yang terjadi hari demi hari."
+15,Significance,Self-Worth,Normal,"Kalaupun hasil kerja saya tidak sesuai harapan, saya tidak lantas meragukan nilai diri saya secara keseluruhan."
+16,Significance,Self-Worth,Reverse,Penilaian saya terhadap diri sendiri cukup dipengaruhi oleh berhasil atau tidaknya sesuatu yang saya kerjakan.
+17,Significance,Competence,Normal,Saya cukup rutin meluangkan waktu untuk mempelajari hal yang berhubungan dengan bidang saya.
+18,Significance,Competence,Reverse,Saya jarang meluangkan waktu khusus untuk meningkatkan kemampuan di luar apa yang benar-benar dibutuhkan saat itu.
+19,Significance,Confidence,Normal,Saya cenderung tetap mencoba sesuatu yang baru meski belum yakin akan berhasil.
+20,Significance,Confidence,Reverse,Saya lebih memilih menghindari sesuatu kalau saya tidak cukup yakin bisa melakukannya dengan baik.
+21,Connection,Belonging,Normal,Saya merasa lebih bersemangat menjalani sesuatu kalau saya melakukannya bersama kelompok atau komunitas tertentu.
+22,Connection,Belonging,Reverse,Saya cenderung lebih nyaman mengerjakan sesuatu sendirian daripada menjadi bagian dari kelompok tertentu.
+23,Connection,Trust,Normal,Saya biasanya memberi kesempatan pada orang baru untuk membuktikan diri sebelum saya menilai mereka.
+24,Connection,Trust,Reverse,Saya cenderung berhati-hati dan menjaga jarak sampai benar-benar yakin terhadap seseorang.
+25,Connection,Empathy,Normal,"Ketika seseorang bercerita tentang masalahnya, saya biasanya lebih dulu memperhatikan perasaannya sebelum menanggapi dengan solusi."
+26,Connection,Empathy,Reverse,"Saya cenderung langsung fokus mencari solusi ketika mendengar masalah orang lain, tanpa banyak membahas perasaannya."
+27,Connection,Intimacy,Normal,Saya punya beberapa orang yang saya ajak berbicara tentang hal-hal yang cukup pribadi.
+28,Connection,Intimacy,Reverse,"Saya jarang membicarakan hal-hal pribadi, bahkan dengan orang-orang yang cukup dekat dengan saya."
+29,Connection,Acceptance,Normal,Saya cukup mudah menerima cara pandang orang lain meskipun berbeda jauh dari cara saya berpikir.
+30,Connection,Acceptance,Reverse,Saya cenderung sulit menerima pandangan yang terlalu berbeda dari cara saya melihat sesuatu.
+31,Growth,Curiosity,Normal,"Saya sering mencari tahu lebih jauh tentang topik yang baru saya dengar, meski tidak berhubungan langsung dengan pekerjaan saya."
+32,Growth,Curiosity,Reverse,Saya biasanya cukup puas dengan apa yang sudah saya ketahui dan jarang mencari informasi tambahan di luar itu.
+33,Growth,Learning,Normal,"Saya biasanya mencari cara sendiri untuk mempelajari sesuatu, tanpa menunggu diarahkan orang lain."
+34,Growth,Learning,Reverse,Saya biasanya menunggu ada kebutuhan mendesak baru mulai mempelajari hal baru.
+35,Growth,Adaptability,Normal,"Ketika rencana yang sudah disusun berubah mendadak, saya biasanya cukup cepat menyusun ulang langkah berikutnya."
+36,Growth,Adaptability,Reverse,Saya butuh waktu cukup lama untuk menyesuaikan diri ketika rencana yang sudah disusun tiba-tiba berubah.
+37,Growth,Mastery,Normal,"Saya cenderung mengulang sesuatu sampai hasilnya benar-benar sesuai standar saya sendiri, bukan sekadar cukup."
+38,Growth,Mastery,Reverse,"Saya cukup puas begitu suatu pekerjaan selesai, tanpa terlalu memikirkan apakah masih bisa ditingkatkan."
+39,Growth,Self-Expansion,Normal,"Saya cukup sering mencoba hal yang berada di luar kebiasaan saya, meski awalnya terasa canggung."
+40,Growth,Self-Expansion,Reverse,Saya lebih memilih bertahan dengan cara-cara yang sudah saya kuasai daripada mencoba sesuatu yang baru.
+41,Contribution,Service,Normal,"Saya biasanya menawarkan bantuan begitu melihat seseorang kesulitan, meski mereka belum memintanya."
+42,Contribution,Service,Reverse,Saya biasanya menunggu diminta secara langsung sebelum ikut membantu seseorang.
+43,Contribution,Value Creation,Normal,"Saya lebih suka mengerjakan sesuatu yang jelas manfaatnya bagi orang lain, dibanding sesuatu yang sekadar terlihat menarik."
+44,Contribution,Value Creation,Reverse,"Bagi saya, seberapa menarik tampilan suatu hasil kerja cukup penting, terlepas dari seberapa besar manfaatnya."
+45,Contribution,Influence,Normal,"Sikap dan kebiasaan saya cukup sering diikuti oleh orang-orang di sekitar saya, tanpa saya memintanya."
+46,Contribution,Influence,Reverse,Saya jarang memperhatikan apakah sikap saya berpengaruh terhadap cara orang lain bersikap.
+47,Contribution,Stewardship,Normal,"Sebelum memutuskan sesuatu, saya biasanya memikirkan bagaimana dampaknya beberapa tahun ke depan, bukan cuma sekarang."
+48,Contribution,Stewardship,Reverse,"Saya lebih fokus menyelesaikan sesuatu untuk kebutuhan saat ini, tanpa terlalu memikirkan dampak jangka panjangnya."
+49,Contribution,Legacy,Normal,Saya cukup sering memikirkan apa yang ingin saya tinggalkan yang masih bisa bermanfaat meski saya sudah tidak terlibat lagi.
+50,Contribution,Legacy,Reverse,Saya jarang memikirkan apa yang akan tersisa dari sesuatu yang saya kerjakan setelah saya selesai terlibat.
+51,Security,Stability,Normal,Saya cenderung menata barang dan ruang kerja saya dengan cara yang sama dari waktu ke waktu.
+52,Security,Stability,Reverse,Saya tidak keberatan kalau susunan barang atau ruang kerja saya berubah-ubah dari hari ke hari.
+53,Security,Certainty,Normal,"Sebelum memulai proyek baru, saya biasanya ingin tahu dulu apa saja yang diharapkan dari saya."
+54,Security,Certainty,Reverse,Saya cukup nyaman memulai proyek baru meski belum jelas apa saja yang diharapkan dari saya.
+55,Security,Trustworthiness,Normal,Orang-orang di sekitar saya cenderung tahu persis apa yang bisa mereka harapkan dari saya.
+56,Security,Trustworthiness,Reverse,Sikap saya terhadap suatu hal bisa cukup berbeda tergantung suasana hati saya saat itu.
+57,Security,Authenticity,Normal,"Saya tetap bersikap sama, baik saat sedang diperhatikan banyak orang maupun saat sendirian."
+58,Security,Authenticity,Reverse,Saya cenderung menampilkan sisi diri yang berbeda tergantung siapa yang sedang saya hadapi.
+59,Security,Resilience,Normal,Saya masih bisa berpikir cukup jernih meski sedang berada dalam situasi yang menekan.
+60,Security,Resilience,Reverse,Pikiran saya cenderung kacau begitu situasi yang saya hadapi berubah jadi menekan.
+61,Significance,Recognition,Normal,"Saya cukup nyaman kalau hasil kerja saya dianggap biasa saja oleh orang lain, selama saya tahu saya sudah berusaha maksimal."
+62,Significance,Recognition,Reverse,"Saya ingin usaha saya diketahui orang lain, bukan cuma disimpan untuk diri sendiri."
+63,Significance,Achievement,Normal,"Saya biasanya mengukur kemajuan saya dari waktu ke waktu, bukan cuma dari hasil akhirnya saja."
+64,Significance,Achievement,Reverse,Saya jarang benar-benar memeriksa apakah saya sudah membuat kemajuan atau belum.
+65,Significance,Self-Worth,Normal,Rasa percaya diri saya tidak banyak berubah walau sedang menghadapi kegagalan.
+66,Significance,Self-Worth,Reverse,Rasa percaya diri saya cukup mudah goyah begitu saya mengalami kegagalan.
+67,Significance,Competence,Normal,"Saya senang mencari umpan balik tentang cara saya bekerja, meski itu tidak menyenangkan untuk didengar."
+68,Significance,Competence,Reverse,Saya jarang secara sengaja mencari tahu kekurangan dalam cara saya bekerja.
+69,Significance,Confidence,Normal,"Saya biasanya berani menyampaikan pendapat saya duluan, sebelum orang lain menyampaikan pendapatnya."
+70,Significance,Confidence,Reverse,Saya cenderung menunggu orang lain bicara dulu sebelum saya menyampaikan pendapat saya.
+71,Connection,Belonging,Normal,Saya merasa lebih baik menjalani hari kalau ada orang lain yang tahu apa yang sedang saya kerjakan.
+72,Connection,Belonging,Reverse,Saya tidak terlalu peduli apakah orang lain tahu apa yang sedang saya kerjakan atau tidak.
+73,Connection,Trust,Normal,Saya biasanya bersedia membagikan tugas penting ke orang lain tanpa harus mengawasi setiap langkahnya.
+74,Connection,Trust,Reverse,Saya lebih suka mengerjakan sendiri hal-hal penting daripada membagikannya ke orang lain.
+75,Connection,Empathy,Normal,"Saya sering menyadari kalau ada seseorang di sekitar saya yang sedang tidak baik-baik saja, meski mereka tidak bilang apa-apa."
+76,Connection,Empathy,Reverse,Saya biasanya baru menyadari ada yang tidak beres pada seseorang setelah mereka mengatakannya secara langsung.
+77,Connection,Intimacy,Normal,Saya cukup nyaman menunjukkan sisi diri saya yang rapuh kepada orang-orang tertentu.
+78,Connection,Intimacy,Reverse,"Saya cenderung menjaga jarak emosional, bahkan dengan orang-orang yang cukup dekat dengan saya."
+79,Connection,Acceptance,Normal,Saya bisa tetap menghargai seseorang meski cara hidupnya sangat berbeda dari cara hidup saya.
+80,Connection,Acceptance,Reverse,Saya cukup sulit menghargai seseorang yang cara hidupnya sangat berbeda dari cara hidup saya.
+81,Growth,Curiosity,Normal,Saya senang bertanya kenapa atau bagaimana tentang hal-hal yang sebenarnya tidak wajib saya ketahui.
+82,Growth,Curiosity,Reverse,Saya jarang penasaran dengan hal-hal yang tidak berhubungan langsung dengan kebutuhan saya.
+83,Growth,Learning,Normal,Saya cukup sering meluangkan waktu khusus di luar pekerjaan untuk mempelajari sesuatu yang baru.
+84,Growth,Learning,Reverse,Waktu luang saya jarang saya pakai untuk mempelajari hal baru.
+85,Growth,Adaptability,Normal,Saya bisa cukup cepat mengubah cara kerja saya begitu tahu caranya yang lama sudah tidak lagi efektif.
+86,Growth,Adaptability,Reverse,Saya cenderung tetap memakai cara kerja lama meski sudah tahu ada cara yang lebih efektif.
+87,Growth,Mastery,Normal,Saya cukup sering membandingkan hasil kerja saya sekarang dengan standar terbaik yang pernah saya capai.
+88,Growth,Mastery,Reverse,"Saya jarang membandingkan hasil kerja saya dengan standar tertentu, yang penting selesai."
+89,Growth,Self-Expansion,Normal,Saya cukup sering sengaja menempatkan diri saya di situasi yang belum pernah saya coba sebelumnya.
+90,Growth,Self-Expansion,Reverse,Saya cenderung menghindari situasi yang belum pernah saya coba sebelumnya.
+91,Contribution,Service,Normal,"Saya sering memperhatikan kebutuhan orang lain di sekitar saya, meski itu bukan tanggung jawab saya secara langsung."
+92,Contribution,Service,Reverse,Saya cenderung fokus pada tanggung jawab saya sendiri dan tidak terlalu memperhatikan kebutuhan orang lain di luar itu.
+93,Contribution,Value Creation,Normal,"Saya lebih puas kalau tahu hasil kerja saya benar-benar dipakai orang lain, dibanding sekadar selesai tepat waktu."
+94,Contribution,Value Creation,Reverse,"Bagi saya, yang penting suatu pekerjaan selesai tepat waktu, terlepas dari seberapa banyak yang benar-benar memakainya."
+95,Contribution,Influence,Normal,"Orang lain cukup sering meniru cara saya menyelesaikan sesuatu, tanpa saya minta."
+96,Contribution,Influence,Reverse,Saya jarang memperhatikan apakah cara saya menyelesaikan sesuatu ditiru orang lain atau tidak.
+97,Contribution,Stewardship,Normal,"Saya cenderung menjaga sumber daya (waktu, anggaran, alat) seolah-olah itu akan dipakai orang lain setelah saya."
+98,Contribution,Stewardship,Reverse,Saya cenderung memakai sumber daya yang ada secukupnya untuk kebutuhan saya saat ini saja.
+99,Contribution,Legacy,Normal,"Saya senang membangun sesuatu yang bisa terus dipakai atau dilanjutkan orang lain, bahkan setelah saya tidak terlibat."
+100,Contribution,Legacy,Reverse,"Saya lebih fokus menyelesaikan sesuatu untuk saat ini, tanpa terlalu memikirkan apakah itu akan berlanjut nantinya."
+101,General (Modul Validitas),-,Consistency (pasangan dgn 102),Saya berusaha membaca setiap pernyataan dengan cermat sebelum menjawab.
+102,General (Modul Validitas),-,Consistency (pasangan dgn 101),Saya meluangkan waktu untuk memahami maksud sebuah pernyataan sebelum memilih jawaban.
+103,General (Modul Validitas),-,Authenticity (absolut),Saya tidak pernah merasa ragu ketika harus mengambil keputusan penting.
+104,General (Modul Validitas),-,Authenticity (absolut),Saya selalu bisa mengendalikan emosi saya dalam situasi apa pun.
+105,General (Modul Validitas),-,Consistency (pasangan dgn 106),"Saya cenderung memberi jawaban yang benar-benar mencerminkan diri saya, bukan yang terdengar ideal."
+106,General (Modul Validitas),-,Consistency (pasangan dgn 105),Saya lebih memilih menjawab secara jujur meskipun jawabannya tidak terlihat sempurna.

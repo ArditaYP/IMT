@@ -227,7 +227,7 @@ class AssessmentController extends Controller
             foreach ($validated['answers'] as $questionId => $rawScore) {
                 $q = $questions->get($questionId);
                 $calcScore = ($q && $q->type === 'reverse core') ? (8 - $rawScore) : $rawScore;
-                
+
                 $answersData[] = [
                     'user_assessment_id' => $assessment->id,
                     'question_id'        => $questionId,
@@ -287,7 +287,7 @@ class AssessmentController extends Controller
                     'group' => $assessment->group
                 ]);
             }
-            
+
             // Cek untuk Admin Perusahaan (Client Admin)
             if ($isAdmin && $user->role === 'client_admin') {
                 if (!$assessment->group->client_can_view_reports) {
@@ -314,12 +314,12 @@ class AssessmentController extends Controller
             // Generate Executive Summary
             try {
                 $prompt = "Peserta ini bernama {$data->name}, pekerjaannya adalah 'TBD', dan skor top drivernya adalah Security ({$scores['security']}) dan Growth ({$scores['growth']}). Buatkan 1 paragraf pesan personal singkat (Executive Summary) yang memotivasi dan memberi arahan praktis khusus untuk pekerjaannya/perannya berdasarkan kombinasi dua kekuatan utamanya.";
-                
+
                 // For demonstration, we simulate the AI service since we are using Gemini directly in production or via API
                 // $ai_summary = $aiService->generateText($prompt);
                 // Here we will just use a placeholder to save token limits if AI service is not updated yet.
                 $ai_summary = "Berdasarkan hasil asesmen, Anda memiliki dorongan kuat untuk mencari rasa aman sekaligus bertumbuh. Kombinasi ini menjadikan Anda sosok yang inovatif namun tetap berpijak pada realitas. Jadikan kekuatan ini sebagai jangkar Anda untuk memimpin dan menciptakan perubahan positif secara terukur, baik untuk diri Anda maupun lingkungan sekitar.";
-                
+
                 $data->update(['ai_narasi' => $ai_summary]);
             } catch (\Exception $e) {
                 $ai_summary = "Laporan berhasil diolah.";
@@ -347,7 +347,7 @@ class AssessmentController extends Controller
         $isAdmin = auth()->check();
 
         return view('report', compact(
-            'assessment', 
+            'assessment',
             'scores',
             'ai_summary',
             'dbQuestions',

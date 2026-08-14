@@ -5,7 +5,7 @@
 </div>
 
 <div class="bg-white rounded shadow-sm border border-gray-200 p-6 max-w-2xl">
-    <form action="<?php echo e(route('admin.groups.update', $group->id)); ?>" method="POST">
+    <form action="<?php echo e(route('admin.groups.update', $group->id)); ?>" method="POST" enctype="multipart/form-data">
         <?php echo csrf_field(); ?> <?php echo method_field('PUT'); ?>
         
         <div class="mb-4">
@@ -23,21 +23,12 @@
             <label class="block text-sm font-medium text-gray-600 mb-1">Industri</label>
             <select name="industry" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">-- Pilih Industri --</option>
-                <option value="Teknologi & TI" <?php echo e(old('industry', $group->industry) == 'Teknologi & TI' ? 'selected' : ''); ?>>Teknologi & TI</option>
-                <option value="Agensi Digital & Kreatif" <?php echo e(old('industry', $group->industry) == 'Agensi Digital & Kreatif' ? 'selected' : ''); ?>>Agensi Digital & Kreatif</option>
-                <option value="Keuangan & Perbankan" <?php echo e(old('industry', $group->industry) == 'Keuangan & Perbankan' ? 'selected' : ''); ?>>Keuangan & Perbankan</option>
-                <option value="Pendidikan & Pelatihan" <?php echo e(old('industry', $group->industry) == 'Pendidikan & Pelatihan' ? 'selected' : ''); ?>>Pendidikan & Pelatihan</option>
-                <option value="Kesehatan & Medis" <?php echo e(old('industry', $group->industry) == 'Kesehatan & Medis' ? 'selected' : ''); ?>>Kesehatan & Medis</option>
-                <option value="Manufaktur & Industri" <?php echo e(old('industry', $group->industry) == 'Manufaktur & Industri' ? 'selected' : ''); ?>>Manufaktur & Industri</option>
-                <option value="Ritel & E-Commerce" <?php echo e(old('industry', $group->industry) == 'Ritel & E-Commerce' ? 'selected' : ''); ?>>Ritel & E-Commerce</option>
-                <option value="Konstruksi & Properti" <?php echo e(old('industry', $group->industry) == 'Konstruksi & Properti' ? 'selected' : ''); ?>>Konstruksi & Properti</option>
-                <option value="Logistik & Transportasi" <?php echo e(old('industry', $group->industry) == 'Logistik & Transportasi' ? 'selected' : ''); ?>>Logistik & Transportasi</option>
-                <option value="Pariwisata & Perhotelan" <?php echo e(old('industry', $group->industry) == 'Pariwisata & Perhotelan' ? 'selected' : ''); ?>>Pariwisata & Perhotelan</option>
-                <option value="F&B (Food & Beverage)" <?php echo e(old('industry', $group->industry) == 'F&B (Food & Beverage)' ? 'selected' : ''); ?>>F&B (Food & Beverage)</option>
-                <option value="Pertambangan & Energi" <?php echo e(old('industry', $group->industry) == 'Pertambangan & Energi' ? 'selected' : ''); ?>>Pertambangan & Energi</option>
-                <option value="Pelayanan Publik & Pemerintahan" <?php echo e(old('industry', $group->industry) == 'Pelayanan Publik & Pemerintahan' ? 'selected' : ''); ?>>Pelayanan Publik & Pemerintahan</option>
-                <option value="Layanan Profesional" <?php echo e(old('industry', $group->industry) == 'Layanan Profesional' ? 'selected' : ''); ?>>Layanan Profesional</option>
-                <option value="Lainnya" <?php echo e(old('industry', $group->industry) == 'Lainnya' ? 'selected' : ''); ?>>Lainnya</option>
+                <?php
+                    $industries = ['Teknologi & TI', 'Agensi Digital & Kreatif', 'Keuangan & Perbankan', 'Pendidikan & Pelatihan', 'Kesehatan & Medis', 'Manufaktur & Industri', 'Ritel & E-Commerce', 'Konstruksi & Properti', 'Logistik & Transportasi', 'Pariwisata & Perhotelan', 'F&B (Food & Beverage)', 'Pertambangan & Energi', 'Pelayanan Publik & Pemerintahan', 'Layanan Profesional', 'Lainnya'];
+                ?>
+                <?php $__currentLoopData = $industries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ind): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($ind); ?>" <?php echo e(old('industry', $group->industry) === $ind ? 'selected' : ''); ?>><?php echo e($ind); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
         </div>
         
@@ -64,6 +55,17 @@
             </div>
         </div>
         
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Upload Logo Perusahaan (Maks 2MB)</label>
+            <?php if($group->logo_path): ?>
+                <div class="mb-2">
+                    <img src="<?php echo e(Storage::url($group->logo_path)); ?>" alt="Logo" class="h-12 w-auto object-contain rounded border p-1 bg-white">
+                    <span class="text-xs text-gray-500 ml-2">Logo saat ini</span>
+                </div>
+            <?php endif; ?>
+            <input type="file" name="logo" accept="image/*" class="w-full px-4 py-1.5 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+        </div>
+
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
                 <label class="block text-sm font-medium text-gray-600 mb-1">Waktu Mulai (Opsional)</label>

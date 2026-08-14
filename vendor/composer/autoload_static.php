@@ -675,6 +675,7 @@ class ComposerStaticInitd62e80e86785afd991c45a323bb7c66b
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Seeders\\AdditionalCoreQuestionsSeeder' => __DIR__ . '/../..' . '/database/seeders/AdditionalCoreQuestionsSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\New106QuestionsSeeder' => __DIR__ . '/../..' . '/database/seeders/New106QuestionsSeeder.php',
         'Database\\Seeders\\PrototypeSeeder' => __DIR__ . '/../..' . '/database/seeders/PrototypeSeeder.php',
         'Database\\Seeders\\QuestionSeeder' => __DIR__ . '/../..' . '/database/seeders/QuestionSeeder.php',
         'Database\\Seeders\\ReverseCoreQuestionsSeeder' => __DIR__ . '/../..' . '/database/seeders/ReverseCoreQuestionsSeeder.php',

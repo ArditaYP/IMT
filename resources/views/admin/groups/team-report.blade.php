@@ -187,7 +187,14 @@
       <img src="{{ asset('assets/img/logo-icon.png') }}" alt="IMT Discovery" style="height:44px; margin-bottom:4px;">
       <div class="logo-sub">INNER MOTIVATION TRANSFORMATION<br><b>DISCOVER YOUR TEAM</b></div>
       <div class="report-title">IMT DISCOVERY<h2>LAPORAN TIM</h2></div>
-      <div class="profile"><div class="avatar">{{ strtoupper(substr($group->name, 0, 3)) }}</div><div class="name">{{ $group->name }}</div></div>
+      <div class="profile">
+        @if($group->logo_path)
+            <img src="{{ Storage::url($group->logo_path) }}" alt="Logo" class="avatar" style="background: white; object-fit: contain; padding: 2px; border: 1px solid #e7e9f2;">
+        @else
+            <div class="avatar">{{ strtoupper(substr($group->name, 0, 3)) }}</div>
+        @endif
+        <div class="name">{{ $group->name }}</div>
+      </div>
       <div class="info-list">
         <div><span class="label">Industri</span><span class="val">{{ $group->industry ?? '-' }}</span></div>
         <div><span class="label">Staf Dites</span><span class="val">{{ $totalParticipants }} ({{ $group->quota > 0 ? round(($totalParticipants / $group->quota) * 100) : 0 }}%) dari {{ $group->quota }} Kuota</span></div>

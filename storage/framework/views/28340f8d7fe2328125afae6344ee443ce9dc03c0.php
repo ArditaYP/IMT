@@ -187,7 +187,14 @@
       <img src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery" style="height:44px; margin-bottom:4px;">
       <div class="logo-sub">INNER MOTIVATION TRANSFORMATION<br><b>DISCOVER YOUR TEAM</b></div>
       <div class="report-title">IMT DISCOVERY<h2>LAPORAN TIM</h2></div>
-      <div class="profile"><div class="avatar"><?php echo e(strtoupper(substr($group->name, 0, 3))); ?></div><div class="name"><?php echo e($group->name); ?></div></div>
+      <div class="profile">
+        <?php if($group->logo_path): ?>
+            <img src="<?php echo e(Storage::url($group->logo_path)); ?>" alt="Logo" class="avatar" style="background: white; object-fit: contain; padding: 2px; border: 1px solid #e7e9f2;">
+        <?php else: ?>
+            <div class="avatar"><?php echo e(strtoupper(substr($group->name, 0, 3))); ?></div>
+        <?php endif; ?>
+        <div class="name"><?php echo e($group->name); ?></div>
+      </div>
       <div class="info-list">
         <div><span class="label">Industri</span><span class="val"><?php echo e($group->industry ?? '-'); ?></span></div>
         <div><span class="label">Staf Dites</span><span class="val"><?php echo e($totalParticipants); ?> (<?php echo e($group->quota > 0 ? round(($totalParticipants / $group->quota) * 100) : 0); ?>%) dari <?php echo e($group->quota); ?> Kuota</span></div>

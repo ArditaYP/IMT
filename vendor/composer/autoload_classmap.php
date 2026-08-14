@@ -153,6 +153,7 @@ return array(
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
     'Database\\Seeders\\AdditionalCoreQuestionsSeeder' => $baseDir . '/database/seeders/AdditionalCoreQuestionsSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\New106QuestionsSeeder' => $baseDir . '/database/seeders/New106QuestionsSeeder.php',
     'Database\\Seeders\\PrototypeSeeder' => $baseDir . '/database/seeders/PrototypeSeeder.php',
     'Database\\Seeders\\QuestionSeeder' => $baseDir . '/database/seeders/QuestionSeeder.php',
     'Database\\Seeders\\ReverseCoreQuestionsSeeder' => $baseDir . '/database/seeders/ReverseCoreQuestionsSeeder.php',

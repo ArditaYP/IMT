@@ -98,7 +98,7 @@
     <div class="trust-row">
       <span>⭐ <b>4.9/5</b> dari 1.200+ pengguna</span>
       <span>🔬 <b>Berbasis</b> psikometri modern</span>
-      <span>⏱️ <b>±13 menit</b> pengerjaan</span>
+      <span>⏱️ <b>±15-20 menit</b> pengerjaan</span>
       <span>📄 <b>Laporan PDF</b> instan setelah bayar</span>
     </div>
   </div>
@@ -166,7 +166,7 @@
       <h2>Dari mengisi tes sampai punya laporan PDF — sepenuhnya otomatis</h2>
     </div>
     <div class="grid grid-3">
-      <div class="card"><div class="driver-chip" style="background:var(--blue);">1</div><h3>Isi Tes 13 Menit</h3><p>Pernyataan singkat mengukur kekuatan 5 Human Drivers Anda, dilengkapi pemeriksaan validitas jawaban. Tidak ada jawaban benar/salah.</p></div>
+      <div class="card"><div class="driver-chip" style="background:var(--blue);">1</div><h3>Isi Tes 15-20 Menit</h3><p>Pernyataan singkat mengukur kekuatan 5 Human Drivers Anda, dilengkapi pemeriksaan validitas jawaban. Tidak ada jawaban benar/salah.</p></div>
       <div class="card"><div class="driver-chip" style="background:var(--orange);">2</div><h3>Bayar Sekali, Aman</h3><p>Checkout instan via QRIS, Virtual Account, atau e-wallet. Transaksi diproses otomatis.</p></div>
       <div class="card"><div class="driver-chip" style="background:var(--green);">3</div><h3>Unduh Laporan PDF</h3><p>Interpretasi personal Anda — arketipe, radar 5 drivers, kekuatan, dan langkah pengembangan — langsung tersedia.</p></div>
     </div>

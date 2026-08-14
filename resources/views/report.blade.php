@@ -467,15 +467,21 @@
       : JSON.parse(localStorage.getItem('imt_answers') || '{}');
 
   const dbQuestions = @json($dbQuestions);
-  const oldPairWith = {};
-  IMT_QUESTIONS.forEach(q => { oldPairWith[q.id] = q.pairWith; });
+  
+  // Pemetaan manual pasangan soal modul validitas untuk 106 soal terbaru
+  const newPairWith = {
+      101: 102,
+      102: 101,
+      105: 106,
+      106: 105
+  };
   
   IMT_QUESTIONS = dbQuestions.map(dbq => ({
       id: dbq.id,
       driver: dbq.driver,
       type: dbq.type,
       subComposite: dbq.subComposite,
-      pairWith: oldPairWith[dbq.id] || null,
+      pairWith: newPairWith[dbq.id] || null,
       text: dbq.text
   }));
 

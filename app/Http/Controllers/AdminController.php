@@ -98,12 +98,20 @@ class AdminController extends Controller
             'start_time' => 'nullable|date',
             'end_time' => 'nullable|date|after_or_equal:start_time',
             'user_id' => 'nullable|exists:users,id',
+            'logo' => 'nullable|image|max:2048',
+            'client_can_view_reports' => 'boolean',
         ]);
 
         // Generate unique code (e.g. XYZ123)
         $code = strtoupper(substr(uniqid(), -6));
         $validated['code'] = $code;
         $validated['is_active'] = true;
+        $validated['client_can_view_reports'] = $request->has('client_can_view_reports');
+
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('logos', 'public');
+            $validated['logo_path'] = $path;
+        }
 
         \App\Models\Group::create($validated);
 
@@ -129,6 +137,7 @@ class AdminController extends Controller
             'user_id' => 'nullable|exists:users,id',
             'is_active' => 'boolean',
             'client_can_view_reports' => 'boolean',
+            'logo' => 'nullable|image|max:2048',
         ]);
 
         $group = \App\Models\Group::findOrFail($id);
@@ -137,6 +146,15 @@ class AdminController extends Controller
         $validated['is_active'] = $request->has('is_active');
         $validated['client_can_view_reports'] = $request->has('client_can_view_reports');
         
+        if ($request->hasFile('logo')) {
+            // Delete old logo if exists
+            if ($group->logo_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($group->logo_path);
+            }
+            $path = $request->file('logo')->store('logos', 'public');
+            $validated['logo_path'] = $path;
+        }
+
         $group->update($validated);
 
         return redirect()->route('admin.groups')->with('success', 'Data grup berhasil diperbarui.');

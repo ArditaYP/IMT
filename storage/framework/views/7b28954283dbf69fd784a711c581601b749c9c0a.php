@@ -7,7 +7,7 @@
 <div class="bg-white rounded shadow-sm border border-gray-200 overflow-hidden mb-8">
     <div class="p-6 bg-gray-50 border-b border-gray-200">
         <h2 class="text-lg font-semibold text-gray-700">Buat Grup Baru</h2>
-        <form action="<?php echo e(route('admin.groups.store')); ?>" method="POST" class="mt-4 flex flex-col gap-4">
+        <form action="<?php echo e(route('admin.groups.store')); ?>" method="POST" enctype="multipart/form-data" class="mt-4 flex flex-col gap-4">
             <?php echo csrf_field(); ?>
             <div class="flex gap-4">
                 <div class="flex-1">
@@ -57,6 +57,10 @@
                 </div>
             </div>
             <div class="flex gap-4 items-end">
+                <div class="flex-1">
+                    <label class="block text-sm font-medium text-gray-600 mb-1">Upload Logo Perusahaan (Opsional, akan tampil di Laporan Tim)</label>
+                    <input type="file" name="logo" accept="image/*" class="w-full px-4 py-1.5 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-600 mb-1">Waktu Mulai (Opsional)</label>
                     <input type="datetime-local" name="start_time" class="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -66,6 +70,12 @@
                     <input type="datetime-local" name="end_time" class="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-semibold h-[42px] leading-[26px]">Buat</button>
+            </div>
+            <div>
+                <label class="flex items-center gap-2 cursor-pointer mt-1">
+                    <input type="checkbox" name="client_can_view_reports" value="1" class="w-5 h-5 text-teal-600 rounded">
+                    <span class="text-sm font-medium text-gray-700">Berikan Akses Laporan Individu ke Client Admin ini</span>
+                </label>
             </div>
         </form>
         <?php if($errors->any()): ?>

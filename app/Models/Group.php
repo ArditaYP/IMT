@@ -17,6 +17,7 @@ class Group extends Model
         'quota',
         'report_visibility',
         'client_can_view_reports',
+        'logo_path',
         'is_active',
         'start_time',
         'end_time',

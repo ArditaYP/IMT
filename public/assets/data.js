@@ -86,7 +86,7 @@ let IMT_QUESTIONS = [
 
 const IMT_DRIVERS = {
   security: {
-    name: "Security", label: "SECURITY", color: "#2f6fed", icon: "1",
+    name: "Security", label: "SECURITY", color: "#2f6fed", icon: "🛡️",
     tagline: "The Stability Driver",
     pitch: "Driver yang membuat Anda mempersiapkan segala sesuatu sebelum melangkah, bukan sekadar mengikuti arus.",
     coreNeed: "Anda merasa paling tenang saat hidup terasa bisa diprediksi dan berada dalam kendali Anda sendiri.",
@@ -99,7 +99,7 @@ const IMT_DRIVERS = {
     }
   },
   significance: {
-    name: "Significance", label: "SIGNIFICANCE", color: "#e8862e", icon: "2",
+    name: "Significance", label: "SIGNIFICANCE", color: "#e8862e", icon: "🏆",
     tagline: "The Achievement Driver",
     pitch: "Driver yang mendorong Anda mengejar hasil yang benar-benar bisa dibanggakan, bukan sekadar cukup.",
     coreNeed: "Anda ingin tahu bahwa apa yang Anda kerjakan benar-benar berarti, bukan sekadar rutinitas yang lewat begitu saja.",
@@ -112,7 +112,7 @@ const IMT_DRIVERS = {
     }
   },
   connection: {
-    name: "Connection", label: "CONNECTION", color: "#3aa65a", icon: "3",
+    name: "Connection", label: "CONNECTION", color: "#3aa65a", icon: "💛",
     tagline: "The Relationship Driver",
     pitch: "Driver yang membuat hubungan dengan orang lain terasa sama pentingnya dengan pencapaian apa pun.",
     coreNeed: "Hidup terasa lebih utuh bagi Anda ketika ada orang-orang yang benar-benar menerima dan memahami siapa Anda.",
@@ -125,7 +125,7 @@ const IMT_DRIVERS = {
     }
   },
   growth: {
-    name: "Growth", label: "GROWTH", color: "#7a5cc7", icon: "4",
+    name: "Growth", label: "GROWTH", color: "#7a5cc7", icon: "🧭",
     tagline: "The Development Driver",
     pitch: "Driver yang membuat Anda gelisah kalau terlalu lama berada di zona yang itu-itu saja.",
     coreNeed: "Anda merasa paling hidup ketika sedang mempelajari sesuatu yang baru dan menjadi versi diri yang lebih baik dari kemarin.",
@@ -138,7 +138,7 @@ const IMT_DRIVERS = {
     }
   },
   contribution: {
-    name: "Contribution", label: "CONTRIBUTION", color: "#1f8a6e", icon: "5",
+    name: "Contribution", label: "CONTRIBUTION", color: "#1f8a6e", icon: "🤝",
     tagline: "The Purpose Driver",
     pitch: "Driver yang membuat Anda merasa paling puas saat usaha Anda benar-benar menolong orang lain.",
     coreNeed: "Anda merasa paling berharga saat tahu bahwa yang Anda lakukan benar-benar membantu dan bermakna bagi orang lain.",
@@ -707,189 +707,249 @@ function imtDiInterpret(key, score, driverName) {
    ============================================================ */
 const IMT_DRIVER_DYNAMICS = {
   security: {
-    healthy: { desc: "Ini versi Security yang paling sehat, saat rasa aman menjadi fondasi Anda melangkah, bukan alasan untuk berhenti.", points: [
-      "Anda tetap tenang menghadapi ketidakpastian, tidak mudah panik.",
-      "Anda bisa merencanakan ke depan tanpa harus tahu segalanya lebih dulu.",
-      "Orang lain merasa bisa mengandalkan Anda karena Anda konsisten.",
-      "Anda punya fondasi emosional yang cukup kuat untuk menghadapi tekanan.",
-    ]},
-    activated: { desc: "Kondisi ini menyala saat Anda merasa perlu memastikan semuanya berjalan baik sebelum melangkah lebih jauh.", trigger: "Biasanya muncul saat Anda mengambil keputusan penting, memulai sesuatu yang baru, atau menanggung tanggung jawab besar.", points: [
-      "Anda mulai mengumpulkan informasi dan menyusun rencana.",
-      "Anda memikirkan risiko dan menyiapkan opsi cadangan.",
-      "Anda memastikan semuanya sudah siap sebelum benar-benar melangkah.",
-    ]},
-    stress: { desc: "Saat rasa aman mulai terasa terancam, pola-pola berikut biasanya muncul dalam diri Anda.", points: [
-      "Anda mulai overthinking dan sulit mengambil keputusan.",
-      "Anda terus mencari kepastian tambahan sebelum bertindak.",
-      "Anda cenderung menunda karena belum merasa cukup yakin.",
-      "Fokus Anda bergeser dari peluang ke kemungkinan ancaman.",
-    ]},
-    shadow: { desc: "Ini versi berlebihan Security, saat kebutuhan akan kepastian berubah jadi usaha mengendalikan segalanya.", points: [
-      "Anda menjadi sangat perfeksionis dan kaku terhadap perubahan.",
-      "Anda sulit mempercayakan sesuatu ke orang lain karena ingin mengurus semuanya sendiri.",
-      "Anda menolak risiko meski sebenarnya diperlukan.",
-      "Semakin Anda berusaha mengendalikan semuanya, semakin besar kecemasan yang justru muncul.",
-    ]},
-    growth: { desc: "Bentuk paling matang dari Security adalah tetap melangkah meski kepastian penuh tidak tersedia.", points: [
-      "Anda tetap tenang meski situasinya belum sepenuhnya jelas.",
-      "Anda berani mengambil risiko yang sudah diperhitungkan.",
-      "Anda percaya pada kemampuan diri sendiri untuk beradaptasi.",
-      "Anda mampu menularkan rasa aman itu ke orang-orang di sekitar Anda.",
-    ]},
-    challenge: { title: "Belajar Mempercayai Diri Sendiri", lesson: "Inti tantangan Anda bukan mencari lebih banyak kepastian, tapi membangun kepercayaan pada diri sendiri untuk menghadapi apa pun yang belum pasti.", points: [
-      "Tidak semua risiko bisa dihindari.",
-      "Tidak semua jawaban bisa diketahui sejak awal.",
-      "Ketidakpastian adalah bagian yang wajar dari hidup.",
-      "Keberanian dan rasa aman bisa berjalan berdampingan.",
-    ], question: "Kalau dipikir lagi, rencana cadangan yang sedang Anda susun ini, benar-benar dibutuhkan, atau sekadar supaya Anda merasa lebih tenang?" },
+    healthy: {
+      desc: "Ini versi Security yang paling sehat, saat rasa aman menjadi fondasi Anda melangkah, bukan alasan untuk berhenti.", points: [
+        "Anda tetap tenang menghadapi ketidakpastian, tidak mudah panik.",
+        "Anda bisa merencanakan ke depan tanpa harus tahu segalanya lebih dulu.",
+        "Orang lain merasa bisa mengandalkan Anda karena Anda konsisten.",
+        "Anda punya fondasi emosional yang cukup kuat untuk menghadapi tekanan.",
+      ]
+    },
+    activated: {
+      desc: "Kondisi ini menyala saat Anda merasa perlu memastikan semuanya berjalan baik sebelum melangkah lebih jauh.", trigger: "Biasanya muncul saat Anda mengambil keputusan penting, memulai sesuatu yang baru, atau menanggung tanggung jawab besar.", points: [
+        "Anda mulai mengumpulkan informasi dan menyusun rencana.",
+        "Anda memikirkan risiko dan menyiapkan opsi cadangan.",
+        "Anda memastikan semuanya sudah siap sebelum benar-benar melangkah.",
+      ]
+    },
+    stress: {
+      desc: "Saat rasa aman mulai terasa terancam, pola-pola berikut biasanya muncul dalam diri Anda.", points: [
+        "Anda mulai overthinking dan sulit mengambil keputusan.",
+        "Anda terus mencari kepastian tambahan sebelum bertindak.",
+        "Anda cenderung menunda karena belum merasa cukup yakin.",
+        "Fokus Anda bergeser dari peluang ke kemungkinan ancaman.",
+      ]
+    },
+    shadow: {
+      desc: "Ini versi berlebihan Security, saat kebutuhan akan kepastian berubah jadi usaha mengendalikan segalanya.", points: [
+        "Anda menjadi sangat perfeksionis dan kaku terhadap perubahan.",
+        "Anda sulit mempercayakan sesuatu ke orang lain karena ingin mengurus semuanya sendiri.",
+        "Anda menolak risiko meski sebenarnya diperlukan.",
+        "Semakin Anda berusaha mengendalikan semuanya, semakin besar kecemasan yang justru muncul.",
+      ]
+    },
+    growth: {
+      desc: "Bentuk paling matang dari Security adalah tetap melangkah meski kepastian penuh tidak tersedia.", points: [
+        "Anda tetap tenang meski situasinya belum sepenuhnya jelas.",
+        "Anda berani mengambil risiko yang sudah diperhitungkan.",
+        "Anda percaya pada kemampuan diri sendiri untuk beradaptasi.",
+        "Anda mampu menularkan rasa aman itu ke orang-orang di sekitar Anda.",
+      ]
+    },
+    challenge: {
+      title: "Belajar Mempercayai Diri Sendiri", lesson: "Inti tantangan Anda bukan mencari lebih banyak kepastian, tapi membangun kepercayaan pada diri sendiri untuk menghadapi apa pun yang belum pasti.", points: [
+        "Tidak semua risiko bisa dihindari.",
+        "Tidak semua jawaban bisa diketahui sejak awal.",
+        "Ketidakpastian adalah bagian yang wajar dari hidup.",
+        "Keberanian dan rasa aman bisa berjalan berdampingan.",
+      ], question: "Kalau dipikir lagi, rencana cadangan yang sedang Anda susun ini, benar-benar dibutuhkan, atau sekadar supaya Anda merasa lebih tenang?"
+    },
   },
   significance: {
-    healthy: { desc: "Ini versi Significance yang paling sehat, saat Anda percaya pada nilai diri tanpa harus terus membuktikannya.", points: [
-      "Anda percaya diri terhadap kemampuan yang Anda miliki.",
-      "Anda punya tujuan yang jelas dan berani mengambil tanggung jawab.",
-      "Anda terdorong untuk terus berkembang dan berprestasi.",
-      "Nilai diri Anda tidak sepenuhnya bergantung pada pengakuan orang lain.",
-    ]},
-    activated: { desc: "Kondisi ini menyala saat Anda ingin mencapai sesuatu yang benar-benar bernilai.", trigger: "Biasanya muncul saat Anda menetapkan target baru, menghadapi tantangan besar, atau membangun reputasi profesional.", points: [
-      "Anda menetapkan standar yang tinggi untuk diri sendiri.",
-      "Anda bekerja dengan fokus penuh dan mengambil inisiatif.",
-      "Anda berusaha menunjukkan kemampuan terbaik Anda.",
-    ]},
-    stress: { desc: "Saat nilai diri Anda mulai terasa dipertanyakan, pola-pola berikut biasanya muncul.", points: [
-      "Anda mulai membandingkan diri dengan orang lain.",
-      "Anda jadi lebih sensitif terhadap kritik.",
-      "Anda takut terlihat tidak kompeten di depan orang lain.",
-      "Energi Anda lebih banyak terpakai menjaga citra daripada benar-benar berkembang.",
-    ]},
-    shadow: { desc: "Ini versi berlebihan Significance, saat kebutuhan untuk diakui berubah jadi dorongan membuktikan diri tanpa henti.", points: [
-      "Anda menjadi sangat haus pengakuan.",
-      "Anda kompetitif secara berlebihan, bahkan di hal-hal kecil.",
-      "Anda sulit menerima kelemahan diri sendiri.",
-      "Semakin banyak pengakuan yang Anda dapat, semakin sulit Anda merasa benar-benar cukup.",
-    ]},
-    growth: { desc: "Bentuk paling matang dari Significance adalah menyadari bahwa nilai diri Anda tidak bergantung pada pencapaian.", points: [
-      "Anda percaya diri tanpa harus terus membuktikan diri.",
-      "Anda mampu menerima kegagalan maupun keberhasilan dengan tenang.",
-      "Anda lebih menghargai prosesnya, bukan cuma hasil akhirnya.",
-      "Anda memakai kemampuan Anda untuk menginspirasi, bukan sekadar diakui.",
-    ]},
-    challenge: { title: "Belajar Menghargai Nilai Diri", lesson: "Inti tantangan Anda bukan berhenti mengejar pencapaian, tapi berhenti menjadikan pencapaian sebagai satu-satunya bukti bahwa Anda berharga.", points: [
-      "Kegagalan tidak mengurangi nilai diri Anda.",
-      "Kritik tidak selalu berarti penolakan.",
-      "Tidak semua orang harus mengagumi Anda.",
-      "Harga diri Anda bukan sama dengan daftar pencapaian Anda.",
-    ], question: "Coba jujur ke diri sendiri. Pencapaian yang sedang Anda kejar ini murni karena Anda menginginkannya, atau karena takut dianggap kurang?" },
+    healthy: {
+      desc: "Ini versi Significance yang paling sehat, saat Anda percaya pada nilai diri tanpa harus terus membuktikannya.", points: [
+        "Anda percaya diri terhadap kemampuan yang Anda miliki.",
+        "Anda punya tujuan yang jelas dan berani mengambil tanggung jawab.",
+        "Anda terdorong untuk terus berkembang dan berprestasi.",
+        "Nilai diri Anda tidak sepenuhnya bergantung pada pengakuan orang lain.",
+      ]
+    },
+    activated: {
+      desc: "Kondisi ini menyala saat Anda ingin mencapai sesuatu yang benar-benar bernilai.", trigger: "Biasanya muncul saat Anda menetapkan target baru, menghadapi tantangan besar, atau membangun reputasi profesional.", points: [
+        "Anda menetapkan standar yang tinggi untuk diri sendiri.",
+        "Anda bekerja dengan fokus penuh dan mengambil inisiatif.",
+        "Anda berusaha menunjukkan kemampuan terbaik Anda.",
+      ]
+    },
+    stress: {
+      desc: "Saat nilai diri Anda mulai terasa dipertanyakan, pola-pola berikut biasanya muncul.", points: [
+        "Anda mulai membandingkan diri dengan orang lain.",
+        "Anda jadi lebih sensitif terhadap kritik.",
+        "Anda takut terlihat tidak kompeten di depan orang lain.",
+        "Energi Anda lebih banyak terpakai menjaga citra daripada benar-benar berkembang.",
+      ]
+    },
+    shadow: {
+      desc: "Ini versi berlebihan Significance, saat kebutuhan untuk diakui berubah jadi dorongan membuktikan diri tanpa henti.", points: [
+        "Anda menjadi sangat haus pengakuan.",
+        "Anda kompetitif secara berlebihan, bahkan di hal-hal kecil.",
+        "Anda sulit menerima kelemahan diri sendiri.",
+        "Semakin banyak pengakuan yang Anda dapat, semakin sulit Anda merasa benar-benar cukup.",
+      ]
+    },
+    growth: {
+      desc: "Bentuk paling matang dari Significance adalah menyadari bahwa nilai diri Anda tidak bergantung pada pencapaian.", points: [
+        "Anda percaya diri tanpa harus terus membuktikan diri.",
+        "Anda mampu menerima kegagalan maupun keberhasilan dengan tenang.",
+        "Anda lebih menghargai prosesnya, bukan cuma hasil akhirnya.",
+        "Anda memakai kemampuan Anda untuk menginspirasi, bukan sekadar diakui.",
+      ]
+    },
+    challenge: {
+      title: "Belajar Menghargai Nilai Diri", lesson: "Inti tantangan Anda bukan berhenti mengejar pencapaian, tapi berhenti menjadikan pencapaian sebagai satu-satunya bukti bahwa Anda berharga.", points: [
+        "Kegagalan tidak mengurangi nilai diri Anda.",
+        "Kritik tidak selalu berarti penolakan.",
+        "Tidak semua orang harus mengagumi Anda.",
+        "Harga diri Anda bukan sama dengan daftar pencapaian Anda.",
+      ], question: "Coba jujur ke diri sendiri. Pencapaian yang sedang Anda kejar ini murni karena Anda menginginkannya, atau karena takut dianggap kurang?"
+    },
   },
   connection: {
-    healthy: { desc: "Ini versi Connection yang paling sehat, saat Anda terhubung dengan orang lain tanpa kehilangan diri sendiri.", points: [
-      "Anda mudah membangun kepercayaan dengan orang lain.",
-      "Anda menunjukkan empati yang tulus, bukan basa-basi.",
-      "Anda menjaga hubungan yang penting bagi Anda dengan konsisten.",
-      "Anda tetap punya identitas sendiri di dalam hubungan apa pun.",
-    ]},
-    activated: { desc: "Kondisi ini menyala saat Anda ingin membangun kedekatan yang lebih bermakna dengan seseorang.", trigger: "Biasanya muncul saat Anda memasuki lingkungan baru, membangun tim, atau ada seseorang yang butuh dukungan Anda.", points: [
-      "Anda jadi lebih banyak mendengarkan.",
-      "Anda berusaha memahami sudut pandang orang lain.",
-      "Anda menunjukkan perhatian lewat komunikasi yang hangat.",
-    ]},
-    stress: { desc: "Saat rasa diterima mulai terasa terancam, pola-pola berikut biasanya muncul.", points: [
-      "Anda mulai terlalu memikirkan pendapat orang lain tentang Anda.",
-      "Anda khawatir ditolak atau mengecewakan seseorang.",
-      "Anda jadi sulit mengungkapkan ketidaksetujuan.",
-      "Energi Anda lebih banyak terpakai menghindari penolakan daripada membangun hubungan yang tulus.",
-    ]},
-    shadow: { desc: "Ini versi berlebihan Connection, saat keinginan diterima berubah jadi kebiasaan menyenangkan semua orang.", points: [
-      "Anda jadi terlalu sering berusaha menyenangkan orang lain.",
-      "Anda sulit mengatakan tidak, bahkan saat sebenarnya ingin.",
-      "Anda menghindari konflik secara berlebihan.",
-      "Anda mengorbankan kebutuhan sendiri demi tetap diterima.",
-    ]},
-    growth: { desc: "Bentuk paling matang dari Connection adalah tetap terhubung meski ada perbedaan pendapat.", points: [
-      "Anda membangun hubungan yang jujur, bukan sekadar nyaman.",
-      "Anda berani menyampaikan kebutuhan dan pendapat Anda.",
-      "Anda tetap terhubung meski ada perbedaan pendapat.",
-      "Anda membangun hubungan atas dasar keaslian, bukan ketergantungan.",
-    ]},
-    challenge: { title: "Belajar Terhubung Secara Autentik", lesson: "Inti tantangan Anda bukan menjaga semua orang tetap senang, tapi berani menjadi diri sendiri meski itu berisiko tidak disukai.", points: [
-      "Tidak semua orang harus menyukai Anda.",
-      "Konflik tidak selalu merusak hubungan.",
-      "Kejujuran lebih penting daripada sekadar disetujui.",
-      "Hubungan yang sehat butuh batasan yang jelas.",
-    ], question: "Hubungan yang sedang Anda jaga erat-erat itu, apakah memang sehat, atau Anda hanya takut kehilangan rasa diterima?" },
+    healthy: {
+      desc: "Ini versi Connection yang paling sehat, saat Anda terhubung dengan orang lain tanpa kehilangan diri sendiri.", points: [
+        "Anda mudah membangun kepercayaan dengan orang lain.",
+        "Anda menunjukkan empati yang tulus, bukan basa-basi.",
+        "Anda menjaga hubungan yang penting bagi Anda dengan konsisten.",
+        "Anda tetap punya identitas sendiri di dalam hubungan apa pun.",
+      ]
+    },
+    activated: {
+      desc: "Kondisi ini menyala saat Anda ingin membangun kedekatan yang lebih bermakna dengan seseorang.", trigger: "Biasanya muncul saat Anda memasuki lingkungan baru, membangun tim, atau ada seseorang yang butuh dukungan Anda.", points: [
+        "Anda jadi lebih banyak mendengarkan.",
+        "Anda berusaha memahami sudut pandang orang lain.",
+        "Anda menunjukkan perhatian lewat komunikasi yang hangat.",
+      ]
+    },
+    stress: {
+      desc: "Saat rasa diterima mulai terasa terancam, pola-pola berikut biasanya muncul.", points: [
+        "Anda mulai terlalu memikirkan pendapat orang lain tentang Anda.",
+        "Anda khawatir ditolak atau mengecewakan seseorang.",
+        "Anda jadi sulit mengungkapkan ketidaksetujuan.",
+        "Energi Anda lebih banyak terpakai menghindari penolakan daripada membangun hubungan yang tulus.",
+      ]
+    },
+    shadow: {
+      desc: "Ini versi berlebihan Connection, saat keinginan diterima berubah jadi kebiasaan menyenangkan semua orang.", points: [
+        "Anda jadi terlalu sering berusaha menyenangkan orang lain.",
+        "Anda sulit mengatakan tidak, bahkan saat sebenarnya ingin.",
+        "Anda menghindari konflik secara berlebihan.",
+        "Anda mengorbankan kebutuhan sendiri demi tetap diterima.",
+      ]
+    },
+    growth: {
+      desc: "Bentuk paling matang dari Connection adalah tetap terhubung meski ada perbedaan pendapat.", points: [
+        "Anda membangun hubungan yang jujur, bukan sekadar nyaman.",
+        "Anda berani menyampaikan kebutuhan dan pendapat Anda.",
+        "Anda tetap terhubung meski ada perbedaan pendapat.",
+        "Anda membangun hubungan atas dasar keaslian, bukan ketergantungan.",
+      ]
+    },
+    challenge: {
+      title: "Belajar Terhubung Secara Autentik", lesson: "Inti tantangan Anda bukan menjaga semua orang tetap senang, tapi berani menjadi diri sendiri meski itu berisiko tidak disukai.", points: [
+        "Tidak semua orang harus menyukai Anda.",
+        "Konflik tidak selalu merusak hubungan.",
+        "Kejujuran lebih penting daripada sekadar disetujui.",
+        "Hubungan yang sehat butuh batasan yang jelas.",
+      ], question: "Hubungan yang sedang Anda jaga erat-erat itu, apakah memang sehat, atau Anda hanya takut kehilangan rasa diterima?"
+    },
   },
   growth: {
-    healthy: { desc: "Ini versi Growth yang paling sehat, saat Anda berkembang karena percaya selalu ada ruang jadi lebih baik.", points: [
-      "Anda terbuka terhadap ide-ide baru.",
-      "Anda menikmati proses belajar itu sendiri, bukan cuma hasilnya.",
-      "Anda mudah beradaptasi ketika keadaan berubah.",
-      "Anda percaya selalu ada ruang untuk menjadi lebih baik.",
-    ]},
-    activated: { desc: "Kondisi ini menyala saat Anda menghadapi sesuatu yang baru dan ingin mempelajarinya.", trigger: "Biasanya muncul saat Anda menghadapi tantangan baru, mempelajari keterampilan baru, atau menemukan peluang baru.", points: [
-      "Anda jadi banyak bertanya dan mencari wawasan baru.",
-      "Anda mengeksplorasi berbagai pilihan sebelum memutuskan.",
-      "Anda mencoba pendekatan yang berbeda dari biasanya.",
-    ]},
-    stress: { desc: "Saat kemajuan terasa terlalu lambat, pola-pola berikut biasanya muncul dalam diri Anda.", points: [
-      "Anda jadi gelisah ketika tidak melihat kemajuan.",
-      "Anda sulit menikmati pencapaian yang sudah Anda raih.",
-      "Anda terus mencari hal baru tanpa menyelesaikan yang lama.",
-      "Fokus Anda bergeser dari belajar ke kecemasan soal ketinggalan.",
-    ]},
-    shadow: { desc: "Ini versi berlebihan Growth, saat rasa ingin berkembang berubah jadi ketidakpuasan yang terus-menerus.", points: [
-      "Anda tidak pernah merasa cukup dengan pencapaian Anda.",
-      "Anda selalu mengejar hal berikutnya sebelum yang sekarang selesai.",
-      "Anda mudah bosan terhadap rutinitas.",
-      "Anda mengabaikan stabilitas demi terus mencari pengalaman baru.",
-    ]},
-    growth: { desc: "Bentuk paling matang dari Growth adalah berkembang dengan sabar, bukan terburu-buru.", points: [
-      "Anda menikmati proses belajar sekaligus hasilnya.",
-      "Anda menerima bahwa pertumbuhan butuh waktu.",
-      "Anda mampu menyeimbangkan eksplorasi dengan stabilitas.",
-      "Anda membantu orang lain berkembang lewat pengalaman Anda.",
-    ]},
-    challenge: { title: "Belajar Menikmati Proses Bertumbuh", lesson: "Inti tantangan Anda bukan bergerak lebih cepat, tapi belajar menghargai kemajuan yang sudah Anda capai sejauh ini.", points: [
-      "Tidak semua peluang harus Anda ambil.",
-      "Tidak semua perubahan berarti kemajuan.",
-      "Pertumbuhan membutuhkan kesabaran.",
-      "Istirahat juga bagian dari berkembang.",
-    ], question: "Sebelum mengejar hal baru berikutnya, tanyakan pada diri sendiri: ini benar-benar penting bagi Anda, atau Anda cuma tidak tahan melihat diri sendiri diam di tempat?" },
+    healthy: {
+      desc: "Ini versi Growth yang paling sehat, saat Anda berkembang karena percaya selalu ada ruang jadi lebih baik.", points: [
+        "Anda terbuka terhadap ide-ide baru.",
+        "Anda menikmati proses belajar itu sendiri, bukan cuma hasilnya.",
+        "Anda mudah beradaptasi ketika keadaan berubah.",
+        "Anda percaya selalu ada ruang untuk menjadi lebih baik.",
+      ]
+    },
+    activated: {
+      desc: "Kondisi ini menyala saat Anda menghadapi sesuatu yang baru dan ingin mempelajarinya.", trigger: "Biasanya muncul saat Anda menghadapi tantangan baru, mempelajari keterampilan baru, atau menemukan peluang baru.", points: [
+        "Anda jadi banyak bertanya dan mencari wawasan baru.",
+        "Anda mengeksplorasi berbagai pilihan sebelum memutuskan.",
+        "Anda mencoba pendekatan yang berbeda dari biasanya.",
+      ]
+    },
+    stress: {
+      desc: "Saat kemajuan terasa terlalu lambat, pola-pola berikut biasanya muncul dalam diri Anda.", points: [
+        "Anda jadi gelisah ketika tidak melihat kemajuan.",
+        "Anda sulit menikmati pencapaian yang sudah Anda raih.",
+        "Anda terus mencari hal baru tanpa menyelesaikan yang lama.",
+        "Fokus Anda bergeser dari belajar ke kecemasan soal ketinggalan.",
+      ]
+    },
+    shadow: {
+      desc: "Ini versi berlebihan Growth, saat rasa ingin berkembang berubah jadi ketidakpuasan yang terus-menerus.", points: [
+        "Anda tidak pernah merasa cukup dengan pencapaian Anda.",
+        "Anda selalu mengejar hal berikutnya sebelum yang sekarang selesai.",
+        "Anda mudah bosan terhadap rutinitas.",
+        "Anda mengabaikan stabilitas demi terus mencari pengalaman baru.",
+      ]
+    },
+    growth: {
+      desc: "Bentuk paling matang dari Growth adalah berkembang dengan sabar, bukan terburu-buru.", points: [
+        "Anda menikmati proses belajar sekaligus hasilnya.",
+        "Anda menerima bahwa pertumbuhan butuh waktu.",
+        "Anda mampu menyeimbangkan eksplorasi dengan stabilitas.",
+        "Anda membantu orang lain berkembang lewat pengalaman Anda.",
+      ]
+    },
+    challenge: {
+      title: "Belajar Menikmati Proses Bertumbuh", lesson: "Inti tantangan Anda bukan bergerak lebih cepat, tapi belajar menghargai kemajuan yang sudah Anda capai sejauh ini.", points: [
+        "Tidak semua peluang harus Anda ambil.",
+        "Tidak semua perubahan berarti kemajuan.",
+        "Pertumbuhan membutuhkan kesabaran.",
+        "Istirahat juga bagian dari berkembang.",
+      ], question: "Sebelum mengejar hal baru berikutnya, tanyakan pada diri sendiri: ini benar-benar penting bagi Anda, atau Anda cuma tidak tahan melihat diri sendiri diam di tempat?"
+    },
   },
   contribution: {
-    healthy: { desc: "Ini versi Contribution yang paling sehat, saat Anda membantu karena itu terasa alami, bukan kewajiban.", points: [
-      "Anda punya rasa tanggung jawab yang sehat terhadap sekitar Anda.",
-      "Anda memikirkan dampak jangka panjang dari tindakan Anda.",
-      "Anda senang membantu dan memberdayakan orang lain.",
-      "Anda membantu bukan karena merasa harus, tapi karena itu terasa alami bagi Anda.",
-    ]},
-    activated: { desc: "Kondisi ini menyala saat Anda melihat peluang untuk memberi dampak yang lebih besar.", trigger: "Biasanya muncul saat Anda menemukan masalah yang perlu diselesaikan, memimpin sesuatu yang bermakna, atau melihat orang lain butuh bantuan.", points: [
-      "Anda mencari cara untuk membantu.",
-      "Anda mengambil tanggung jawab tambahan dengan sukarela.",
-      "Anda menghubungkan tindakan Anda dengan tujuan yang lebih besar.",
-    ]},
-    stress: { desc: "Saat dampak yang Anda beri terasa kurang berarti, pola-pola berikut biasanya muncul.", points: [
-      "Anda mulai meragukan manfaat dari apa yang sudah Anda berikan.",
-      "Anda merasa belum cukup berkontribusi.",
-      "Anda sulit merasa puas terhadap dampak yang sudah tercipta.",
-      "Anda merasa bersalah ketika mendahulukan kebutuhan pribadi.",
-    ]},
-    shadow: { desc: "Ini versi berlebihan Contribution, saat keinginan membantu berubah jadi pengorbanan diri tanpa batas.", points: [
-      "Anda mengorbankan diri secara berlebihan.",
-      "Anda sulit menetapkan batasan terhadap permintaan orang lain.",
-      "Anda merasa bertanggung jawab atas masalah semua orang.",
-      "Anda mengabaikan kebutuhan Anda sendiri demi terus memberi.",
-    ]},
-    growth: { desc: "Bentuk paling matang dari Contribution adalah memberi tanpa kehilangan diri sendiri.", points: [
-      "Anda memberi dengan kesadaran dan keseimbangan.",
-      "Anda memahami batas tanggung jawab Anda sendiri.",
-      "Anda memberdayakan orang lain, bukan menyelamatkan mereka.",
-      "Anda menghubungkan kontribusi dengan kebijaksanaan, bukan pengorbanan.",
-    ]},
-    challenge: { title: "Belajar Memberi Secara Berkelanjutan", lesson: "Inti tantangan Anda bukan memberi lebih banyak, tapi belajar bahwa merawat diri sendiri juga bagian dari kontribusi yang sehat.", points: [
-      "Anda tidak bisa membantu semua orang.",
-      "Merawat diri sendiri bukan tindakan egois.",
-      "Dampak besar membutuhkan keberlanjutan.",
-      "Memberdayakan lebih efektif daripada menyelamatkan.",
-    ], question: "Bantuan yang baru saja Anda berikan tadi, lahir dari kelapangan hati, atau dari rasa tidak enak kalau menolak?" },
+    healthy: {
+      desc: "Ini versi Contribution yang paling sehat, saat Anda membantu karena itu terasa alami, bukan kewajiban.", points: [
+        "Anda punya rasa tanggung jawab yang sehat terhadap sekitar Anda.",
+        "Anda memikirkan dampak jangka panjang dari tindakan Anda.",
+        "Anda senang membantu dan memberdayakan orang lain.",
+        "Anda membantu bukan karena merasa harus, tapi karena itu terasa alami bagi Anda.",
+      ]
+    },
+    activated: {
+      desc: "Kondisi ini menyala saat Anda melihat peluang untuk memberi dampak yang lebih besar.", trigger: "Biasanya muncul saat Anda menemukan masalah yang perlu diselesaikan, memimpin sesuatu yang bermakna, atau melihat orang lain butuh bantuan.", points: [
+        "Anda mencari cara untuk membantu.",
+        "Anda mengambil tanggung jawab tambahan dengan sukarela.",
+        "Anda menghubungkan tindakan Anda dengan tujuan yang lebih besar.",
+      ]
+    },
+    stress: {
+      desc: "Saat dampak yang Anda beri terasa kurang berarti, pola-pola berikut biasanya muncul.", points: [
+        "Anda mulai meragukan manfaat dari apa yang sudah Anda berikan.",
+        "Anda merasa belum cukup berkontribusi.",
+        "Anda sulit merasa puas terhadap dampak yang sudah tercipta.",
+        "Anda merasa bersalah ketika mendahulukan kebutuhan pribadi.",
+      ]
+    },
+    shadow: {
+      desc: "Ini versi berlebihan Contribution, saat keinginan membantu berubah jadi pengorbanan diri tanpa batas.", points: [
+        "Anda mengorbankan diri secara berlebihan.",
+        "Anda sulit menetapkan batasan terhadap permintaan orang lain.",
+        "Anda merasa bertanggung jawab atas masalah semua orang.",
+        "Anda mengabaikan kebutuhan Anda sendiri demi terus memberi.",
+      ]
+    },
+    growth: {
+      desc: "Bentuk paling matang dari Contribution adalah memberi tanpa kehilangan diri sendiri.", points: [
+        "Anda memberi dengan kesadaran dan keseimbangan.",
+        "Anda memahami batas tanggung jawab Anda sendiri.",
+        "Anda memberdayakan orang lain, bukan menyelamatkan mereka.",
+        "Anda menghubungkan kontribusi dengan kebijaksanaan, bukan pengorbanan.",
+      ]
+    },
+    challenge: {
+      title: "Belajar Memberi Secara Berkelanjutan", lesson: "Inti tantangan Anda bukan memberi lebih banyak, tapi belajar bahwa merawat diri sendiri juga bagian dari kontribusi yang sehat.", points: [
+        "Anda tidak bisa membantu semua orang.",
+        "Merawat diri sendiri bukan tindakan egois.",
+        "Dampak besar membutuhkan keberlanjutan.",
+        "Memberdayakan lebih efektif daripada menyelamatkan.",
+      ], question: "Bantuan yang baru saja Anda berikan tadi, lahir dari kelapangan hati, atau dari rasa tidak enak kalau menolak?"
+    },
   },
 };
 
@@ -898,16 +958,26 @@ const IMT_DRIVER_DYNAMICS = {
    Sumber: Theoretical Foundation V1, Bab 7.5
    ============================================================ */
 const IMT_DEV_STAGES = [
-  { key: "unaware", min: 0, max: 20, name: "Unaware", icon: "①", focus: "Membangun kesadaran.",
-    meaning: "Driver Anda bekerja di balik layar tanpa banyak Anda sadari. Ia memengaruhi pilihan Anda, tapi Anda jarang berhenti untuk mengenalinya secara langsung." },
-  { key: "aware", min: 21, max: 40, name: "Aware", icon: "②", focus: "Meningkatkan pemahaman diri.",
-    meaning: "Anda mulai bisa menangkap kapan driver ini muncul, meski belum selalu paham kenapa ia muncul justru di momen-momen tertentu." },
-  { key: "understanding", min: 41, max: 60, name: "Understanding", icon: "③", focus: "Menghubungkan Driver dengan kehidupan nyata.",
-    meaning: "Anda sudah bisa menghubungkan titik-titiknya, melihat bagaimana driver ini ikut membentuk keputusan, hubungan, dan reaksi Anda sehari-hari." },
-  { key: "managing", min: 61, max: 80, name: "Managing", icon: "④", focus: "Regulasi dan pengelolaan Driver.",
-    meaning: "Anda mulai bisa mengelola driver ini dengan sengaja, memilih kapan mengikutinya dan kapan menahannya, bukan sekadar bereaksi begitu saja." },
-  { key: "transforming", min: 81, max: 100, name: "Transforming", icon: "⑤", focus: "Transformasi dan aktualisasi potensi.",
-    meaning: "Driver ini sudah menjadi kekuatan yang Anda pakai secara sadar untuk membangun hidup yang Anda inginkan, bukan lagi sesuatu yang diam-diam mengendalikan Anda." },
+  {
+    key: "unaware", min: 0, max: 20, name: "Unaware", icon: "①", focus: "Membangun kesadaran.",
+    meaning: "Driver Anda bekerja di balik layar tanpa banyak Anda sadari. Ia memengaruhi pilihan Anda, tapi Anda jarang berhenti untuk mengenalinya secara langsung."
+  },
+  {
+    key: "aware", min: 21, max: 40, name: "Aware", icon: "②", focus: "Meningkatkan pemahaman diri.",
+    meaning: "Anda mulai bisa menangkap kapan driver ini muncul, meski belum selalu paham kenapa ia muncul justru di momen-momen tertentu."
+  },
+  {
+    key: "understanding", min: 41, max: 60, name: "Understanding", icon: "③", focus: "Menghubungkan Driver dengan kehidupan nyata.",
+    meaning: "Anda sudah bisa menghubungkan titik-titiknya, melihat bagaimana driver ini ikut membentuk keputusan, hubungan, dan reaksi Anda sehari-hari."
+  },
+  {
+    key: "managing", min: 61, max: 80, name: "Managing", icon: "④", focus: "Regulasi dan pengelolaan Driver.",
+    meaning: "Anda mulai bisa mengelola driver ini dengan sengaja, memilih kapan mengikutinya dan kapan menahannya, bukan sekadar bereaksi begitu saja."
+  },
+  {
+    key: "transforming", min: 81, max: 100, name: "Transforming", icon: "⑤", focus: "Transformasi dan aktualisasi potensi.",
+    meaning: "Driver ini sudah menjadi kekuatan yang Anda pakai secara sadar untuk membangun hidup yang Anda inginkan, bukan lagi sesuatu yang diam-diam mengendalikan Anda."
+  },
 ];
 
 function imtStageFor(score) {
@@ -1007,7 +1077,7 @@ function imtValidity(answers, meta = {}) {
     reasons.push(`Jawaban tidak konsisten terdeteksi antara soal inti dan soal parafrasenya pada driver: ${names}.`);
   }
   if (inconsistentSubComposites.length > 0) {
-    reasons.push(`Jawaban tidak konsisten terdeteksi antara soal Normal dan Reverse pada ${inconsistentSubComposites.length} Sub Composite: ${inconsistentSubComposites.join(', ')}.`);
+    reasons.push(`Jawaban tidak konsisten terdeteksi pada ${inconsistentSubComposites.length} Sub Composite: ${inconsistentSubComposites.join(', ')}.`);
   }
   if (moduleInconsistent) reasons.push("Jawaban tidak konsisten terdeteksi pada modul validitas tambahan di akhir tes.");
   if (authenticityRatio >= 0.5) {
