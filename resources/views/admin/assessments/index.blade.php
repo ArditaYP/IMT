@@ -36,7 +36,7 @@
                     @endif
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right">
-                    <a href="{{ route('assessment.laporan', $a->id) }}" target="_blank" class="text-indigo-600 hover:text-indigo-900 font-medium mr-3">Lihat Laporan ↗</a>
+                    <a href="{{ route('assessment.laporan', $a->uuid) }}" target="_blank" class="text-indigo-600 hover:text-indigo-900 font-medium mr-3">Lihat Laporan ↗</a>
                     <form action="{{ route('admin.assessments.destroy', $a->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jawaban ini? Tindakan ini tidak dapat dibatalkan.');">
                         @csrf
                         @method('DELETE')

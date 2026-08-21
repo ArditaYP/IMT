@@ -3,15 +3,17 @@
 @section('content')
 <h1 class="text-2xl font-bold text-gray-800 mb-6">Overview</h1>
 
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="grid grid-cols-1 {{ auth()->user()->role === 'super_admin' ? 'md:grid-cols-4' : 'md:grid-cols-2' }} gap-6 mb-8">
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Assessment</h3>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Peserta</h3>
         <p class="text-4xl font-extrabold text-blue-900">{{ $totalAssessments }}</p>
     </div>
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Grup Terdaftar</h3>
         <p class="text-4xl font-extrabold text-indigo-900">{{ $totalGroups }}</p>
     </div>
+    
+    @if(auth()->user()->role === 'super_admin')
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Bank Soal</h3>
         <p class="text-4xl font-extrabold text-blue-900">{{ $totalQuestions }}</p>
@@ -20,10 +22,18 @@
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Pendapatan</h3>
         <p class="text-4xl font-extrabold text-green-600">Rp {{ number_format($totalPayments, 0, ',', '.') }}</p>
     </div>
+    @endif
 </div>
 
+@if(auth()->user()->role === 'super_admin')
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
     <h2 class="text-xl font-bold text-gray-800 mb-4">Selamat datang di Admin Panel IMT Discovery</h2>
     <p class="text-gray-500">Gunakan menu di sebelah kiri untuk mengelola soal, melihat jawaban pengguna, atau memantau transaksi pembayaran.</p>
 </div>
+@else
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Selamat datang, {{ auth()->user()->name }}!</h2>
+    <p class="text-gray-500">Gunakan menu di sebelah kiri untuk memantau peserta dan melihat laporan grup / perusahaan Anda.</p>
+</div>
+@endif
 @endsection

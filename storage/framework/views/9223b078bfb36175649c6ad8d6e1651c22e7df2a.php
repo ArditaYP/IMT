@@ -6,7 +6,7 @@
         <p class="text-gray-600">Kode Akses: <span class="font-mono font-bold"><?php echo e($group->code); ?></span> | Total Peserta: <?php echo e($members->count()); ?></p>
     </div>
     <?php if($members->count() > 0): ?>
-        <a href="<?php echo e(route('admin.groups.report', $group->id)); ?>" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 font-semibold shadow-sm">Lihat Laporan Agregat Grup</a>
+        <a href="<?php echo e(route('admin.groups.report', $group->code)); ?>" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 font-semibold shadow-sm">Lihat Laporan Agregat Grup</a>
     <?php endif; ?>
 </div>
 
@@ -52,7 +52,7 @@
                     </td>
                     <td class="p-4 text-right">
                         <?php if(auth()->user()->role === 'super_admin' || $group->client_can_view_reports): ?>
-                            <a href="<?php echo e(route('assessment.laporan', $m->id)); ?>" target="_blank" class="bg-teal-50 text-teal-700 border border-teal-200 px-3 py-1 rounded hover:bg-teal-100 font-semibold text-xs">Lihat Laporan Individu</a>
+                            <a href="<?php echo e(route('assessment.laporan', $m->uuid)); ?>" target="_blank" class="bg-teal-50 text-teal-700 border border-teal-200 px-3 py-1 rounded hover:bg-teal-100 font-semibold text-xs">Lihat Laporan Individu</a>
                         <?php else: ?>
                             <button disabled title="Hubungi Super Admin untuk membuka akses laporan individu" class="bg-gray-100 text-gray-400 border border-gray-200 px-3 py-1 rounded font-semibold text-xs cursor-not-allowed">
                                 🔒 Laporan Terkunci

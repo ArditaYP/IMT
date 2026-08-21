@@ -256,9 +256,28 @@ class AssessmentController extends Controller
             return $assessment;
         });
 
+        if ($userAssessment->email) {
+            $shouldSendEmail = false;
+
+            if ($userAssessment->group_id) {
+                // Untuk jalur Grup: Hanya kirim email laporan jika visibilitas grup untuk peserta adalah 'individual' (publik)
+                $group = \App\Models\Group::find($userAssessment->group_id);
+                if ($group && $group->report_visibility === 'individual') {
+                    $shouldSendEmail = true;
+                }
+            } else {
+                // Untuk jalur Personal: Langsung kirim email laporan
+                $shouldSendEmail = true;
+            }
+
+            if ($shouldSendEmail) {
+                \Illuminate\Support\Facades\Mail::to($userAssessment->email)->send(new \App\Mail\ReportGeneratedMail($userAssessment));
+            }
+        }
+
         return response()->json([
             'success' => true,
-            'redirect_url' => route('assessment.laporan', ['id' => $userAssessment->id])
+            'redirect_url' => route('assessment.laporan', ['uuid' => $userAssessment->uuid])
         ]);
     }
 
@@ -270,9 +289,10 @@ class AssessmentController extends Controller
         return $this->submitAnswers($request);
     }
 
-    public function generateReport($id, PsychologicalAIService $aiService)
+    public function generateReport($uuid, PsychologicalAIService $aiService)
     {
-        $data = UserAssessment::with('group')->findOrFail($id);
+        // Cari berdasarkan UUID, bukan ID angka lagi
+        $data = UserAssessment::with('group')->where('uuid', $uuid)->firstOrFail();
         $assessment = $data;
 
         $isAdmin = auth()->check();

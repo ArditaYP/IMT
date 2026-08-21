@@ -143,6 +143,7 @@
   let totalAnswered = 0;
   const FAST_THRESHOLD_MS = 1000;
   const FAST_STREAK_LIMIT = 3;
+  let isReviewMode = false;
 
   // Prefill group from URL if exists
   let testType = 'personal';
@@ -163,7 +164,6 @@
               document.getElementById('f-group').value = groupCode;
           }
       } else {
-          // Personal test
           document.getElementById('kicker-profile').textContent = 'Sebelum Mulai';
           document.getElementById('field-gender').style.display = 'block';
           document.getElementById('field-phone').style.display = 'block';
@@ -184,7 +184,7 @@
       btn.disabled = true;
 
       try {
-          const res = await fetch("{{ route('api.validate.group') }}", {
+          const res = await fetch("{{ route('api.validate.group', [], false) }}", {
               method: "POST",
               headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
               body: JSON.stringify({ code: groupCode })
@@ -273,6 +273,53 @@
     void document.getElementById('qcard').offsetWidth;
     document.getElementById('qcard').classList.add('fade-in');
     questionShownAt = Date.now();
+
+    // Logic untuk memunculkan tombol skip khusus soal kosong
+    let blankBtn = document.getElementById('btnNextBlank');
+    if (!blankBtn) {
+        blankBtn = document.createElement('button');
+        blankBtn.id = 'btnNextBlank';
+        blankBtn.className = 'btn btn-ghost';
+        blankBtn.style.marginTop = '16px';
+        blankBtn.style.width = '100%';
+        blankBtn.style.color = 'var(--orange)';
+        blankBtn.onclick = jumpToNextBlank;
+        document.getElementById('qcard').appendChild(blankBtn);
+    }
+    
+    if (isReviewMode) {
+        let hasOtherBlank = false;
+        for (let i = 0; i < questionOrder.length; i++) {
+            if (i !== idx && !answers[questionOrder[i].id]) {
+                hasOtherBlank = true;
+                break;
+            }
+        }
+        if (hasOtherBlank) {
+            blankBtn.style.display = 'block';
+            blankBtn.textContent = 'Lewati & Cari Soal Kosong Berikutnya ➔';
+        } else {
+            blankBtn.style.display = 'none';
+        }
+    } else {
+        blankBtn.style.display = 'none';
+    }
+  }
+
+  function jumpToNextBlank() {
+      let nextBlank = -1;
+      for (let i = idx + 1; i < questionOrder.length; i++) {
+          if (!answers[questionOrder[i].id]) { nextBlank = i; break; }
+      }
+      if (nextBlank === -1) {
+          for (let i = 0; i < idx; i++) {
+              if (!answers[questionOrder[i].id]) { nextBlank = i; break; }
+          }
+      }
+      if (nextBlank !== -1) {
+          idx = nextBlank;
+          renderQ();
+      }
   }
 
   function choose(qid, val){
@@ -288,8 +335,24 @@
     }
 
     const advance = () => {
-      if(idx < questionOrder.length - 1){ idx++; renderQ(); }
-      else finish();
+      if (isReviewMode) {
+          let nextBlank = -1;
+          for (let i = 0; i < questionOrder.length; i++) {
+              if (!answers[questionOrder[i].id]) {
+                  nextBlank = i;
+                  break;
+              }
+          }
+          if (nextBlank !== -1) {
+              idx = nextBlank;
+              renderQ();
+          } else {
+              finish();
+          }
+      } else {
+          if(idx < questionOrder.length - 1){ idx++; renderQ(); }
+          else finish();
+      }
     };
 
     if(consecutiveFast >= FAST_STREAK_LIMIT){
@@ -326,6 +389,7 @@
       if (firstUnansweredIdx !== -1) {
         alert(`Masih ada ${questionOrder.length - answeredCount} soal yang belum terjawab. Mengembalikan Anda ke soal ${firstUnansweredIdx + 1}.`);
         idx = firstUnansweredIdx;
+        isReviewMode = true;
         renderQ();
         return;
       }
@@ -349,7 +413,7 @@
     const profile = JSON.parse(localStorage.getItem('imt_profile') || '{"name":"Peserta IMT", "job":"-"}');
     
     try {
-        const response = await fetch("{{ route('assessment.submit') }}", {
+        const response = await fetch("{{ route('assessment.submit', [], false) }}", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

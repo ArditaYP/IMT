@@ -158,8 +158,8 @@
                     <td class="p-4">
                         <div class="flex flex-wrap items-center justify-end gap-2">
                             @if($group->assessments_count > 0)
-                                <a href="{{ route('admin.groups.members', $group->id) }}" class="px-3 py-1.5 bg-teal-50 text-teal-700 hover:bg-teal-100 rounded text-xs font-semibold transition-colors">Anggota ({{ $group->assessments_count }})</a>
-                                <a href="{{ route('admin.groups.report', $group->id) }}" target="_blank" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded text-xs font-semibold transition-colors">Laporan</a>
+                                <a href="{{ route('admin.groups.members', $group->code) }}" class="px-3 py-1.5 bg-teal-50 text-teal-700 hover:bg-teal-100 rounded text-xs font-semibold transition-colors">Anggota ({{ $group->assessments_count }})</a>
+                                <a href="{{ route('admin.groups.report', $group->code) }}" target="_blank" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded text-xs font-semibold transition-colors">Laporan</a>
                             @endif
                             @if(auth()->user()->isSuperAdmin())
                             <a href="{{ route('admin.groups.edit', $group->id) }}" class="px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded text-xs font-semibold transition-colors">Edit</a>

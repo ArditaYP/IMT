@@ -226,6 +226,9 @@
     .ov-sub-row{grid-template-columns:1fr; row-gap:4px;}
     .ov-band-pill{justify-self:start;}
     .ov-scale-wrap{padding-left:0;}
+    .ov-header{flex-direction:column; align-items:flex-start; gap:20px; padding:20px 20px 6px;}
+    .ov-header .ov-meta{width:100%; justify-content:space-between;}
+    .ov-header .ov-meta > div:first-child{text-align:left !important;}
   }
 </style>
 </head>
@@ -250,10 +253,15 @@
       <img src="{{ asset('assets/img/logo-icon.png') }}" alt="IMT Discovery">
       <div class="t">IMT <span>DISCOVERY</span></div>
     </div>
-    <div class="ov-meta">
-      <div><b id="ovName">-</b></div>
-      <div id="ovJob">-</div>
-      <div id="ovDate">-</div>
+    <div class="ov-meta" style="display:flex; align-items:center; gap:16px;">
+      <div style="text-align:right;">
+        <div><b id="ovName">-</b></div>
+        <div id="ovJob">-</div>
+        <div id="ovDate">-</div>
+      </div>
+      <div style="width:64px; height:64px; border:1px solid #e7e9f2; border-radius:6px; padding:2px; background:#fff; display:flex; justify-content:center; align-items:center;">
+        {!! QrCode::size(58)->generate(route('assessment.laporan', ['uuid' => $assessment->uuid])) !!}
+      </div>
     </div>
   </div>
   <div class="ov-title">

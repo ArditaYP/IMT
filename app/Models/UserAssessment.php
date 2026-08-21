@@ -4,10 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class UserAssessment extends Model
 {
     use HasFactory;
+
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
+        });
+    }
 
     /**
      * Nama tabel di database
@@ -30,6 +42,7 @@ class UserAssessment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'group_id',
         'name',
         'email',

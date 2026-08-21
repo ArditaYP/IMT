@@ -32,7 +32,7 @@ Route::get('/tes', [AssessmentController::class, 'showTest'])->name('assessment.
 Route::post('/tes/submit', [AssessmentController::class, 'submitAnswers'])->name('assessment.submit');
 
 // 4. Laporan Hasil Profiling
-Route::get('/laporan/{id}', [AssessmentController::class, 'generateReport'])->name('assessment.laporan');
+Route::get('/laporan/{uuid}', [AssessmentController::class, 'generateReport'])->name('assessment.laporan');
 
 // 5. Halaman Hasil Seluruh Peserta
 Route::get('/hasil', [AssessmentController::class, 'results'])->name('assessment.results');
@@ -42,8 +42,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Akses Bersama (Super Admin & Client Admin)
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/groups', [AdminController::class, 'groups'])->name('admin.groups');
-    Route::get('/groups/{id}/report', [AdminController::class, 'groupsReport'])->name('admin.groups.report');
-    Route::get('/groups/{id}/members', [AdminController::class, 'groupsMembers'])->name('admin.groups.members');
+    Route::get('/groups/{code}/report', [AdminController::class, 'groupsReport'])->name('admin.groups.report');
+    Route::get('/groups/{code}/members', [AdminController::class, 'groupsMembers'])->name('admin.groups.members');
 
     // Akses Khusus Super Admin
     Route::middleware(['superadmin'])->group(function () {

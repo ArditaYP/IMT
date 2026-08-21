@@ -9,12 +9,27 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $totalAssessments = UserAssessment::count();
-        $totalQuestions = Question::count();
-        $totalPayments = DB::table('payments')->where('status', 'success')->sum('amount');
-        $totalGroups = \App\Models\Group::count();
+        $user = $request->user();
+
+        if ($user->role === 'super_admin') {
+            $totalAssessments = UserAssessment::count();
+            $totalQuestions = Question::count();
+            $totalPayments = DB::table('payments')->where('status', 'success')->sum('amount');
+            $totalGroups = \App\Models\Group::count();
+        } else {
+            // Client Admin: Hanya data grup yang dia kelola
+            $totalGroups = \App\Models\Group::where('user_id', $user->id)->count();
+            
+            // Total peserta dari grup-grup miliknya
+            $totalAssessments = UserAssessment::whereIn('group_id', function($query) use ($user) {
+                $query->select('id')->from('groups')->where('user_id', $user->id);
+            })->count();
+
+            $totalQuestions = 0; // Tidak relevan untuk Client
+            $totalPayments = 0;  // Tidak relevan untuk Client
+        }
         
         return view('admin.dashboard', compact('totalAssessments', 'totalQuestions', 'totalPayments', 'totalGroups'));
     }
@@ -167,9 +182,9 @@ class AdminController extends Controller
         return redirect()->route('admin.groups')->with('success', 'Grup berhasil dihapus.');
     }
 
-    public function groupsReport(Request $request, $id)
+    public function groupsReport(Request $request, $code)
     {
-        $group = \App\Models\Group::findOrFail($id);
+        $group = \App\Models\Group::where('code', $code)->firstOrFail();
         if (!$request->user()->isSuperAdmin() && $group->user_id !== $request->user()->id) abort(403, 'Akses ditolak.');
         
         $assessments = UserAssessment::where('group_id', $group->id)->get();
@@ -344,9 +359,9 @@ class AdminController extends Controller
         ));
     }
 
-    public function groupsMembers(Request $request, $id)
+    public function groupsMembers(Request $request, $code)
     {
-        $group = \App\Models\Group::findOrFail($id);
+        $group = \App\Models\Group::where('code', $code)->firstOrFail();
         if (!$request->user()->isSuperAdmin() && $group->user_id !== $request->user()->id) abort(403, 'Akses ditolak.');
         $members = UserAssessment::where('group_id', $group->id)
                     ->orderBy('created_at', 'desc')

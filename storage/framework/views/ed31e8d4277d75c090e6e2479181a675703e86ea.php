@@ -42,12 +42,20 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <div class="brand"><img class="brand-icon" src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery"> IMT DISCOVERY</div>
-    <div class="nav-links">
+    <div class="nav-brand-wrapper">
+      <div class="brand"><img class="brand-icon" src="<?php echo e(asset('assets/img/logo-icon.png')); ?>" alt="IMT Discovery"> IMT DISCOVERY</div>
+      
+      <!-- Hamburger Menu for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="nav-menu" id="nav-menu">
+      <div class="nav-links">
       <a href="#drivers">5 Drivers</a>
       <a href="#how">Cara Kerja</a>
       <a href="#pricing">Harga</a>
-      <a href="about.html">Tentang</a>
       <a href="#faq">FAQ</a>
       <a href="team.html">Untuk Tim/Korporasi</a>
     </div>
@@ -83,15 +91,16 @@
         <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-ghost">Masuk</a>
         <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary">Mulai Tes</a>
       <?php endif; ?>
-    </div>
+      </div> <!-- nav-cta -->
+    </div> <!-- end nav-menu -->
   </div>
 </nav>
 
 <header class="hero">
   <div class="container">
     <div class="eyebrow">✦ SETELAH IQ DAN EQ, KENALI DQ ANDA</div>
-    <h1>Temukan apa yang <span>benar-benar</span><br>menggerakkan hidup Anda</h1>
-    <p class="lead">IMT Discovery memetakan 5 Human Drivers dan arketipe motivasi Anda melalui pendekatan psikometri modern — lengkap dengan laporan interpretasi personal yang otomatis dan langsung dapat digunakan.</p>
+    <h1>Penghambat Anda Bukan dari Luar.<br><span>Tapi dari Dalam Diri Sendiri.</span></h1>
+    <p class="lead">Mungkin Anda belum sadar, apa yang selama ini menghambat, baik untuk diri sendiri maupun tim. IMT Discovery menemukan 5 Human Drivers dan mengukur Driver Quotient (DQ) Anda, untuk menemukan apa yang belum pernah benar-benar Anda sadari.</p>
     <div class="hero-ctas">
       <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-primary">Mulai Tes Sekarang</a>
       <a href="<?php echo e(route('pilih-tes')); ?>" class="btn btn-dark">Tes untuk Tim/Korporasi</a>
@@ -322,7 +331,7 @@
         <p style="font-size:13px; color:#aab2cc; max-width:280px; line-height:1.6;">Platform assessment psikometri untuk memahami motivasi, mengambil keputusan lebih baik, dan mengembangkan diri.</p>
       </div>
       <div><h4>Produk</h4><a href="<?php echo e(route('assessment.test')); ?>">Tes Personal</a><a href="team.html">Tes Korporasi</a><a href="#pricing">Harga</a></div>
-      <div><h4>Perusahaan</h4><a href="about.html">Tentang Kami</a><a href="#">Kontak</a><a href="#">Karir</a></div>
+      <div><h4>Perusahaan</h4><a href="about.html">Tentang Kami</a><a href="https://wa.me/628213107369" target="_blank">Kontak</a><a href="#">Karir</a></div>
       <div><h4>Legal</h4><a href="#">Kebijakan Privasi</a><a href="#">Syarat & Ketentuan</a></div>
     </div>
     <div class="foot-bottom">
@@ -345,19 +354,56 @@
   });
 
   function toggleDropdown() {
-    const dropdown = document.getElementById('userDropdown');
-    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    var menu = document.getElementById("userDropdown");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
   }
-  
+
+  // Hamburger Toggle
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navMenu = document.getElementById('nav-menu');
+  hamburgerBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
   window.onclick = function(event) {
     if (!event.target.closest('.dropdown')) {
-      const dropdown = document.getElementById('userDropdown');
-      if (dropdown && dropdown.style.display === 'block') {
-        dropdown.style.display = 'none';
+      var dropdowns = document.getElementsByClassName("user-dropdown-menu");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.style.display === "block") {
+          openDropdown.style.display = "none";
+        }
       }
     }
   }
 </script>
+<style>
+  /* Mobile Nav Styles */
+  .nav-brand-wrapper { display: flex; align-items: center; justify-content: space-between; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--navy); }
+  .nav-menu { display: flex; align-items: center; gap: 20px; flex: 1; justify-content: flex-end; }
+  
+  @media (max-width: 820px) {
+    .nav-inner { flex-direction: column; align-items: flex-start; padding: 14px 20px; }
+    .nav-brand-wrapper { width: 100%; }
+    .hamburger { display: block; }
+    .nav-menu { 
+      display: none; 
+      flex-direction: column; 
+      width: 100%; 
+      align-items: flex-start; 
+      margin-top: 20px;
+      gap: 16px;
+    }
+    .nav-menu.active { display: flex; }
+    .nav-links { flex-direction: column; width: 100%; gap: 14px; }
+    .nav-cta { width: 100%; flex-direction: column; align-items: stretch; }
+    .nav-cta .btn { width: 100%; justify-content: center; }
+    .hero h1 { font-size: 32px; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas .btn { width: 100%; }
+  }
+</style>
 </body>
 </html>
 <?php /**PATH C:\Users\CSO KUTA 2\Documents\web\IMT\resources\views/landing.blade.php ENDPATH**/ ?>
